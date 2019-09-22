@@ -33,9 +33,10 @@ class TambahBayFragment : Fragment() {
         /*btn_transmisi.setOnClickListener { startActivity(Intent(view.context, TransmisiFragment::class.java)) }
         btn_diameter.setOnClickListener { startActivity(Intent(view.context, DiameterFragment::class.java)) }
         btn_trafo.setOnClickListener { startActivity(Intent(context, TrafoFragment::class.java)) }*/
-        btn_transmisi.setOnClickListener { replaceFragment(TransmisiFragment(), "transmisi") }
+
+      /*  btn_transmisi.setOnClickListener { replaceFragment(TransmisiFragment(), "transmisi") }
         btn_diameter.setOnClickListener { replaceFragment(DiameterFragment(), "diameter") }
-        btn_trafo.setOnClickListener { replaceFragment(TrafoFragment(), "trafo") }
+        btn_trafo.setOnClickListener { replaceFragment(TrafoFragment(), "trafo") }*/
 
     }
 

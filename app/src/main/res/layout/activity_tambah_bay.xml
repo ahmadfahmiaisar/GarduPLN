@@ -1,40 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragment.tambahbay.TambahBayFragment">
-<!--
+    android:orientation="vertical"
+    tools:context=".activity.TambahBayActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="Tambah Bay"
+        android:textColor="#000"
+        android:textSize="@dimen/_20ssp" />
+
     <LinearLayout
+        android:id="@+id/ll_tambahBay"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:gravity="center_horizontal"
         android:orientation="horizontal">
 
         <Button
             android:id="@+id/btn_transmisi"
+            style="?android:buttonBarButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
+            android:layout_margin="@dimen/_10sdp"
             android:layout_weight="1"
             android:text="Transmisi" />
 
         <Button
             android:id="@+id/btn_diameter"
+            style="?android:buttonBarButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
+            android:layout_margin="@dimen/_10sdp"
             android:layout_weight="1"
             android:text="Diameter" />
 
         <Button
             android:id="@+id/btn_trafo"
+            style="?android:buttonBarButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
+            android:layout_margin="@dimen/_10sdp"
             android:layout_weight="1"
             android:text="Trafo" />
-    </LinearLayout>-->
+    </LinearLayout>
 
-</FrameLayout>
+    <FrameLayout
+        android:id="@+id/bay_frame_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+</LinearLayout>

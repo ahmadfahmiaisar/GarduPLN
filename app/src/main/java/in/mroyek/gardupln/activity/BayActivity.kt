@@ -2,6 +2,7 @@ package `in`.mroyek.gardupln.activity
 
 import `in`.mroyek.gardupln.R
 import `in`.mroyek.gardupln.fragment.tambahbay.TambahBayFragment
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
@@ -16,27 +17,6 @@ class BayActivity : AppCompatActivity() {
         setContentView(R.layout.activity_bay)
 
         btn_tambahBay.setOnClickListener {
-
-            if (btn_tambahBay.text == "Tutup") {
-                bay_frame_container.visibility = View.GONE
-                btn_tambahBay.text = "Tambah Bay"
-            } else if (btn_tambahBay.text == "Tambah Bay") {
-                bay_frame_container.visibility = View.VISIBLE
-                btn_tambahBay.text = "Tutup"
-            }
-        }
-        container()
-    }
-
-    private fun container() {
-        val mFragmentManager = supportFragmentManager
-        val mFragmentTransaction = mFragmentManager.beginTransaction()
-        val mHomeFragment = TambahBayFragment()
-        val fragment = mFragmentManager.findFragmentByTag(TambahBayFragment::class.java.simpleName)
-
-        if (fragment !is TambahBayFragment) {
-            mFragmentTransaction.add(R.id.bay_frame_container, mHomeFragment, TambahBayFragment::class.java.simpleName)
-            mFragmentTransaction.commit()
-        }
+            startActivity(Intent(applicationContext, TambahBayActivity::class.java)) }
     }
 }
