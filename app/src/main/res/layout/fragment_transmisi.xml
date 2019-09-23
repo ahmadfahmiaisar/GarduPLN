@@ -6,6 +6,7 @@
     tools:context=".fragment.tambahbay.TransmisiFragment">
 
     <LinearLayout
+        android:id="@+id/ll_transmisi"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">

@@ -13,7 +13,10 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
+import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.fragment_transmisi.*
+import java.util.*
+import kotlin.collections.HashMap
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -25,6 +28,7 @@ private const val ARG_PARAM2 = "param2"
  *
  */
 class TransmisiFragment : Fragment() {
+    val db: FirebaseFirestore? = FirebaseFirestore.getInstance()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -34,6 +38,19 @@ class TransmisiFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        btn_choose.setOnClickListener {
+            val id: String = UUID.randomUUID().toString()
+            val et_bay = et_bay.text.toString().trim()
+            val doc = hashMapOf(
+                    "id" to id,
+                    "etBay" to et_bay
+            )
+            db!!.collection("Bay").document().set(doc)
+                    .addOnSuccessListener { Toast.makeText(context, "okeeh", Toast.LENGTH_SHORT).show() }
+                    .addOnFailureListener { Toast.makeText(context, "yaah gagak", Toast.LENGTH_SHORT).show() }
+        }
+        btn_close.setOnClickListener { ll_transmisi.visibility = View.GONE }
     }
 
 }
