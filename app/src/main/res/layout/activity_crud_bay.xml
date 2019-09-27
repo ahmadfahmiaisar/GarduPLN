@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".activity.TambahBayActivity">
+    tools:context=".activity.crud.CrudBayActivity">
 
     <TextView
         android:layout_width="wrap_content"
@@ -59,12 +59,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:text="transmisi"
+            android:text="Transmisi"
             android:textColor="#000"
             android:textSize="24sp" />
 
         <EditText
-            android:id="@+id/et_bay"
+            android:id="@+id/et_bay_transmisi"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Bay"
@@ -84,7 +84,7 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/btn_close"
+                android:id="@+id/btn_close_transmisi"
                 style="?android:attr/buttonBarButtonStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -94,7 +94,7 @@
                 android:text="close" />
 
             <Button
-                android:id="@+id/btn_choose"
+                android:id="@+id/btn_choose_transmisi"
                 style="?android:attr/buttonBarButtonStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -126,14 +126,6 @@
             android:hint="Bay"
             android:textColorHint="@color/colorAccent" />
 
-        <com.google.android.material.textfield.TextInputEditText
-            style="@style/Widget.AppCompat.EditText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Total Tower"
-            android:textColorHint="@color/colorPrimaryDark" />
-
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -160,8 +152,56 @@
                 android:text="chose" />
         </LinearLayout>
     </LinearLayout>
-    <FrameLayout
+    <LinearLayout
+        android:id="@+id/ll_trafo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="Trafo"
+            android:textColor="#000"
+            android:textSize="24sp" />
+
+        <EditText
+            android:id="@+id/et_bay_trafo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Bay"
+            android:textColorHint="@color/colorAccent" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btn_close_trafo"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="4dp"
+                android:layout_marginRight="4dp"
+                android:layout_weight="0.5"
+                android:text="close" />
+
+            <Button
+                android:id="@+id/btn_choose_trafo"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginLeft="4dp"
+                android:layout_weight="0.5"
+                android:text="chose" />
+        </LinearLayout>
+    </LinearLayout>
+   <!-- <FrameLayout
         android:id="@+id/bay_frame_container"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"/>-->
 </LinearLayout>

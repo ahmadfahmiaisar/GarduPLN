@@ -2,21 +2,19 @@ package `in`.mroyek.gardupln.fragment.tambahbay
 
 
 import `in`.mroyek.gardupln.R
-import android.annotation.SuppressLint
-import android.graphics.Color
-import android.graphics.PorterDuff
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.EditText
 import android.widget.Toast
-import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
 import com.google.firebase.firestore.FirebaseFirestore
+import kotlinx.android.synthetic.main.activity_crud_bay.*
 import kotlinx.android.synthetic.main.fragment_transmisi.*
+import kotlinx.android.synthetic.main.fragment_transmisi.btn_choose_transmisi
+import kotlinx.android.synthetic.main.fragment_transmisi.btn_close_transmisi
+import kotlinx.android.synthetic.main.fragment_transmisi.ll_transmisi
 import java.util.*
-import kotlin.collections.HashMap
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -38,10 +36,10 @@ class TransmisiFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        btn_choose.setOnClickListener {
+/*
+        btn_choose_transmisi.setOnClickListener {
             val id: String = UUID.randomUUID().toString()
-            val et_bay = et_bay.text.toString().trim()
+            val et_bay = et_bay_transmisi.text.toString().trim()
             val doc = hashMapOf(
                     "id" to id,
                     "etBay" to et_bay
@@ -50,7 +48,7 @@ class TransmisiFragment : Fragment() {
                     .addOnSuccessListener { Toast.makeText(context, "okeeh", Toast.LENGTH_SHORT).show() }
                     .addOnFailureListener { Toast.makeText(context, "yaah gagak", Toast.LENGTH_SHORT).show() }
         }
-        btn_close.setOnClickListener { ll_transmisi.visibility = View.GONE }
+        btn_close_transmisi.setOnClickListener { ll_transmisi.visibility = View.GONE }*/
     }
 
 }

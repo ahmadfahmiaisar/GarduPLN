@@ -34,6 +34,13 @@
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/_10sdp"
         android:text="Tambah Bay" />
+    <Button
+        android:id="@+id/btn_ke_gardu"
+        style="?android:buttonBarButtonStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_10sdp"
+        android:text="Gardu" />
     <!--    <FrameLayout
             android:visibility="gone"
             android:id="@+id/bay_frame_container"

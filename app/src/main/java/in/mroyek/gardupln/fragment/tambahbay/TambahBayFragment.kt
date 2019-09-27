@@ -40,10 +40,10 @@ class TambahBayFragment : Fragment() {
 
     }
 
-    private fun replaceFragment(fragment: Fragment, tag: String) {
+   /* private fun replaceFragment(fragment: Fragment, tag: String) {
         val mFragmentTransaction = fragmentManager!!.beginTransaction()
         mFragmentTransaction.replace(R.id.bay_frame_container, fragment, tag)
         mFragmentTransaction.addToBackStack(null)
         mFragmentTransaction.commit()
-    }
+    }*/
 }

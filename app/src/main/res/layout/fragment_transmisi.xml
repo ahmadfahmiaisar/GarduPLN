@@ -19,12 +19,12 @@
             android:textColor="#000"
             android:textSize="24sp" />
 
-        <EditText
+        <!--<EditText
             android:id="@+id/et_bay"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Bay"
-            android:textColorHint="@color/colorAccent" />
+            android:textColorHint="@color/colorAccent" />-->
 
         <com.google.android.material.textfield.TextInputEditText
             style="@style/Widget.AppCompat.EditText"
@@ -40,7 +40,7 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/btn_close"
+                android:id="@+id/btn_close_transmisi"
                 style="?android:attr/buttonBarButtonStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -50,7 +50,7 @@
                 android:text="close" />
 
             <Button
-                android:id="@+id/btn_choose"
+                android:id="@+id/btn_choose_transmisi"
                 style="?android:attr/buttonBarButtonStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
