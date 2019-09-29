@@ -11,4 +11,5 @@ class BayResponse {
         this.id = id
         this.bay = bay
     }
+
 }

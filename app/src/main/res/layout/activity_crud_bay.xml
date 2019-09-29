@@ -7,6 +7,7 @@
     tools:context=".activity.crud.CrudBayActivity">
 
     <TextView
+        android:id="@+id/id_doc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
