@@ -15,7 +15,7 @@
     <string name="tidak_charge">Tidak Charge</string>
     <string name="tidak_terbaca">Tidak Terbaca</string>
     <string name="rusak">Rusak</string>
-    <string name="tekanan_gas_sf6">Tekanan Gas SF6</string>
+    <string name="tekanan_gas_sf6">Tekanan Gas SFG</string>
     <string name="tekanan_gas">tekanan gas</string>
     <string name="ber_kpa_psi">(ber/kpa/psi)</string>
     <string name="normal">Normal</string>
