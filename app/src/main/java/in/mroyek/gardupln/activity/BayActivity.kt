@@ -2,10 +2,16 @@ package `in`.mroyek.gardupln.activity
 
 import `in`.mroyek.gardupln.R
 import `in`.mroyek.gardupln.activity.crud.CrudBayActivity
+import `in`.mroyek.gardupln.activity.inspeksi1.Diameter1Activity
+import `in`.mroyek.gardupln.activity.inspeksi1.Trafo1Activity
+import `in`.mroyek.gardupln.activity.inspeksi1.Transmisi1Activity
+import `in`.mroyek.gardupln.activity.inspeksi2.Diameter2Activity
+import `in`.mroyek.gardupln.activity.inspeksi2.Trafo2Activity
+import `in`.mroyek.gardupln.activity.inspeksi2.Transmisi2Activity
 import `in`.mroyek.gardupln.key
 import `in`.mroyek.gardupln.model.BayResponse
-import `in`.mroyek.gardupln.model.GarduResponse
 import android.annotation.SuppressLint
+import android.app.AlertDialog
 import android.app.ProgressDialog
 import android.content.Intent
 import android.os.Bundle
@@ -22,8 +28,6 @@ import com.firebase.ui.firestore.FirestoreRecyclerOptions
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
 import kotlinx.android.synthetic.main.activity_bay.*
-import kotlinx.android.synthetic.main.item_bay_layout.*
-import java.io.Serializable
 
 class BayActivity : AppCompatActivity() {
 
@@ -78,17 +82,43 @@ class BayActivity : AppCompatActivity() {
             override fun onBindViewHolder(holder: BayHolder, position: Int, response: BayResponse) {
                 holder.bindData(response)
                 holder.itemView.setOnClickListener {
-                    when {
-                        response.bay!!.contains("transmisi") -> Toast.makeText(applicationContext, "okeeh ini transmisi", Toast.LENGTH_SHORT).show()
-                        response.bay!!.contains("trafo") -> Toast.makeText(applicationContext, "okeeh ini trafo", Toast.LENGTH_SHORT).show()
-                        response.bay!!.contains("diameter") -> Toast.makeText(applicationContext, "okeeh ini diameter", Toast.LENGTH_SHORT).show()
-                    }
+                    choiceDialog(response.bay!!)
                 }
             }
-
         }
         adapter!!.notifyDataSetChanged()
         rv_bay.adapter = adapter
+    }
+
+    private fun choiceDialog(bay: String) {
+        val builder = AlertDialog.Builder(this)
+        val options = arrayOf<CharSequence>("Inspeksi Level 1", "Inspeksi Level 2", "Laporan Beban", "Laporan Gangguan")
+        builder.setItems(options) { _, which ->
+            val choice = options[which]
+            when {
+                choice.contains("Inspeksi Level 1") -> when {
+                    bay.contains("transmisi") -> startActivity(Intent(applicationContext, Transmisi1Activity::class.java))
+                    bay.contains("diameter") -> startActivity(Intent(applicationContext, Diameter1Activity::class.java))
+                    bay.contains("trafo") -> startActivity(Intent(applicationContext, Trafo1Activity::class.java))
+                }
+                choice.contains("Inspeksi Level 2") -> when {
+                    bay.contains("transmisi") -> startActivity(Intent(applicationContext, Transmisi2Activity::class.java))
+                    bay.contains("diameter") -> startActivity(Intent(applicationContext, Diameter2Activity::class.java))
+                    bay.contains("trafo") -> startActivity(Intent(applicationContext, Trafo2Activity::class.java))
+                }
+                choice.contains("Laporan Beban") -> when {
+                    /*bay.contains("transmisi") -> startActivity(Intent(applicationContext, Transmisi1Activity::class.java))
+                    bay.contains("diameter") -> startActivity(Intent(applicationContext, Transmisi1Activity::class.java))
+                    bay.contains("trafo") -> startActivity(Intent(applicationContext, Transmisi1Activity::class.java))*/
+                }
+                choice.contains("Laporan Gangguan") -> when {
+                    /*bay.contains("transmisi") -> startActivity(Intent(applicationContext, Transmisi1Activity::class.java))
+                    bay.contains("diameter") -> startActivity(Intent(applicationContext, Transmisi1Activity::class.java))
+                    bay.contains("trafo") -> startActivity(Intent(applicationContext, Transmisi1Activity::class.java))*/
+                }
+            }
+        }
+        builder.show()
     }
 
     override fun onStart() {

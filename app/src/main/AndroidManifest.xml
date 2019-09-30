@@ -11,7 +11,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.inspeksi.InspeksiLevel1Activity"></activity>
+        <activity android:name=".activity.inspeksi2.Trafo2Activity"></activity>
+        <activity android:name=".activity.inspeksi2.Diameter2Activity" />
+        <activity android:name=".activity.inspeksi2.Transmisi2Activity" />
+        <activity android:name=".activity.inspeksi1.Trafo1Activity" />
+        <activity android:name=".activity.inspeksi1.Diameter1Activity" />
+        <activity android:name=".activity.inspeksi1.Transmisi1Activity" />
         <activity android:name=".activity.InsLaporActivity" />
         <activity android:name=".activity.crud.CrudGarduActivity" />
         <activity android:name=".activity.crud.CrudBayActivity" />

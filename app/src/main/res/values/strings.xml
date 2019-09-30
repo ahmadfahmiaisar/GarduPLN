@@ -3,4 +3,22 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="phasa_r">Phasa R</string>
+    <string name="phasa_s">Phasa S</string>
+    <string name="phasa_t">Phasa T</string>
+    <string name="spring">Spring</string>
+    <string name="hydraulic">Hydraulic</string>
+    <string name="pneumatic">Pneumatic</string>
+    <string name="sfg">SFG</string>
+    <string name="oil">Oil</string>
+    <string name="full_charge">Full Charge</string>
+    <string name="tidak_charge">Tidak Charge</string>
+    <string name="tidak_terbaca">Tidak Terbaca</string>
+    <string name="rusak">Rusak</string>
+    <string name="tekanan_gas_sf6">Tekanan Gas SF6</string>
+    <string name="tekanan_gas">tekanan gas</string>
+    <string name="ber_kpa_psi">(ber/kpa/psi)</string>
+    <string name="normal">Normal</string>
+    <string name="berkurang">Berkurang</string>
+    <string name="name">Name</string>
 </resources>

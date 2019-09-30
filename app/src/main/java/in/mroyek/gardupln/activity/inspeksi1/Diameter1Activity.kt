@@ -1,13 +1,13 @@
-package `in`.mroyek.gardupln.activity.inspeksi
+package `in`.mroyek.gardupln.activity.inspeksi1
 
 import `in`.mroyek.gardupln.R
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 
-class InspeksiLevel1Activity : AppCompatActivity() {
+class Diameter1Activity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_inspeksi_level1)
+        setContentView(R.layout.activity_diameter1)
     }
 }
