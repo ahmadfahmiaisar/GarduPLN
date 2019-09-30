@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout_sfg"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/_5sdp"
+    android:visibility="gone">
+
+
+    <TextView
+        android:id="@+id/tvtekanangas"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_2sdp"
+        android:gravity="center_horizontal"
+        android:padding="@dimen/_4sdp"
+        android:text="@string/tekanan_gas_sf6"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="@dimen/_12ssp" />
+
+    <EditText
+        android:id="@+id/et_tekananGasSfg"
+        android:layout_width="@dimen/_100sdp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvtekanangas"
+        android:hint="@string/tekanan_gas"
+        android:inputType="text"
+        android:textColor="@color/colorPrimaryDark" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/et_tekananGasSfg"
+        android:layout_alignBottom="@+id/et_tekananGasSfg"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginBottom="@dimen/_10sdp"
+        android:layout_toEndOf="@+id/et_tekananGasSfg"
+        android:text="@string/ber_kpa_psi"
+        android:textColor="@color/colorPrimaryDark" />
+
+    <RadioGroup
+        android:id="@+id/rg_sfg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/et_tekananGasSfg"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Normal"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="@dimen/_13ssp" />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Berkurang"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="@dimen/_13ssp" />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tidak Terbaca"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="@dimen/_13ssp" />
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/btn_upload_sfg"
+        style="@style/Widget.AppCompat.Button.Borderless.Colored"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rg_sfg"
+        android:text="oke" />
+
+</RelativeLayout>

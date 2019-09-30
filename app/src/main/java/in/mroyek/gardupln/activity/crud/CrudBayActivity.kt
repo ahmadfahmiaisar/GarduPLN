@@ -39,7 +39,7 @@ class CrudBayActivity : AppCompatActivity() {
                 val id: String = UUID.randomUUID().toString()
                 val etbay = et_bay_transmisi.text.toString().trim()
                 val doc = hashMapOf(
-                        "id" to id,
+                        "idgardu" to id,
                         "bay" to "transmisi $etbay"
                 )
                 db!!.collection("Gardu").document(idgardu).collection("Bay").document().set(doc)
@@ -59,7 +59,7 @@ class CrudBayActivity : AppCompatActivity() {
                 val id: String = UUID.randomUUID().toString()
                 val etbay = et_bay_diameter.text.toString().trim()
                 val doc = hashMapOf(
-                        "id" to id,
+                        "idgardu" to id,
                         "bay" to "diameter $etbay"
                 )
                 db!!.collection("Gardu").document(idgardu).collection("Bay").document().set(doc)
@@ -80,7 +80,7 @@ class CrudBayActivity : AppCompatActivity() {
                 val id: String = UUID.randomUUID().toString()
                 val etbay = et_bay_trafo.text.toString().trim()
                 val doc = hashMapOf(
-                        "id" to id,
+                        "idgardu" to id,
                         "bay" to "trafo $etbay"
                 )
                 db!!.collection("Gardu").document(idgardu).collection("Bay").document().set(doc)
@@ -105,6 +105,7 @@ class CrudBayActivity : AppCompatActivity() {
         super.onStop()
         Log.d("log", "onstopbay")
     }
+
     override fun onDestroy() {
         super.onDestroy()
         finish()

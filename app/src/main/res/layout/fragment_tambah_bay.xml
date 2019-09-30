@@ -13,7 +13,7 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/btn_transmisi"
+            android:idgardu="@+idgardu/btn_transmisi"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
@@ -21,7 +21,7 @@
             android:text="Transmisi" />
 
         <Button
-            android:id="@+id/btn_diameter"
+            android:idgardu="@+idgardu/btn_diameter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
@@ -29,7 +29,7 @@
             android:text="Diameter" />
 
         <Button
-            android:id="@+id/btn_trafo"
+            android:idgardu="@+idgardu/btn_trafo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"

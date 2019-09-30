@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout_spring"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="@dimen/_5sdp"
+    android:layout_marginRight="@dimen/_5sdp"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:visibility="gone">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="chose one"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="@dimen/_14ssp" />
+
+    <RadioGroup
+        android:id="@+id/rg_spring"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Full Charge"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="@dimen/_14ssp" />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tidak Charge"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="@dimen/_14ssp" />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tidak Terbaca"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="@dimen/_14ssp" />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Rusak"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="@dimen/_14ssp" />
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/btn_upload_spring"
+        style="@style/Widget.AppCompat.Button.Borderless.Colored"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:text="oke" />
+
+</LinearLayout>

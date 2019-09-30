@@ -20,7 +20,7 @@
             android:textSize="24sp" />
 
         <!--<EditText
-            android:id="@+id/et_bay"
+            android:idgardu="@+idgardu/et_bay"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Bay"

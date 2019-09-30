@@ -38,10 +38,10 @@ class TransmisiFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 /*
         btn_choose_transmisi.setOnClickListener {
-            val id: String = UUID.randomUUID().toString()
+            val idgardu: String = UUID.randomUUID().toString()
             val et_bay = et_bay_transmisi.text.toString().trim()
             val doc = hashMapOf(
-                    "id" to id,
+                    "idgardu" to idgardu,
                     "etBay" to et_bay
             )
             db!!.collection("Bay").document().set(doc)

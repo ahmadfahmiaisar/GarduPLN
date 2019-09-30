@@ -19,7 +19,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -34,25 +33,26 @@ class BayActivity : AppCompatActivity() {
     private var adapter: FirestoreRecyclerAdapter<BayResponse, BayHolder>? = null
     lateinit var db: FirebaseFirestore
     private lateinit var progressDialog: ProgressDialog
-    lateinit var id: String
+    lateinit var idgardu: String
     lateinit var gardu: String
+    lateinit var idbay: String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_bay)
 
         if (intent.extras != null) {
             val bundle = intent.extras
-            id = bundle!!.getString(key.ID).toString()
+            idgardu = bundle!!.getString(key.ID).toString()
             gardu = bundle.getString("gardu").toString()
         }
-        tv_title_gardu.text = "$id , $gardu"
+        tv_title_gardu.text = "$idgardu , $gardu"
         init()
-        showBay(id)
+        showBay(idgardu)
 
         btn_ke_gardu.setOnClickListener { startActivity(Intent(applicationContext, GarduActivity::class.java)) }
         btn_tambahBay.setOnClickListener {
             val pindahin = Intent(this, CrudBayActivity::class.java)
-            pindahin.putExtra(key.ID, id)
+            pindahin.putExtra(key.ID, idgardu)
             pindahin.putExtra("gardu", gardu)
             startActivity(pindahin)
         }
@@ -80,9 +80,10 @@ class BayActivity : AppCompatActivity() {
             }
 
             override fun onBindViewHolder(holder: BayHolder, position: Int, response: BayResponse) {
+                idbay = bayResponse.snapshots.getSnapshot(position).id
                 holder.bindData(response)
                 holder.itemView.setOnClickListener {
-                    choiceDialog(response.bay!!)
+                    choiceDialog(response.bay!!, idgardu, idbay)
                 }
             }
         }
@@ -90,16 +91,22 @@ class BayActivity : AppCompatActivity() {
         rv_bay.adapter = adapter
     }
 
-    private fun choiceDialog(bay: String) {
+    private fun choiceDialog(bay: String, idgardu: String, idbay: String) {
         val builder = AlertDialog.Builder(this)
         val options = arrayOf<CharSequence>("Inspeksi Level 1", "Inspeksi Level 2", "Laporan Beban", "Laporan Gangguan")
         builder.setItems(options) { _, which ->
             val choice = options[which]
             when {
                 choice.contains("Inspeksi Level 1") -> when {
-                    bay.contains("transmisi") -> startActivity(Intent(applicationContext, Transmisi1Activity::class.java))
-                    bay.contains("diameter") -> startActivity(Intent(applicationContext, Diameter1Activity::class.java))
-                    bay.contains("trafo") -> startActivity(Intent(applicationContext, Trafo1Activity::class.java))
+                    bay.contains("transmisi") -> {
+                       pindahin("transmisi", idgardu, idbay, Intent(applicationContext, Transmisi1Activity::class.java))
+                    }
+                    bay.contains("diameter") -> {
+                       pindahin("diameter", idgardu, idbay, Intent(applicationContext, Diameter1Activity::class.java))
+                    }
+                    bay.contains("trafo") -> {
+                        pindahin("trafo", idgardu , idbay, Intent(applicationContext, Trafo1Activity::class.java))
+                    }
                 }
                 choice.contains("Inspeksi Level 2") -> when {
                     bay.contains("transmisi") -> startActivity(Intent(applicationContext, Transmisi2Activity::class.java))
@@ -119,6 +126,13 @@ class BayActivity : AppCompatActivity() {
             }
         }
         builder.show()
+    }
+
+    private fun pindahin(value: String, idgardu: String, idbay: String, intent: Intent) {
+        intent.putExtra("title", value)
+        intent.putExtra("idgardu", idgardu)
+        intent.putExtra("idbay", idbay)
+        startActivity(intent)
     }
 
     override fun onStart() {

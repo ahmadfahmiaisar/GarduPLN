@@ -1,6 +1,6 @@
 package `in`.mroyek.gardupln.model
 
-//data class BayResponse(val id: String, val bay: String)
+//data class BayResponse(val idgardu: String, val bay: String)
 
 class BayResponse {
     var id: String? = null

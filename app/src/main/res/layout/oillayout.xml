@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout_oil"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/_3sdp"
+    android:orientation="vertical"
+    android:visibility="gone">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="Penunjukan Level Minyak"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="@dimen/_14ssp" />
+
+    <RadioGroup
+        android:id="@+id/rg_oil"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Normal"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="@dimen/_12ssp" />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Berkurang"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="@dimen/_12ssp" />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tidak Terbaca"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="@dimen/_12ssp" />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ada Catatan"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="@dimen/_12ssp" />
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/btn_upload_oil"
+        style="@style/Widget.AppCompat.Button.Borderless.Colored"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="oke" />
+
+</LinearLayout>

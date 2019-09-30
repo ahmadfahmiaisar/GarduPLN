@@ -29,7 +29,7 @@ class CrudGarduActivity : AppCompatActivity() {
             val id: String = UUID.randomUUID().toString()
             val etGardu = et_tambah_gardu.text.toString().trim()
             val doc = hashMapOf(
-                    "id" to id,
+                    "idgardu" to id,
                     "gardu" to etGardu
             )
             db!!.collection("Gardu").document().set(doc)
