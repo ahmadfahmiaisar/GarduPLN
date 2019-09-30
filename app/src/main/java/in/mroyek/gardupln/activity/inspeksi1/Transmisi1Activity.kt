@@ -89,6 +89,16 @@ class Transmisi1Activity : AppCompatActivity(), OnClickListener {
             R.id.tv_hidrolik -> {
                 layout_hidrolik.visibility = View.VISIBLE
                 layout_spring.visibility = View.GONE
+
+            }
+            R.id.tv_pneumatic -> {
+                //TODO oke
+            }
+            R.id.tv_sfg -> {
+                //TODO okeeh
+            }
+            R.id.tv_oil -> {
+                //TODO okeh
             }
             else -> {
             }
