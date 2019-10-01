@@ -99,19 +99,19 @@ class BayActivity : AppCompatActivity() {
             when {
                 choice.contains("Inspeksi Level 1") -> when {
                     bay.contains("transmisi") -> {
-                       pindahin("transmisi", idgardu, idbay, Intent(applicationContext, Transmisi1Activity::class.java))
+                        pindahin("transmisi", idgardu, idbay, Intent(applicationContext, Transmisi1Activity::class.java))
                     }
                     bay.contains("diameter") -> {
-                       pindahin("diameter", idgardu, idbay, Intent(applicationContext, Diameter1Activity::class.java))
+                        pindahin("diameter", idgardu, idbay, Intent(applicationContext, Transmisi1Activity::class.java))
                     }
                     bay.contains("trafo") -> {
-                        pindahin("trafo", idgardu , idbay, Intent(applicationContext, Trafo1Activity::class.java))
+                        pindahin("trafo", idgardu, idbay, Intent(applicationContext, Trafo1Activity::class.java))
                     }
                 }
                 choice.contains("Inspeksi Level 2") -> when {
-                    bay.contains("transmisi") -> startActivity(Intent(applicationContext, Transmisi2Activity::class.java))
+                    /*bay.contains("transmisi") -> startActivity(Intent(applicationContext, Transmisi2Activity::class.java))
                     bay.contains("diameter") -> startActivity(Intent(applicationContext, Diameter2Activity::class.java))
-                    bay.contains("trafo") -> startActivity(Intent(applicationContext, Trafo2Activity::class.java))
+                    bay.contains("trafo") -> startActivity(Intent(applicationContext, Trafo2Activity::class.java))*/
                 }
                 choice.contains("Laporan Beban") -> when {
                     /*bay.contains("transmisi") -> startActivity(Intent(applicationContext, Transmisi1Activity::class.java))

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:visibility="gone"
+    android:id="@+id/sisilv_layout"
+    android:orientation="vertical">
+
+    <RadioGroup
+        android:id="@+id/rg_choice_lv_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SPRING"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="@dimen/_12ssp" />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="HYDRAULIC"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="@dimen/_12ssp" />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SFG"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="@dimen/_12ssp" />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="OIL"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="@dimen/_12ssp" />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="VACUM"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="@dimen/_12ssp" />
+    </RadioGroup>
+
+    <include
+        layout="@layout/springlayout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" />
+
+    <include
+        layout="@layout/sfglayout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" />
+
+    <include
+        layout="@layout/hidrolayout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" />
+
+    <include
+        layout="@layout/oillayout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" />
+
+    <include
+        layout="@layout/vacumlayout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" />
+</LinearLayout>

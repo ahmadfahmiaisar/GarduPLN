@@ -28,11 +28,6 @@ class Transmisi1Activity : AppCompatActivity(), OnClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_transmisi1)
         init()
-        upSpring()
-        upHidro()
-        upPneu()
-        upSfg()
-        upOil()
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -44,13 +39,14 @@ class Transmisi1Activity : AppCompatActivity(), OnClickListener {
         btn_upload_oil.setOnClickListener {
             val id = UUID.randomUUID().toString()
             val phasa = tv_setgetphasa.text.toString().trim()
-            val levelMinyak = rg_oil.checkedRadioButtonId
-            if (levelMinyak != -1) {
-                val doc = hashMapOf(
+            val checkid = rg_oil.checkedRadioButtonId
+            val valueOil: RadioButton = findViewById(checkid)
+            if (checkid != -1) {
+                val doc:HashMap<String, Any> = hashMapOf(
                         "idgardu" to id,
                         "oil" to "oil",
                         "phasa" to phasa,
-                        "levelMinyak" to levelMinyak
+                        "levelMinyak" to valueOil.text.toString().trim()
                 )
                 docUpload(doc)
             } else {
@@ -64,14 +60,15 @@ class Transmisi1Activity : AppCompatActivity(), OnClickListener {
             val id = UUID.randomUUID().toString()
             val phasa = tv_setgetphasa.text.toString().trim()
             val gasSfg = et_tekananGasSfg.text.toString().trim()
-            val statusSfg = rg_sfg.checkedRadioButtonId
-            if (statusSfg != -1) {
-                val doc = hashMapOf(
+            val checkid = rg_sfg.checkedRadioButtonId
+            val valuesfg: RadioButton = findViewById(checkid)
+            if (checkid != -1) {
+                val doc:HashMap<String, Any> = hashMapOf(
                         "idgardu" to id,
                         "phasa" to phasa,
                         "sfg" to "sfg",
                         "tekananGasSfg" to gasSfg,
-                        "statusSfg" to statusSfg
+                        "statusSfg" to valuesfg.text.toString().trim()
                 )
                 docUpload(doc)
             } else {
@@ -82,22 +79,24 @@ class Transmisi1Activity : AppCompatActivity(), OnClickListener {
 
     private fun upPneu() {
         btn_upload_pneumatic.setOnClickListener {
-            val minyakPneu: Int = rg_minyak_pneumatic.checkedRadioButtonId
-            val motorPneu: Int = rg_motor_pneumatic.checkedRadioButtonId
+            val checkidMinyak: Int = rg_minyak_pneumatic.checkedRadioButtonId
+            val checkidMotor: Int = rg_motor_pneumatic.checkedRadioButtonId
+            val valueMinyak: RadioButton = findViewById(checkidMinyak)
+            val valueMotor: RadioButton = findViewById(checkidMotor)
             val id: String = UUID.randomUUID().toString()
             val phasa = tv_setgetphasa.text.toString().trim()
             val tekananPneu = et_tekanan_pneumatic.text.toString().trim()
             val jamPneu = et_jam_pneumatic.text.toString().trim()
             val kaliPneu = et_kali_pneumatic.text.toString().trim()
-            if (minyakPneu != -1 && motorPneu != -1) {
-                val doc = hashMapOf(
+            if (checkidMinyak != -1 && checkidMotor != -1) {
+                val doc:HashMap<String, Any> = hashMapOf(
                         "idgardu" to id,
                         "pneumatic" to "pneumatic",
                         "phasa" to phasa,
                         "tekananPneumatic" to tekananPneu,
-                        "levelMinyak" to minyakPneu,
+                        "levelMinyak" to valueMinyak.text.toString().trim(),
                         "kaliMotor" to "$jamPneu, $kaliPneu",
-                        "statusMotor" to motorPneu
+                        "statusMotor" to valueMotor.text.toString().trim()
 
                 )
                 docUpload(doc)
@@ -109,22 +108,24 @@ class Transmisi1Activity : AppCompatActivity(), OnClickListener {
 
     private fun upHidro() {
         btn_upload_hidro.setOnClickListener {
-            val minyakHidro: Int = rg_minyak_hidrolik.checkedRadioButtonId
-            val pompaHidro: Int = rg_pompa_hidro.checkedRadioButtonId
+            val checkIdminyak: Int = rg_minyak_hidrolik.checkedRadioButtonId
+            val checkidPompa: Int = rg_pompa_hidro.checkedRadioButtonId
+            val valueMinyak: RadioButton = findViewById(checkIdminyak)
+            val valuePompa: RadioButton = findViewById(checkidPompa)
             val id: String = UUID.randomUUID().toString()
             val phasa = tv_setgetphasa.text.toString().trim()
             val tekananHidrolik = et_tekanan_hidrolik.text.toString().trim()
             val jamHidro = et_jam_hidrolik.text.toString().trim()
             val kaliHidro = et_kali_hidrolik.text.toString().trim()
-            if (minyakHidro != -1 && pompaHidro != -1) {
-                val doc = hashMapOf(
+            if (checkIdminyak != -1 && checkidPompa != -1) {
+                val doc:HashMap<String, Any> = hashMapOf(
                         "idgardu" to id,
                         "hydraulic" to "hydraulic",
                         "phasa" to phasa,
                         "tekananHydrolic" to tekananHidrolik,
-                        "levelMinyak" to minyakHidro,
+                        "levelMinyak" to valueMinyak.text.toString().trim(),
                         "kaliPompa" to "$jamHidro, $kaliHidro",
-                        "statusPompa" to pompaHidro
+                        "statusPompa" to valuePompa.text.toString().trim()
                 )
                 docUpload(doc)
             } else {
@@ -187,22 +188,27 @@ class Transmisi1Activity : AppCompatActivity(), OnClickListener {
         R.id.tv_spring -> {
             defaultView()
             layout_spring.visibility = View.VISIBLE
+            upSpring()
         }
         R.id.tv_hidrolik -> {
             defaultView()
             layout_hidrolik.visibility = View.VISIBLE
+            upHidro()
         }
         R.id.tv_pneumatic -> {
             defaultView()
             layout_pneumatic.visibility = View.VISIBLE
+            upPneu()
         }
         R.id.tv_sfg -> {
             defaultView()
             layout_sfg.visibility = View.VISIBLE
+            upSfg()
         }
         R.id.tv_oil -> {
             defaultView()
             layout_oil.visibility = View.VISIBLE
+            upOil()
         }
         else -> {
         }
