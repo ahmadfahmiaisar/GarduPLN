@@ -15,14 +15,14 @@
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="SPRING"
+            android:text="@string/spring"
             android:textColor="@color/colorPrimaryDark"
             android:textSize="@dimen/_12ssp" />
 
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="HYDRAULIC"
+            android:text="@string/hydraulic"
             android:textColor="@color/colorPrimaryDark"
             android:textSize="@dimen/_12ssp" />
 
@@ -47,29 +47,4 @@
             android:textColor="@color/colorPrimaryDark"
             android:textSize="@dimen/_12ssp" />
     </RadioGroup>
-
-    <include
-        layout="@layout/springlayout"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content" />
-
-    <include
-        layout="@layout/sfglayout"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content" />
-
-    <include
-        layout="@layout/hidrolayout"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content" />
-
-    <include
-        layout="@layout/oillayout"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content" />
-
-    <include
-        layout="@layout/vacumlayout"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content" />
 </LinearLayout>

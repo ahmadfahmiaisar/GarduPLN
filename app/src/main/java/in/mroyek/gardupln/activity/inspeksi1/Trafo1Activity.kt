@@ -28,7 +28,7 @@ class Trafo1Activity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_trafo1)
-//        init()
+        init()
         choiceTrafo()
     }
 
@@ -36,44 +36,54 @@ class Trafo1Activity : AppCompatActivity() {
         btn_choice_HV.setOnClickListener {
             sisihv_layout.visibility = View.VISIBLE
             sisilv_layout.visibility = View.GONE
+            rg_choice_lv_layout.visibility = View.GONE
+            rg_choice_hv_layout.visibility = View.VISIBLE
             choiceHvLayout()
+           /* uploadSpringHv()
+            uploadHidroHv()
+            uploadPneuHv()
+            uploadPneuHv()
+            uploadOilHv()*/
         }
         btn_choice_LV.setOnClickListener {
             sisilv_layout.visibility = View.VISIBLE
             sisihv_layout.visibility = View.GONE
-            btn_choice_LV.toString().trim()
+            rg_choice_hv_layout.visibility = View.GONE
+            rg_choice_lv_layout.visibility = View.VISIBLE
             choiceLvLayout()
+/*
+            uploadOil()
+            uploadSfg()
+            uploadVacum()
+            uploadHidro()
+            uploadSpring()
+*/
         }
     }
 
     private fun choiceLvLayout() {
-        rg_choice_lv_layout.setOnCheckedChangeListener { radioGroup, checkid ->
-            val radio: RadioButton = findViewById(checkid)
+        rg_choice_lv_layout.setOnCheckedChangeListener { _, checklv ->
+            val radio: RadioButton = findViewById(checklv)
             when {
-                radio.text.contains("spring") -> {
+                radio.text.contains("Spring") -> {
                     defaultView()
                     layout_spring.visibility = View.VISIBLE
-                    uploadSpring()
                 }
                 radio.text.contains("Hydraulic") -> {
                     defaultView()
                     layout_hidrolik.visibility = View.VISIBLE
-                    uploadHidro()
                 }
-                radio.text.contains("vacum") -> {
+                radio.text.contains("VACUM") -> {
                     defaultView()
-                    layout_pneumatic.visibility = View.VISIBLE
-                    uploadVacum()
+                    layout_vacum.visibility = View.VISIBLE
                 }
                 radio.text.contains("SFG") -> {
                     defaultView()
                     layout_sfg.visibility = View.VISIBLE
-                    uploadSfg()
                 }
-                radio.text.contains("Oil") -> {
+                radio.text.contains("OIL") -> {
                     defaultView()
                     layout_oil.visibility = View.VISIBLE
-                    uploadOil()
                 }
             }
         }
@@ -81,33 +91,28 @@ class Trafo1Activity : AppCompatActivity() {
 
 
     private fun choiceHvLayout() {
-        rg_choice_hv_layout.setOnCheckedChangeListener { radioGroup, checkid ->
-            val radio: RadioButton = findViewById(checkid)
+        rg_choice_hv_layout.setOnCheckedChangeListener { _, checkhv ->
+            val radio: RadioButton = findViewById(checkhv)
             when {
-                radio.text.contains("spring") -> {
+                radio.text.contains("Spring") -> {
                     defaultView()
                     layout_spring.visibility = View.VISIBLE
-                    uploadSpringHv()
                 }
                 radio.text.contains("Hydraulic") -> {
                     defaultView()
                     layout_hidrolik.visibility = View.VISIBLE
-                    uploadHidroHv()
                 }
                 radio.text.contains("Pneumatic") -> {
                     defaultView()
                     layout_pneumatic.visibility = View.VISIBLE
-                    uploadPneuHv()
                 }
                 radio.text.contains("SFG") -> {
                     defaultView()
                     layout_sfg.visibility = View.VISIBLE
-                    uploadSfgHv()
                 }
                 radio.text.contains("Oil") -> {
                     defaultView()
                     layout_oil.visibility = View.VISIBLE
-                    uploadOilHv()
                 }
             }
         }
@@ -264,7 +269,7 @@ class Trafo1Activity : AppCompatActivity() {
             val chekidKipas: Int = rg_hv_statuskipas.checkedRadioButtonId
             val valueKipas: RadioButton = findViewById(chekidKipas)
             if (checkid != -1 && chekidKipas != -1) {
-                val doc: HashMap<String, Any> = hashMapOf(
+                val map: HashMap<String, Any> = hashMapOf(
                         "idgardu" to id,
                         "sisi" to "Sisi HV",
                         "spring" to "spring",
@@ -272,10 +277,10 @@ class Trafo1Activity : AppCompatActivity() {
                         "suhuTopOil" to suhuOil,
                         "suhuPrimer" to suhuPrimer,
                         "suhuSekunder" to suhuSekunder,
-                        "statusKipas" to valueKipas,
+                        "statusKipas" to valueKipas.text.toString().trim(),
                         "statusSpring" to valuespring.text.toString().trim()
                 )
-                docUpload(doc)
+                docUpload(map)
             } else {
                 Toast.makeText(applicationContext, "On button click : nothing selected", Toast.LENGTH_SHORT).show()
             }
@@ -396,8 +401,8 @@ class Trafo1Activity : AppCompatActivity() {
         }
     }
 
-    private fun docUpload(doc: java.util.HashMap<String, Any>) {
-        db!!.collection("Gardu").document(idgardu).collection("Bay").document(idbay).collection(title).document().set(doc)
+    private fun docUpload(map: java.util.HashMap<String, Any>) {
+        db!!.collection("Gardu").document(idgardu).collection("Bay").document(idbay).collection("Inspeksi 1").document().set(map)
                 .addOnSuccessListener { Toast.makeText(applicationContext, "oke", Toast.LENGTH_SHORT).show() }
                 .addOnFailureListener { Toast.makeText(applicationContext, "gagal", Toast.LENGTH_SHORT).show() }
     }
@@ -408,6 +413,7 @@ class Trafo1Activity : AppCompatActivity() {
         layout_pneumatic.visibility = View.GONE
         layout_sfg.visibility = View.GONE
         layout_oil.visibility = View.GONE
+        layout_vacum.visibility = View.GONE
     }
 
     private fun init() {

@@ -28,12 +28,42 @@
     </LinearLayout>
 
     <include
+        layout="@layout/sisilvlayout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" />
+
+    <include
         layout="@layout/sisihvlayout"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content" />
 
     <include
-        layout="@layout/sisilvlayout"
+        layout="@layout/springlayout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" />
+
+    <include
+        layout="@layout/sfglayout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" />
+
+    <include
+        layout="@layout/hidrolayout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" />
+
+    <include
+        layout="@layout/oillayout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" />
+
+    <include
+        layout="@layout/vacumlayout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" />
+
+    <include
+        layout="@layout/pneulayout"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content" />
 </LinearLayout>

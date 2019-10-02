@@ -1,10 +1,15 @@
 package `in`.mroyek.gardupln.activity.inspeksi1
 
 import `in`.mroyek.gardupln.R
+import `in`.mroyek.gardupln.activity.GarduActivity
+import `in`.mroyek.gardupln.activity.history.HistoryTransmisi1Activity
+import `in`.mroyek.gardupln.key
+import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.view.View.OnClickListener
 import android.widget.RadioButton
@@ -33,6 +38,14 @@ class Transmisi1Activity : AppCompatActivity(), OnClickListener {
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.actionbar, menu)
         return true
+    }
+
+    @Suppress("UNREACHABLE_CODE")
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId){
+            R.id.ab_history -> startActivity(Intent(applicationContext, HistoryTransmisi1Activity::class.java))
+        }
+        return super.onOptionsItemSelected(item)
     }
 
     private fun upOil() {
@@ -157,8 +170,8 @@ class Transmisi1Activity : AppCompatActivity(), OnClickListener {
     private fun init() {
         val intent = intent.extras
         title = intent!!.getString("title").toString()
-        idgardu = intent.getString("idgardu").toString()
-        idbay = intent.getString("idbay").toString()
+        idgardu = intent.getString(key.ID_GARDU).toString()
+        idbay = intent.getString(key.ID_BAY).toString()
         tv_phasaS.setOnClickListener(this)
         tv_phasaR.setOnClickListener(this)
         tv_phasaT.setOnClickListener(this)
@@ -215,7 +228,7 @@ class Transmisi1Activity : AppCompatActivity(), OnClickListener {
     }
 
     private fun docUpload(doc: HashMap<String, Any>) {
-        db!!.collection("Gardu").document(idgardu).collection("Bay").document(idbay).collection(title).document().set(doc)
+        db!!.collection("Gardu").document(idgardu).collection("Bay").document(idbay).collection("Inspeksi 1").document().set(doc)
                 .addOnSuccessListener { Toast.makeText(applicationContext, "oke", Toast.LENGTH_SHORT).show() }
                 .addOnFailureListener { Toast.makeText(applicationContext, "gagal", Toast.LENGTH_SHORT).show() }
     }

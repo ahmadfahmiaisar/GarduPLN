@@ -11,7 +11,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -48,10 +50,17 @@ class GarduActivity : AppCompatActivity() {
 
             override fun onBindViewHolder(holder: GarduHolder, position: Int, response: GarduResponse) {
                 holder.bindData(response)
-                holder.itemView.setOnClickListener {
+                holder.btnDelete.setOnClickListener {
+                    val id = garduResponse.snapshots.getSnapshot(position).id
+                    db.collection("Gardu").document(id)
+                            .delete()
+                            .addOnFailureListener { Toast.makeText(applicationContext, "gagal", Toast.LENGTH_SHORT).show() }
+                            .addOnCompleteListener { Toast.makeText(applicationContext, "okeh", Toast.LENGTH_SHORT).show() }
+                }
+                holder.tvGardu.setOnClickListener {
                     val id = garduResponse.snapshots.getSnapshot(position).id
                     val bundle = Bundle()
-                    bundle.putString(key.ID, id)
+                    bundle.putString(key.ID_GARDU, id)
                     bundle.putString("gardu", response.gardu)
                     val intent = Intent(this@GarduActivity, BayActivity::class.java)
                     intent.putExtras(bundle)
@@ -76,7 +85,8 @@ class GarduActivity : AppCompatActivity() {
 
     class GarduHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var tvGardu = itemView.findViewById<TextView>(R.id.tv_gardu)
-//        var btn
+        var btnDelete = itemView.findViewById<ImageView>(R.id.iv_delete_gardu)
+        //        var btn
         fun bindData(response: GarduResponse) {
             tvGardu.text = response.gardu
         }

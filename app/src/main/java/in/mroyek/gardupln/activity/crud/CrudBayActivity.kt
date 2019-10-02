@@ -26,9 +26,9 @@ class CrudBayActivity : AppCompatActivity() {
         setContentView(R.layout.activity_crud_bay)
 
         val nangkep = intent.extras
-        idgardu = nangkep!!.get(key.ID).toString()
+        idgardu = nangkep!!.get(key.ID_GARDU).toString()
         gardu = nangkep.get("gardu").toString()
-        id_doc.text = "$idgardu, $gardu"
+        id_doc.text = gardu
 
         btn_transmisi.setOnClickListener {
             ll_transmisi.visibility = View.VISIBLE
@@ -97,7 +97,7 @@ class CrudBayActivity : AppCompatActivity() {
     }
 
     private fun backtoBay() {
-        startActivity(Intent(applicationContext, BayActivity::class.java).putExtra(key.ID, idgardu).putExtra("gardu", gardu))
+        startActivity(Intent(applicationContext, BayActivity::class.java).putExtra(key.ID_GARDU, idgardu).putExtra("gardu", gardu))
         /*startActivity(Intent(applicationContext, BayActivity::class.java))*/
     }
 
