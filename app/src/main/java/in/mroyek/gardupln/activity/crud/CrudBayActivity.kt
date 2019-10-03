@@ -2,33 +2,32 @@ package `in`.mroyek.gardupln.activity.crud
 
 import `in`.mroyek.gardupln.R
 import `in`.mroyek.gardupln.activity.BayActivity
-import `in`.mroyek.gardupln.key
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_crud_bay.*
-import kotlinx.android.synthetic.main.activity_crud_bay.btn_choose_transmisi
-import kotlinx.android.synthetic.main.activity_crud_bay.btn_close_transmisi
-import kotlinx.android.synthetic.main.activity_crud_bay.ll_transmisi
 import java.util.*
+
 
 class CrudBayActivity : AppCompatActivity() {
 
-    lateinit var idgardu: String
-    lateinit var gardu: String
+    lateinit var etbay:String
+    /*lateinit var idgardu: String
+    lateinit var gardu: String*/
     private val db: FirebaseFirestore? = FirebaseFirestore.getInstance()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_crud_bay)
 
-        val nangkep = intent.extras
-        idgardu = nangkep!!.get(key.ID_GARDU).toString()
-        gardu = nangkep.get("gardu").toString()
-        id_doc.text = gardu
+        /* val nangkep = intent.extras
+         idgardu = nangkep!!.get(key.ID_GARDU).toString()
+         gardu = nangkep.get("gardu").toString()
+         id_doc.text = gardu*/
 
         btn_transmisi.setOnClickListener {
             ll_transmisi.visibility = View.VISIBLE
@@ -37,12 +36,12 @@ class CrudBayActivity : AppCompatActivity() {
             btn_close_transmisi.setOnClickListener { ll_transmisi.visibility = View.GONE }
             btn_choose_transmisi.setOnClickListener {
                 val id: String = UUID.randomUUID().toString()
-                val etbay = et_bay_transmisi.text.toString().trim()
+                etbay = et_bay_transmisi.text.toString().trim()
                 val doc = hashMapOf(
-                        "idgardu" to id,
-                        "bay" to "transmisi $etbay"
+                        "idbay" to id,
+                        "namabay" to "transmisi $etbay"
                 )
-                db!!.collection("Gardu").document(idgardu).collection("Bay").document().set(doc)
+                db!!.collection("Bay").document().set(doc)
                         .addOnSuccessListener {
                             Toast.makeText(applicationContext, "okeeh", Toast.LENGTH_SHORT).show()
                             backtoBay()
@@ -59,10 +58,10 @@ class CrudBayActivity : AppCompatActivity() {
                 val id: String = UUID.randomUUID().toString()
                 val etbay = et_bay_diameter.text.toString().trim()
                 val doc = hashMapOf(
-                        "idgardu" to id,
-                        "bay" to "diameter $etbay"
+                        "idbay" to id,
+                        "namabay" to "diameter $etbay"
                 )
-                db!!.collection("Gardu").document(idgardu).collection("Bay").document().set(doc)
+                db!!.collection("Bay").document().set(doc)
                         .addOnSuccessListener {
                             Toast.makeText(applicationContext, "okeeh", Toast.LENGTH_SHORT).show()
                             backtoBay()
@@ -80,10 +79,10 @@ class CrudBayActivity : AppCompatActivity() {
                 val id: String = UUID.randomUUID().toString()
                 val etbay = et_bay_trafo.text.toString().trim()
                 val doc = hashMapOf(
-                        "idgardu" to id,
-                        "bay" to "trafo $etbay"
+                        "idbay" to id,
+                        "namabay" to "trafo $etbay"
                 )
-                db!!.collection("Gardu").document(idgardu).collection("Bay").document().set(doc)
+                db!!.collection("Bay").document().set(doc)
                         .addOnSuccessListener {
                             Toast.makeText(applicationContext, "okeeh", Toast.LENGTH_SHORT).show()
                             backtoBay()
@@ -97,8 +96,8 @@ class CrudBayActivity : AppCompatActivity() {
     }
 
     private fun backtoBay() {
-        startActivity(Intent(applicationContext, BayActivity::class.java).putExtra(key.ID_GARDU, idgardu).putExtra("gardu", gardu))
-        /*startActivity(Intent(applicationContext, BayActivity::class.java))*/
+//        startActivity(Intent(applicationContext, BayActivity::class.java).putExtra(key.ID_GARDU, idgardu).putExtra("gardu", gardu))
+        startActivity(Intent(applicationContext, BayActivity::class.java))
     }
 
     override fun onStop() {
@@ -110,5 +109,13 @@ class CrudBayActivity : AppCompatActivity() {
         super.onDestroy()
         finish()
         Log.d("log", "ondestroybay")
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+      /*  val i = Intent(this, BayActivity::class.java)
+        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+        i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)*/
+        finish()
     }
 }

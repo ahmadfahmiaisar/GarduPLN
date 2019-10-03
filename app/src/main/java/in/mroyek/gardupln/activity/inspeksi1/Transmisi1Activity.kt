@@ -27,7 +27,6 @@ import kotlin.collections.HashMap
 class Transmisi1Activity : AppCompatActivity(), OnClickListener {
     private val db: FirebaseFirestore? = FirebaseFirestore.getInstance()
     lateinit var title: String
-    lateinit var idgardu: String
     lateinit var idbay: String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -170,7 +169,6 @@ class Transmisi1Activity : AppCompatActivity(), OnClickListener {
     private fun init() {
         val intent = intent.extras
         title = intent!!.getString("title").toString()
-        idgardu = intent.getString(key.ID_GARDU).toString()
         idbay = intent.getString(key.ID_BAY).toString()
         tv_phasaS.setOnClickListener(this)
         tv_phasaR.setOnClickListener(this)
@@ -228,7 +226,7 @@ class Transmisi1Activity : AppCompatActivity(), OnClickListener {
     }
 
     private fun docUpload(doc: HashMap<String, Any>) {
-        db!!.collection("Gardu").document(idgardu).collection("Bay").document(idbay).collection("Inspeksi 1").document().set(doc)
+        db!!.collection("Bay").document(idbay).collection("Inspeksi 1").document().set(doc)
                 .addOnSuccessListener { Toast.makeText(applicationContext, "oke", Toast.LENGTH_SHORT).show() }
                 .addOnFailureListener { Toast.makeText(applicationContext, "gagal", Toast.LENGTH_SHORT).show() }
     }

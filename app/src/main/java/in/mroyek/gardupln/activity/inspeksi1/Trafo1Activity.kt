@@ -39,11 +39,11 @@ class Trafo1Activity : AppCompatActivity() {
             rg_choice_lv_layout.visibility = View.GONE
             rg_choice_hv_layout.visibility = View.VISIBLE
             choiceHvLayout()
-           /* uploadSpringHv()
+            uploadSpringHv()
             uploadHidroHv()
             uploadPneuHv()
             uploadPneuHv()
-            uploadOilHv()*/
+            uploadOilHv()
         }
         btn_choice_LV.setOnClickListener {
             sisilv_layout.visibility = View.VISIBLE
@@ -51,13 +51,13 @@ class Trafo1Activity : AppCompatActivity() {
             rg_choice_hv_layout.visibility = View.GONE
             rg_choice_lv_layout.visibility = View.VISIBLE
             choiceLvLayout()
-/*
+
             uploadOil()
             uploadSfg()
             uploadVacum()
             uploadHidro()
             uploadSpring()
-*/
+
         }
     }
 

@@ -18,10 +18,10 @@ import java.util.*
 
 class CrudGarduActivity : AppCompatActivity() {
 
-    private var db: FirebaseFirestore? = FirebaseFirestore.getInstance()
-    lateinit var progressDialog: ProgressDialog
+    /* private var db: FirebaseFirestore? = FirebaseFirestore.getInstance()
+     lateinit var progressDialog: ProgressDialog*/
 
-    override fun onCreate(savedInstanceState: Bundle?) {
+    /*override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_crud_gardu)
 
@@ -44,9 +44,10 @@ class CrudGarduActivity : AppCompatActivity() {
         super.onStop()
         Log.d("log", "onstopgardu")
     }
+
     override fun onDestroy() {
         super.onDestroy()
         finish()
         Log.d("log", "ondestroygardu")
-    }
+    }*/
 }

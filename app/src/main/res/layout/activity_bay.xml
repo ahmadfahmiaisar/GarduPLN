@@ -24,7 +24,7 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_bay"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_200sdp"
+            android:layout_height="@dimen/_300sdp"
             tools:listitem="@layout/item_bay_layout" />
     </LinearLayout>
 
@@ -33,15 +33,16 @@
         style="?android:buttonBarButtonStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/_10sdp"
         android:text="Tambah Bay" />
+
     <Button
-        android:id="@+id/btn_ke_gardu"
+        android:id="@+id/btn_ke_main"
         style="?android:buttonBarButtonStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/_10sdp"
-        android:text="Gardu" />
+        android:layout_marginTop="@dimen/_1sdp"
+        android:layout_margin="@dimen/_5sdp"
+        android:text="Selesai" />
     <!--    <FrameLayout
             android:visibility="gone"
             android:idgardu="@+idgardu/bay_frame_container"

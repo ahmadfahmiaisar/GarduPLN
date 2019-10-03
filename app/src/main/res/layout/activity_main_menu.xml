@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activity.MainMenuActivity">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_inspeksi_satu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_10sdp"
+        app:cardBackgroundColor="@color/colorPrimaryDark"
+        app:cardCornerRadius="@dimen/_5sdp"
+        app:contentPadding="@dimen/_1sdp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#fff"
+            android:padding="@dimen/_4sdp"
+            android:text="Inspeksi 1"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="@dimen/_24ssp" />
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_inspeksi_dua"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_10sdp"
+        app:cardBackgroundColor="@color/colorPrimaryDark"
+        app:cardCornerRadius="@dimen/_5sdp"
+        app:contentPadding="@dimen/_1sdp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#fff"
+            android:padding="@dimen/_4sdp"
+            android:text="Inspeksi 2"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="@dimen/_24ssp" />
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_laporan_beban"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_10sdp"
+        app:cardBackgroundColor="@color/colorPrimaryDark"
+        app:cardCornerRadius="@dimen/_5sdp"
+        app:contentPadding="@dimen/_1sdp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#fff"
+            android:padding="@dimen/_4sdp"
+            android:text="Laporan Beban"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="@dimen/_24ssp" />
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_laporan_gangguan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_10sdp"
+        app:cardBackgroundColor="@color/colorPrimaryDark"
+        app:cardCornerRadius="@dimen/_5sdp"
+        app:contentPadding="@dimen/_1sdp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#fff"
+            android:padding="@dimen/_4sdp"
+            android:text="Laporan Gangguan"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="@dimen/_24ssp" />
+    </androidx.cardview.widget.CardView>
+</LinearLayout>
