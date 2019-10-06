@@ -11,10 +11,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.inspeksi2.Inspeksi2Activity"></activity>
+        <activity android:name=".activity.gangguan.AddSinyal"></activity>
+        <activity android:name=".activity.inspeksi2.Inspeksi2Activity" />
         <activity android:name=".activity.inspeksi1.Inspeksi1Activity" />
         <activity android:name=".activity.MainMenuActivity" />
-        <activity android:name=".activity.gangguan.LaporanGangguanActivity" />
+        <activity android:name=".activity.gangguan.LaporanGangguanActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".activity.beban.LaporanBebanActivity" />
         <activity android:name=".activity.history.HistoryTransmisi1Activity" />
         <activity android:name=".activity.inspeksi2.Trafo2Activity" />
@@ -27,13 +34,7 @@
         <activity android:name=".activity.crud.CrudGarduActivity" />
         <activity android:name=".activity.crud.CrudBayActivity" />
         <activity android:name=".activity.BayActivity" />
-        <activity android:name=".activity.GarduActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".activity.GarduActivity" />
     </application>
 
 </manifest>
