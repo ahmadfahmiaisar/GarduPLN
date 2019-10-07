@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
@@ -8,15 +8,17 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+        <TextView
+            android:id="@+id/tv_beban_transmisi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="transmisi" />
+
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <TextView
-                android:id="@+id/tv_beban_transmisi"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="transmisi" />
+
 
             <TextView
                 android:layout_width="0dp"
@@ -189,4 +191,4 @@
                 android:textSize="@dimen/_14ssp" />
         </TableRow>
     </TableLayout>
-</androidx.core.widget.NestedScrollView>
+</LinearLayout>

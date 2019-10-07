@@ -20,7 +20,6 @@ class LaporanBebanAdapter : FirestoreRecyclerAdapter<TransmisiResponse,LaporanBe
 
     constructor(options: FirestoreRecyclerOptions<TransmisiResponse>) : super(options)
 
-
     class TransmisiHolder(viewTransmisi: View) : RecyclerView.ViewHolder(viewTransmisi) {
         var tvTransmisi: TextView = viewTransmisi.findViewById(R.id.tv_beban_transmisi)
         val id: String = UUID.randomUUID().toString()
@@ -39,6 +38,7 @@ class LaporanBebanAdapter : FirestoreRecyclerAdapter<TransmisiResponse,LaporanBe
 
     override fun onBindViewHolder(p0: TransmisiHolder, p1: Int, p2: TransmisiResponse) {
         p0.bindData(p2)
+        p0.ettransmisi_i.text.toString()
     }
 
     val queryTransmisi: Query = db!!.collection("Bay")

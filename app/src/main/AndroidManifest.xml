@@ -19,9 +19,10 @@
         <activity android:name=".activity.inspeksi1.Inspeksi1Activity" />
         <activity android:name=".activity.MainMenuActivity" />
         <activity android:name=".activity.gangguan.LaporanGangguanActivity" />
-        <activity android:name=".activity.beban.LaporanBebanActivity">
+        <activity android:name=".activity.beban.LaporanBebanActivity2">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.VIEW" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
