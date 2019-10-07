@@ -8,15 +8,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@+id/tv_beban_transmisi"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="transmisi" />
-
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tv_beban_transmisi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="transmisi" />
 
             <TextView
                 android:layout_width="0dp"

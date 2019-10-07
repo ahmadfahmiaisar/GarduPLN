@@ -17,13 +17,13 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content" />
 
-    <ImageView
+    <Button
         android:id="@+id/iv_add_sinyal"
         android:layout_width="@dimen/_30sdp"
         android:layout_height="@dimen/_30sdp"
-        android:src="@drawable/ic_add_box_black_24dp" />
+        android:text="oke" />
     <!--
     <TableLayout
         android:layout_width="match_parent"

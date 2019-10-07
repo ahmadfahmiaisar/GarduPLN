@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <TableRow
+        android:layout_width="wrap_content"
+        android:layout_margin="@dimen/_5sdp"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/item_history_tanggal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="tanggal"
+            android:layout_marginRight="@dimen/_5sdp"
+            android:textColor="@color/colorAccent"
+            android:textSize="@dimen/_14sdp" />
+
+        <TextView
+            android:id="@+id/item_history_jam"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/_5sdp"
+            android:text="jam"
+            android:textColor="@color/colorAccent"
+            android:textSize="@dimen/_14sdp" />
+    </TableRow>
+</TableLayout>
