@@ -18,22 +18,25 @@ import com.google.firebase.firestore.Query
 import kotlinx.android.synthetic.main.activity_history_beban.*
 
 class HistoryBebanActivity : AppCompatActivity() {
-    private var adapter: FirestoreRecyclerAdapter<BebanResponse, BebanHolder>? = null
+    lateinit var adapter: FirestoreRecyclerAdapter<LaporanBebanResponses, BebanHolder>
     private var db: FirebaseFirestore = FirebaseFirestore.getInstance()
+    internal val historyList: MutableList<LaporanBebanResponses> = ArrayList()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_history_beban)
         init()
-        val query: Query = db.collection("Laporan Beban")
-        val bebanresponse = FirestoreRecyclerOptions.Builder<BebanResponse>()
-                .setQuery(query, BebanResponse::class.java).build()
-        adapter = object : FirestoreRecyclerAdapter<BebanResponse, BebanHolder>(bebanresponse) {
+
+        val query: Query = db.collection("Bay")
+                .orderBy("tanggal")
+        val bebanresponse = FirestoreRecyclerOptions.Builder<LaporanBebanResponses>()
+                .setQuery(query, LaporanBebanResponses::class.java).build()
+        adapter = object : FirestoreRecyclerAdapter<LaporanBebanResponses, BebanHolder>(bebanresponse) {
             override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BebanHolder {
                 val view = LayoutInflater.from(parent.context).inflate(R.layout.item_history, parent, false)
                 return BebanHolder(view)
             }
 
-            override fun onBindViewHolder(p0: BebanHolder, p1: Int, p2: BebanResponse) {
+            override fun onBindViewHolder(p0: BebanHolder, p1: Int, p2: LaporanBebanResponses) {
                 p0.bindData(p2)
                 p0.itemView.setOnClickListener {
                     val id = bebanresponse.snapshots.getSnapshot(p1).id
@@ -41,7 +44,7 @@ class HistoryBebanActivity : AppCompatActivity() {
                 }
             }
         }
-        adapter!!.notifyDataSetChanged()
+        adapter.notifyDataSetChanged()
         rv_history_laporan_beban.adapter = adapter
     }
 
@@ -53,20 +56,22 @@ class HistoryBebanActivity : AppCompatActivity() {
     class BebanHolder(view: View) : RecyclerView.ViewHolder(view) {
         private val tvTanggal: TextView = view.findViewById(R.id.item_history_tanggal)
         private val tvJam: TextView = view.findViewById(R.id.item_history_jam)
-        fun bindData(response: BebanResponse) {
-            tvTanggal.text = response.tanggal
-            tvJam.text = response.waktu
+        fun bindData(response: LaporanBebanResponses) {
+            if (response.tanggal == response.tanggal) {
+                tvTanggal.text = response.tanggal
+                tvJam.text = response.waktu
+            }
         }
 
     }
 
     override fun onStart() {
         super.onStart()
-        adapter!!.startListening()
+        adapter.startListening()
     }
 
     override fun onStop() {
         super.onStop()
-        adapter!!.stopListening()
+        adapter.stopListening()
     }
 }

@@ -2,6 +2,7 @@ package `in`.mroyek.gardupln.activity
 
 import `in`.mroyek.gardupln.R
 import `in`.mroyek.gardupln.activity.beban.LaporanBebanActivity
+import `in`.mroyek.gardupln.activity.fuad.LaporanBebanActivity2
 import `in`.mroyek.gardupln.activity.gangguan.LaporanGangguanActivity
 import `in`.mroyek.gardupln.activity.history.HistoryTransmisi1Activity
 import `in`.mroyek.gardupln.activity.inspeksi1.Inspeksi1Activity
@@ -42,9 +43,8 @@ class MainMenuActivity : AppCompatActivity(), View.OnClickListener {
         when (view!!.id) {
             R.id.cv_inspeksi_satu -> startActivity(Intent(applicationContext, Inspeksi1Activity::class.java))
             R.id.cv_inspeksi_dua -> startActivity(Intent(applicationContext, Inspeksi2Activity::class.java))
-            R.id.cv_laporan_beban -> startActivity(Intent(applicationContext, LaporanBebanActivity::class.java))
+            R.id.cv_laporan_beban -> startActivity(Intent(applicationContext, LaporanBebanActivity2::class.java))
             R.id.cv_laporan_gangguan -> startActivity(Intent(applicationContext, LaporanGangguanActivity::class.java))
         }
     }
-
 }

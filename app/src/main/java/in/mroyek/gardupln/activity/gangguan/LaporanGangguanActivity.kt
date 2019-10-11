@@ -27,9 +27,7 @@ class LaporanGangguanActivity : AppCompatActivity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_laporan_gangguan)
         btnOpenAddSinyal.setOnClickListener(this)
-
         initList()
-
         loadDatabase()
     }
 
@@ -49,14 +47,12 @@ class LaporanGangguanActivity : AppCompatActivity(), View.OnClickListener {
         val dialogBuilder = AlertDialog.Builder(this).create()
 
         val dialogView = layoutInflater.inflate(R.layout.dialog_sinyal, null)
-
         val etAlarm = dialogView.findViewById<EditText>(R.id.etAlarm)
         val etSinyal = dialogView.findViewById<EditText>(R.id.etSinyal)
-
         dialogBuilder.setView(dialogView)
         dialogBuilder.show()
 
-        dialogView.findViewById<Button>(R.id.btnAddSinyal).setOnClickListener(View.OnClickListener {
+        dialogView.findViewById<Button>(R.id.btnAddSinyal).setOnClickListener {
 
             val alarm = etAlarm.text.toString()
             val sinyal = etSinyal.text.toString()
@@ -83,7 +79,7 @@ class LaporanGangguanActivity : AppCompatActivity(), View.OnClickListener {
             }
 
 
-        })
+        }
     }
 
     fun initList() {

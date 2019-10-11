@@ -18,9 +18,9 @@ import kotlin.collections.HashMap
 
 
 class LaporanBebanActivity : AppCompatActivity() {
-    /*private var adapterTransmisi: FirestoreRecyclerAdapter<TransmisiResponse, TransmisiHolder>? = null
+    /*private var adapterTransmisi: FirestoreRecyclerAdapter<LaporanBebanResponses, TransmisiHolder>? = null
     private var adapterTrafo: FirestoreRecyclerAdapter<BayResponse, TrafoHolder>? = null
-    val modelist: MutableList<TransmisiResponse>? = mutableListOf()*/
+    val modelist: MutableList<LaporanBebanResponses>? = mutableListOf()*/
     private val db: FirebaseFirestore? = FirebaseFirestore.getInstance()
 
     @SuppressLint("SimpleDateFormat")
@@ -130,20 +130,20 @@ class LaporanBebanActivity : AppCompatActivity() {
         /*val queryTransmisi: Query = db!!.collection("Bay")
                 .whereGreaterThan("namabay", "transmisi")
                 .whereGreaterThan("namabay", "trafo")
-        val transmisiResponse = FirestoreRecyclerOptions.Builder<TransmisiResponse>()
-                .setQuery(queryTransmisi, TransmisiResponse::class.java)
+        val transmisiResponse = FirestoreRecyclerOptions.Builder<LaporanBebanResponses>()
+                .setQuery(queryTransmisi, LaporanBebanResponses::class.java)
                 .build()
         val queryTrafo: Query = db.collection("Bay").whereGreaterThan("namabay", "trafo")
         val trafoResponse = FirestoreRecyclerOptions.Builder<BayResponse>()
                 .setQuery(queryTrafo, BayResponse::class.java)
                 .build()*/
-        /*adapterTransmisi = object : FirestoreRecyclerAdapter<TransmisiResponse, TransmisiHolder>(transmisiResponse) {
+        /*adapterTransmisi = object : FirestoreRecyclerAdapter<LaporanBebanResponses, TransmisiHolder>(transmisiResponse) {
             override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TransmisiHolder {
                 val viewTransmisi = LayoutInflater.from(parent.context).inflate(R.layout.item_transmisi, parent, false)
                 return TransmisiHolder(viewTransmisi)
             }
 
-            override fun onBindViewHolder(transmisiHolder: TransmisiHolder, position: Int, response: TransmisiResponse) {
+            override fun onBindViewHolder(transmisiHolder: TransmisiHolder, position: Int, response: LaporanBebanResponses) {
                 transmisiHolder.bindData(response)
                 *//* if (response.namabay!!.contains("transmisi") && response.namabay!!.contains("trafo")) {
                  }*//*
@@ -192,7 +192,7 @@ class LaporanBebanActivity : AppCompatActivity() {
         var ettransmisi_i: EditText = viewTransmisi.findViewById(R.id.et_transmisi_I)
         var ettransmisi_u: EditText = viewTransmisi.findViewById(R.id.et_transmisi_U)
         @SuppressLint("ResourceType")
-        fun bindData(response: TransmisiResponse) {
+        fun bindData(response: LaporanBebanResponses) {
             tvTransmisi.text = response.namabay
         }
     }*/
