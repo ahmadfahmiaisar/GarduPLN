@@ -7,6 +7,7 @@ import android.annotation.SuppressLint
 import android.app.DatePickerDialog
 import android.content.Intent
 import android.os.Bundle
+import android.text.TextUtils
 import android.view.*
 import android.widget.RadioButton
 import android.widget.TextView
@@ -74,7 +75,6 @@ class LaporanBebanActivity2 : AppCompatActivity(), View.OnClickListener {
         val query = db!!.collection("Bay")
                 .whereGreaterThanOrEqualTo("namabay", "trafo")
         query.whereGreaterThanOrEqualTo("namabay", "transmisi")
-//        query.whereLessThanOrEqualTo("namabay", "trafo")
         val queryResponse = FirestoreRecyclerOptions.Builder<LaporanBebanResponses>()
                 .setQuery(query, LaporanBebanResponses::class.java)
                 .build()
@@ -92,7 +92,6 @@ class LaporanBebanActivity2 : AppCompatActivity(), View.OnClickListener {
         rvBebanTransmisi.adapter = adapterTransmisi
     }
 
-    //    for(int i = 0; i < itemCount; i++){}
     private fun upload() {
         val itemCount = rvBebanTransmisi.adapter!!.itemCount - 1
         val childCountsRV = 0..itemCount
@@ -108,36 +107,76 @@ class LaporanBebanActivity2 : AppCompatActivity(), View.OnClickListener {
             val `in` = childHolder?.itemView?.et_transmisi_In?.text.toString().trim()
             val beban = childHolder?.itemView?.et_transmisi_beban?.text.toString().trim()
 
-            val childnamabay = rvBebanTransmisi.findViewHolderForAdapterPosition(it)?.itemView?.findViewById<TextView>(R.id.tv_beban_transmisi)?.text.toString().trim()
+//            if (cekEmptyEditext(u, i, p, q, `in`, beban, childHolder)) return
 
-            if (checkduplicatDoc(tv_date.text.toString())) {
-                db!!.collection("Bay").document(tv_date.text.toString())
-                        .update("laporan $namabay", FieldValue.arrayUnion(u, i, p, q, beban))
+            val date = tv_date.text.toString().trim()
+            val listArraynya = "laporan $namabay"
+            val doc = hashMapOf(
+                    "namabay" to namabay,
+                    "tanggal" to tv_date.text.toString().trim(),
+                    "waktu" to valueRg.text.toString().trim(),
+                    listArraynya to arrayListOf(u, i, p, q, beban, `in`)
+            )
+            val documentReference = db!!.collection("Laporin").document(date)
+            documentReference.get()
+                    .addOnSuccessListener { document ->
+                        if (document != null) {
+                            if (checkduplicat(listArraynya)) {
+                                db.collection("Laporin").document(date)
+                                        .update(listArraynya, FieldValue.arrayUnion(u, i, p, q, beban, `in`))
+                            } else {
+                                db.collection("Laporin").document(date)
+                                        .set(doc)
+                            }
+                        } else {
+                            db.collection("Laporin").document(date)
+                                    .set(doc)
+                        }
+                    }
+            /* if (checkduplicat(listArraynya)) {
+                 db!!.collection("Laporin").document(date)
+                         .update(listArraynya, FieldValue.arrayUnion(u, i, p, q, beban, `in`))
+             } else {
+                 db!!.collection("Laporin").document(date)
+                         .set(doc)
+             }*/
+            /*if (checkduplicat(listArraynya)) {
+                db!!.collection("Laporin").document("doc $listArraynya")
+                        .update(listArraynya, FieldValue.arrayUnion(u, i, p, q, beban, `in`))
                         .addOnCompleteListener { Toast.makeText(applicationContext, "okeeh", Toast.LENGTH_SHORT).show() }
                         .addOnFailureListener { Toast.makeText(applicationContext, "gagal", Toast.LENGTH_SHORT).show() }
-            } else{
-                val doc = hashMapOf(
-                        "namabay" to namabay,
-                        "tanggal" to tv_date.text.toString().trim(),
-                        "waktu" to valueRg.text.toString().trim(),
-                        "laporan $namabay" to arrayListOf(u, i, p, q, beban)
-                )
-                db!!.collection("Bay").document(tv_date.text.toString())
+            } else {
+
+                db!!.collection("Laporin").document("doc $listArraynya")
                         .set(doc)
                         .addOnCompleteListener { Toast.makeText(applicationContext, "okeeh", Toast.LENGTH_SHORT).show() }
-                        .addOnFailureListener { Toast.makeText(applicationContext, "gagal", Toast.LENGTH_SHORT).show() }
-            }
+                        .addOnFailureListener {
+                            Toast.makeText(applicationContext, "gagal ini", Toast.LENGTH_SHORT).show()
+                        }
+            }*/
         }
     }
 
-    private fun checkduplicatDoc(tanggal: String): Boolean {
-        val itemcount = rvBebanTransmisi.adapter?.itemCount
+    private fun cekEmptyEditext(u: String, i: String, p: String, q: String, `in`: String, beban: String, childHolder: RecyclerView.ViewHolder?): Boolean {
+        if (TextUtils.isEmpty("$u, $i, $p, $q, $`in`, $beban")) {
+            childHolder?.itemView?.et_transmisi_U?.setError("isi dulu")
+            childHolder?.itemView?.et_transmisi_I?.setError("isi dulu")
+            childHolder?.itemView?.et_transmisi_P?.setError("isi dulu")
+            childHolder?.itemView?.et_transmisi_Q?.setError("isi dulu")
+            childHolder?.itemView?.et_transmisi_In?.setError("isi dulu")
+            childHolder?.itemView?.et_transmisi_beban?.setError("isi dulu")
+            return true
+        }
+        return false
+    }
+
+    private fun checkduplicat(listarraynya: String): Boolean {
+        val count = rvBebanTransmisi.adapter?.itemCount
         var hasil = false
 
-        for (i in 0..itemcount!!) {
-            val tanggale = rvBebanTransmisi.findViewHolderForAdapterPosition(i)?.itemView?.findViewById<TextView>(R.id.tv_beban_transmisi)?.text.toString()
-
-            if (tanggal.equals(tanggale, true)) {
+        for (posisine in 0..count!!) {
+            val namalist = rvBebanTransmisi.findViewHolderForAdapterPosition(posisine)?.itemView?.findViewById<TextView>(R.id.tv_beban_transmisi)?.text.toString()
+            if (listarraynya.contains("laporan $namalist", true)) {
                 return true
             }
         }

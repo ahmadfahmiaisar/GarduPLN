@@ -26,8 +26,7 @@ class HistoryBebanActivity : AppCompatActivity() {
         setContentView(R.layout.activity_history_beban)
         init()
 
-        val query: Query = db.collection("Bay")
-                .orderBy("tanggal")
+        val query: Query = db.collection("Laporin")
         val bebanresponse = FirestoreRecyclerOptions.Builder<LaporanBebanResponses>()
                 .setQuery(query, LaporanBebanResponses::class.java).build()
         adapter = object : FirestoreRecyclerAdapter<LaporanBebanResponses, BebanHolder>(bebanresponse) {

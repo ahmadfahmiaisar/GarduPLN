@@ -90,10 +90,6 @@
                 android:layout_marginBottom="10dp"
                 android:background="#111" />
 
-            <!--   <androidx.recyclerview.widget.RecyclerView
-                   android:id="@+id/rvBebanTrafo"
-                   android:layout_width="match_parent"
-                   android:layout_height="wrap_content" />-->
             <Button
                 android:id="@+id/btnUpload"
                 android:layout_width="match_parent"
