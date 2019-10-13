@@ -8,6 +8,7 @@ import android.app.DatePickerDialog
 import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
+import android.util.Log
 import android.view.*
 import android.widget.RadioButton
 import android.widget.TextView
@@ -17,8 +18,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter
 import com.firebase.ui.firestore.FirestoreRecyclerOptions
+import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.SetOptions
 import kotlinx.android.synthetic.main.activity_laporan_beban.tv_date
 import kotlinx.android.synthetic.main.activity_laporan_beban2.*
 import kotlinx.android.synthetic.main.item_transmisi.view.*
@@ -120,18 +123,81 @@ class LaporanBebanActivity2 : AppCompatActivity(), View.OnClickListener {
             val documentReference = db!!.collection("Laporin").document(date)
             documentReference.get()
                     .addOnSuccessListener { document ->
-                        if (document != null) {
+                        if (document.exists()) {
+//                            Toast.makeText(applicationContext, "Document = ISI", Toast.LENGTH_SHORT).show()
+                            if (cekduplikat2(document)) {
+                                Toast.makeText(applicationContext, "Tanggal Duplikat", Toast.LENGTH_SHORT).show()
+                                db.collection("Laporin").document(date)
+                                        .update(listArraynya, FieldValue.delete())
+                                        .addOnCompleteListener { Toast.makeText(applicationContext, "updated", Toast.LENGTH_SHORT).show() }
+                                        .addOnFailureListener {
+                                            Toast.makeText(applicationContext, "gagal ini", Toast.LENGTH_SHORT).show()
+                                        }
+                                /*db.collection("Laporin").document(date)
+                                        .update(listArraynya, FieldValue.arrayUnion(u, i, p, q, beban, `in`))
+                                        .addOnCompleteListener { Toast.makeText(applicationContext, "updateddddd", Toast.LENGTH_SHORT).show() }
+                                        .addOnFailureListener {
+                                            Toast.makeText(applicationContext, "gagal ini", Toast.LENGTH_SHORT).show()
+                                        }*/
+                                db.collection("Laporin").document(date)
+                                        .set(doc, SetOptions.merge())
+                                        .addOnCompleteListener { Toast.makeText(applicationContext, "okeeh hehe", Toast.LENGTH_SHORT).show() }
+                                        .addOnFailureListener {
+                                            Toast.makeText(applicationContext, "gagal ini 2", Toast.LENGTH_SHORT).show()
+                                        }
+
+                                Log.d("MASUK", "MASUK DUPLIKAT")
+                            } else {
+                                db.collection("Laporin").document(date)
+                                        .update(listArraynya, FieldValue.arrayUnion(u, i, p, q, beban, `in`))
+                                        .addOnCompleteListener { Toast.makeText(applicationContext, "updateddddd", Toast.LENGTH_SHORT).show() }
+                                        .addOnFailureListener {
+                                            Toast.makeText(applicationContext, "gagal ini", Toast.LENGTH_SHORT).show()
+                                        }
+                                Toast.makeText(applicationContext, "Tidak ada field", Toast.LENGTH_SHORT).show()
+                                Log.d("MASUK", "MASUK TIDAK DUPLIKAT")
+                            }
+                        } else {
+                            Log.d("MASUK", "MASUK TIDAK ADA DOKUMEN $it")
+
+                            db.collection("Laporin").document(date)
+                                    .set(doc, SetOptions.merge())
+                                    .addOnCompleteListener {
+                                        Toast.makeText(applicationContext, "okeeh 2", Toast.LENGTH_SHORT).show()
+                                        Log.d("MASUK", "OKED $it")
+                                    }
+                                    .addOnFailureListener {
+                                        Toast.makeText(applicationContext, "gagal ini 2", Toast.LENGTH_SHORT).show()
+                                    }
+
+                            Toast.makeText(applicationContext, "Document = NULL $it", Toast.LENGTH_SHORT).show()
+                        }
+
+
+                        /*if (document != null) {
                             if (checkduplicat(listArraynya)) {
                                 db.collection("Laporin").document(date)
                                         .update(listArraynya, FieldValue.arrayUnion(u, i, p, q, beban, `in`))
+                                        .addOnCompleteListener { Toast.makeText(applicationContext, "updated", Toast.LENGTH_SHORT).show() }
+                                        .addOnFailureListener {
+                                            Toast.makeText(applicationContext, "gagal ini", Toast.LENGTH_SHORT).show()
+                                        }
                             } else {
                                 db.collection("Laporin").document(date)
                                         .set(doc)
+                                        .addOnCompleteListener { Toast.makeText(applicationContext, "okeeh 1", Toast.LENGTH_SHORT).show() }
+                                        .addOnFailureListener {
+                                            Toast.makeText(applicationContext, "gagal ini 1", Toast.LENGTH_SHORT).show()
+                                        }
                             }
                         } else {
                             db.collection("Laporin").document(date)
                                     .set(doc)
-                        }
+                                    .addOnCompleteListener { Toast.makeText(applicationContext, "okeeh 2", Toast.LENGTH_SHORT).show() }
+                                    .addOnFailureListener {
+                                        Toast.makeText(applicationContext, "gagal ini 2", Toast.LENGTH_SHORT).show()
+                                    }
+                        }*/
                     }
             /* if (checkduplicat(listArraynya)) {
                  db!!.collection("Laporin").document(date)
@@ -180,6 +246,27 @@ class LaporanBebanActivity2 : AppCompatActivity(), View.OnClickListener {
                 return true
             }
         }
+        return hasil
+    }
+
+    fun cekduplikat2(document: DocumentSnapshot): Boolean {
+        var hasil = false
+        val count = rvBebanTransmisi.adapter?.itemCount
+        count?.minus(1)
+
+//        var string = ""
+        for (i in 0..count!!) {
+            val namalist = rvBebanTransmisi.findViewHolderForAdapterPosition(i)?.itemView?.findViewById<TextView>(R.id.tv_beban_transmisi)?.text.toString()
+//            string += "FIELD $namalist = ${document.contains("laporan $namalist")} | "
+//            Toast.makeText(applicationContext, "Duplikasi", Toast.LENGTH_SHORT).show()
+            if (document.contains("laporan $namalist")) {
+//                Toast.makeText(applicationContext, "Duplikasi", Toast.LENGTH_SHORT).show()
+                hasil = true
+            }
+        }
+
+//        Toast.makeText(applicationContext, "DAFTAR = $string", Toast.LENGTH_SHORT).show()
+
         return hasil
     }
 
