@@ -1,652 +1,206 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".activity.beban.DetailHistoryBebanActivity">
+    tools:context=".activity.history.DetailHistoryBebanActivity">
 
-    <TableLayout
+    <!--<androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_historyDetailBeban"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        tools:listitem="@layout/item_laporan_value" />-->
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-        <TableRow
+        <TableLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:id="@+id/tv_tanggal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="tanggal"
-                android:textColor="@color/colorPrimary"
-                android:textSize="@dimen/_14ssp" />
-
-            <TextView
-                android:id="@+id/tv_jam"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/_10sdp"
-                android:text="jam"
-                android:textColor="@color/colorPrimary"
-                android:textSize="@dimen/_14ssp" />
-        </TableRow>
-
-        <TextView
-            android:id="@+id/tv_transmisi1"
-            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_10sdp"
-            android:text="transmisi"
-            android:textColor="@color/colorPrimary"
-            android:textSize="@dimen/_14ssp" />
-
-        <TableRow
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:orientation="vertical">
 
             <TextView
-                android:layout_width="wrap_content"
+                android:id="@+id/tv_item_title_laporan"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="U: "
-                android:textColor="@color/colorPrimary"
-                android:textSize="@dimen/_14ssp" />
+                android:text="transmisi" />
 
-            <TextView
-                android:id="@+id/tv_value_U"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="value U"
-                android:textColor="@color/colorPrimary"
-                android:textSize="@dimen/_14ssp" />
-        </TableRow>
-        <TableRow
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="I: "
-                android:textColor="@color/colorPrimary"
-                android:textSize="@dimen/_14ssp" />
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:text="U"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="@dimen/_14ssp" />
 
-            <TextView
-                android:id="@+id/tv_value_I"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="value U"
-                android:textColor="@color/colorPrimary"
-                android:textSize="@dimen/_14ssp" />
-        </TableRow>
-        <TableRow
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/tv_item_U"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="@dimen/_14ssp" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="P: "
-                android:textColor="@color/colorPrimary"
-                android:textSize="@dimen/_14ssp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:text="KV"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="@dimen/_14ssp" />
+            </TableRow>
 
-            <TextView
-                android:id="@+id/tv_value_P"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="value U"
-                android:textColor="@color/colorPrimary"
-                android:textSize="@dimen/_14ssp" />
-        </TableRow>
-        <TableRow
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Q: "
-                android:textColor="@color/colorPrimary"
-                android:textSize="@dimen/_14ssp" />
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:text="I"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="@dimen/_14ssp" />
 
-            <TextView
-                android:id="@+id/tv_value_Q"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="value U"
-                android:textColor="@color/colorPrimary"
-                android:textSize="@dimen/_14ssp" />
-        </TableRow>
-        <TableRow
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/tv_item_I"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="@dimen/_14ssp" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Beban: "
-                android:textColor="@color/colorPrimary"
-                android:textSize="@dimen/_14ssp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:text="A"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="@dimen/_14ssp" />
+            </TableRow>
 
-            <TextView
-                android:id="@+id/tv_value_beban"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="value U"
-                android:textColor="@color/colorPrimary"
-                android:textSize="@dimen/_14ssp" />
-        </TableRow>
-        <TableRow
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="In: "
-                android:textColor="@color/colorPrimary"
-                android:textSize="@dimen/_14ssp" />
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:text="P"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="@dimen/_14ssp" />
 
-            <TextView
-                android:id="@+id/tv_value_In"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="value U"
-                android:textColor="@color/colorPrimary"
-                android:textSize="@dimen/_14ssp" />
-        </TableRow>
-        <TextView
-            android:id="@+id/tv_transmisi2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_10sdp"
-            android:text="transmisi"
-            android:textColor="@color/colorPrimary"
-            android:textSize="@dimen/_14ssp" />
+                <TextView
+                    android:id="@+id/tv_item_P"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="@dimen/_14ssp" />
 
-        <TableRow
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:text="MW"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="@dimen/_14ssp" />
+            </TableRow>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="U: "
-                android:textColor="@color/colorPrimary"
-                android:textSize="@dimen/_14ssp" />
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-            <TextView
-                android:id="@+id/tv_value_U2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="value U"
-                android:textColor="@color/colorPrimary"
-                android:textSize="@dimen/_14ssp" />
-        </TableRow>
-        <TableRow
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:text="Q"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="@dimen/_14ssp" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="I: "
-                android:textColor="@color/colorPrimary"
-                android:textSize="@dimen/_14ssp" />
+                <TextView
+                    android:id="@+id/tv_item_Q"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="@dimen/_14ssp" />
 
-            <TextView
-                android:id="@+id/tv_value_I2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="value U"
-                android:textColor="@color/colorPrimary"
-                android:textSize="@dimen/_14ssp" />
-        </TableRow>
-        <TableRow
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:text="MVar"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="@dimen/_14ssp" />
+            </TableRow>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="P: "
-                android:textColor="@color/colorPrimary"
-                android:textSize="@dimen/_14ssp" />
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-            <TextView
-                android:id="@+id/tv_value_P2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="value U"
-                android:textColor="@color/colorPrimary"
-                android:textSize="@dimen/_14ssp" />
-        </TableRow>
-        <TableRow
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/tv_transmisi_beban"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:text="Beban"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="@dimen/_14ssp" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Q: "
-                android:textColor="@color/colorPrimary"
-                android:textSize="@dimen/_14ssp" />
 
-            <TextView
-                android:id="@+id/tv_value_Q2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="value U"
-                android:textColor="@color/colorPrimary"
-                android:textSize="@dimen/_14ssp" />
-        </TableRow>
-        <TableRow
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/tv_item_beban"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="@dimen/_14ssp" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Beban: "
-                android:textColor="@color/colorPrimary"
-                android:textSize="@dimen/_14ssp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:text="%"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="@dimen/_14ssp" />
+            </TableRow>
 
-            <TextView
-                android:id="@+id/tv_value_beban2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="value U"
-                android:textColor="@color/colorPrimary"
-                android:textSize="@dimen/_14ssp" />
-        </TableRow>
-        <TableRow
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="In: "
-                android:textColor="@color/colorPrimary"
-                android:textSize="@dimen/_14ssp" />
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:text="In"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="@dimen/_14ssp" />
 
-            <TextView
-                android:id="@+id/tv_value_In2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="value U"
-                android:textColor="@color/colorPrimary"
-                android:textSize="@dimen/_14ssp" />
-        </TableRow>
-        <TextView
-            android:id="@+id/tv_transmisi3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_10sdp"
-            android:text="transmisi"
-            android:textColor="@color/colorPrimary"
-            android:textSize="@dimen/_14ssp" />
+                <TextView
+                    android:id="@+id/tv_item_In"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="@dimen/_14ssp" />
 
-        <TableRow
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="U: "
-                android:textColor="@color/colorPrimary"
-                android:textSize="@dimen/_14ssp" />
-
-            <TextView
-                android:id="@+id/tv_value_U3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="value U"
-                android:textColor="@color/colorPrimary"
-                android:textSize="@dimen/_14ssp" />
-        </TableRow>
-        <TableRow
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="I: "
-                android:textColor="@color/colorPrimary"
-                android:textSize="@dimen/_14ssp" />
-
-            <TextView
-                android:id="@+id/tv_value_I3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="value U"
-                android:textColor="@color/colorPrimary"
-                android:textSize="@dimen/_14ssp" />
-        </TableRow>
-        <TableRow
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="P: "
-                android:textColor="@color/colorPrimary"
-                android:textSize="@dimen/_14ssp" />
-
-            <TextView
-                android:id="@+id/tv_value_P3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="value U"
-                android:textColor="@color/colorPrimary"
-                android:textSize="@dimen/_14ssp" />
-        </TableRow>
-        <TableRow
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Q: "
-                android:textColor="@color/colorPrimary"
-                android:textSize="@dimen/_14ssp" />
-
-            <TextView
-                android:id="@+id/tv_value_Q3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="value U"
-                android:textColor="@color/colorPrimary"
-                android:textSize="@dimen/_14ssp" />
-        </TableRow>
-        <TableRow
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Beban: "
-                android:textColor="@color/colorPrimary"
-                android:textSize="@dimen/_14ssp" />
-
-            <TextView
-                android:id="@+id/tv_value_beban3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="value U"
-                android:textColor="@color/colorPrimary"
-                android:textSize="@dimen/_14ssp" />
-        </TableRow>
-        <TableRow
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="In: "
-                android:textColor="@color/colorPrimary"
-                android:textSize="@dimen/_14ssp" />
-
-            <TextView
-                android:id="@+id/tv_value_In3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="value U"
-                android:textColor="@color/colorPrimary"
-                android:textSize="@dimen/_14ssp" />
-        </TableRow>
-        <TextView
-            android:id="@+id/tv_transmisi4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_10sdp"
-            android:text="transmisi"
-            android:textColor="@color/colorPrimary"
-            android:textSize="@dimen/_14ssp" />
-
-        <TableRow
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="U: "
-                android:textColor="@color/colorPrimary"
-                android:textSize="@dimen/_14ssp" />
-
-            <TextView
-                android:id="@+id/tv_value_U4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="value U"
-                android:textColor="@color/colorPrimary"
-                android:textSize="@dimen/_14ssp" />
-        </TableRow>
-        <TableRow
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="I: "
-                android:textColor="@color/colorPrimary"
-                android:textSize="@dimen/_14ssp" />
-
-            <TextView
-                android:id="@+id/tv_value_I4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="value U"
-                android:textColor="@color/colorPrimary"
-                android:textSize="@dimen/_14ssp" />
-        </TableRow>
-        <TableRow
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="P: "
-                android:textColor="@color/colorPrimary"
-                android:textSize="@dimen/_14ssp" />
-
-            <TextView
-                android:id="@+id/tv_value_P4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="value U"
-                android:textColor="@color/colorPrimary"
-                android:textSize="@dimen/_14ssp" />
-        </TableRow>
-        <TableRow
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Q: "
-                android:textColor="@color/colorPrimary"
-                android:textSize="@dimen/_14ssp" />
-
-            <TextView
-                android:id="@+id/tv_value_Q4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="value U"
-                android:textColor="@color/colorPrimary"
-                android:textSize="@dimen/_14ssp" />
-        </TableRow>
-        <TableRow
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Beban: "
-                android:textColor="@color/colorPrimary"
-                android:textSize="@dimen/_14ssp" />
-
-            <TextView
-                android:id="@+id/tv_value_beban4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="value U"
-                android:textColor="@color/colorPrimary"
-                android:textSize="@dimen/_14ssp" />
-        </TableRow>
-        <TableRow
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="In: "
-                android:textColor="@color/colorPrimary"
-                android:textSize="@dimen/_14ssp" />
-
-            <TextView
-                android:id="@+id/tv_value_In4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="value U"
-                android:textColor="@color/colorPrimary"
-                android:textSize="@dimen/_14ssp" />
-        </TableRow>
-        <TextView
-            android:id="@+id/tv_transmisi5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_10sdp"
-            android:text="transmisi"
-            android:textColor="@color/colorPrimary"
-            android:textSize="@dimen/_14ssp" />
-
-        <TableRow
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="U: "
-                android:textColor="@color/colorPrimary"
-                android:textSize="@dimen/_14ssp" />
-
-            <TextView
-                android:id="@+id/tv_value_U5"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="value U"
-                android:textColor="@color/colorPrimary"
-                android:textSize="@dimen/_14ssp" />
-        </TableRow>
-        <TableRow
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="I: "
-                android:textColor="@color/colorPrimary"
-                android:textSize="@dimen/_14ssp" />
-
-            <TextView
-                android:id="@+id/tv_value_I5"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="value U"
-                android:textColor="@color/colorPrimary"
-                android:textSize="@dimen/_14ssp" />
-        </TableRow>
-        <TableRow
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="P: "
-                android:textColor="@color/colorPrimary"
-                android:textSize="@dimen/_14ssp" />
-
-            <TextView
-                android:id="@+id/tv_value_P5"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="value U"
-                android:textColor="@color/colorPrimary"
-                android:textSize="@dimen/_14ssp" />
-        </TableRow>
-        <TableRow
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Q: "
-                android:textColor="@color/colorPrimary"
-                android:textSize="@dimen/_14ssp" />
-
-            <TextView
-                android:id="@+id/tv_value_Q_5"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="value U"
-                android:textColor="@color/colorPrimary"
-                android:textSize="@dimen/_14ssp" />
-        </TableRow>
-        <TableRow
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Beban: "
-                android:textColor="@color/colorPrimary"
-                android:textSize="@dimen/_14ssp" />
-
-            <TextView
-                android:id="@+id/tv_value_beba5"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="value U"
-                android:textColor="@color/colorPrimary"
-                android:textSize="@dimen/_14ssp" />
-        </TableRow>
-        <TableRow
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="In: "
-                android:textColor="@color/colorPrimary"
-                android:textSize="@dimen/_14ssp" />
-
-            <TextView
-                android:id="@+id/tv_value_In5"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="value U"
-                android:textColor="@color/colorPrimary"
-                android:textSize="@dimen/_14ssp" />
-        </TableRow>
-    </TableLayout>
-</ScrollView>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:text="A"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="@dimen/_14ssp" />
+            </TableRow>
+        </TableLayout>
+    </androidx.core.widget.NestedScrollView>
+</LinearLayout>

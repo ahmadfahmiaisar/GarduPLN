@@ -28,8 +28,7 @@ class LaporanGangguanAdapter(val options: FirestoreRecyclerOptions<Sinyal>) : Fi
     override fun onBindViewHolder(holder: SinyalHolder, position: Int, sinyal: Sinyal) {
         holder.bindData(sinyal, context)
     }
-
-
+    
     class SinyalHolder(view: View) : RecyclerView.ViewHolder(view) {
         val alarm: TextView = view.findViewById(R.id.tvAlarm)
         val rvItemSinyal: RecyclerView = view.findViewById(R.id.rvItemSinyal)
@@ -49,6 +48,4 @@ class LaporanGangguanAdapter(val options: FirestoreRecyclerOptions<Sinyal>) : Fi
             rvItemSinyal.adapter = adapter
         }
     }
-
-
 }

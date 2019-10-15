@@ -1,8 +1,8 @@
 package `in`.mroyek.gardupln.activity.fuad
 
 import `in`.mroyek.gardupln.R
-import `in`.mroyek.gardupln.activity.beban.HistoryBebanActivity
 import `in`.mroyek.gardupln.activity.beban.LaporanBebanResponses
+import `in`.mroyek.gardupln.activity.history.HistoryBebanActivity
 import android.annotation.SuppressLint
 import android.app.DatePickerDialog
 import android.content.Intent
@@ -33,7 +33,7 @@ class LaporanBebanActivity2 : AppCompatActivity(), View.OnClickListener {
     lateinit var adapterTransmisi: FirestoreRecyclerAdapter<LaporanBebanResponses, TransmisiHolder>
     //    val modelist: MutableList<LaporanBebanResponses>? = mutableListOf()
     private val db: FirebaseFirestore? = FirebaseFirestore.getInstance()
-    //    lateinit var id: String
+    //    lateinit var tanggal: String
     lateinit var date: DatePickerDialog.OnDateSetListener
 
     @SuppressLint("SimpleDateFormat")
@@ -42,7 +42,7 @@ class LaporanBebanActivity2 : AppCompatActivity(), View.OnClickListener {
         setContentView(R.layout.activity_laporan_beban2)
         init()
         setTanggal()
-        upBeban()
+        getdata()
         btnUpload.setOnClickListener(this)
     }
 
@@ -74,7 +74,7 @@ class LaporanBebanActivity2 : AppCompatActivity(), View.OnClickListener {
         return super.onOptionsItemSelected(item)
     }
 
-    private fun upBeban() {
+    private fun getdata() {
         val query = db!!.collection("Bay")
                 .whereGreaterThanOrEqualTo("namabay", "trafo")
         query.whereGreaterThanOrEqualTo("namabay", "transmisi")
@@ -133,12 +133,6 @@ class LaporanBebanActivity2 : AppCompatActivity(), View.OnClickListener {
                                         .addOnFailureListener {
                                             Toast.makeText(applicationContext, "gagal ini", Toast.LENGTH_SHORT).show()
                                         }
-                                /*db.collection("Laporin").document(date)
-                                        .update(listArraynya, FieldValue.arrayUnion(u, i, p, q, beban, `in`))
-                                        .addOnCompleteListener { Toast.makeText(applicationContext, "updateddddd", Toast.LENGTH_SHORT).show() }
-                                        .addOnFailureListener {
-                                            Toast.makeText(applicationContext, "gagal ini", Toast.LENGTH_SHORT).show()
-                                        }*/
                                 db.collection("Laporin").document(date)
                                         .set(doc, SetOptions.merge())
                                         .addOnCompleteListener { Toast.makeText(applicationContext, "okeeh hehe", Toast.LENGTH_SHORT).show() }
@@ -173,53 +167,8 @@ class LaporanBebanActivity2 : AppCompatActivity(), View.OnClickListener {
                             Toast.makeText(applicationContext, "Document = NULL $it", Toast.LENGTH_SHORT).show()
                         }
 
-
-                        /*if (document != null) {
-                            if (checkduplicat(listArraynya)) {
-                                db.collection("Laporin").document(date)
-                                        .update(listArraynya, FieldValue.arrayUnion(u, i, p, q, beban, `in`))
-                                        .addOnCompleteListener { Toast.makeText(applicationContext, "updated", Toast.LENGTH_SHORT).show() }
-                                        .addOnFailureListener {
-                                            Toast.makeText(applicationContext, "gagal ini", Toast.LENGTH_SHORT).show()
-                                        }
-                            } else {
-                                db.collection("Laporin").document(date)
-                                        .set(doc)
-                                        .addOnCompleteListener { Toast.makeText(applicationContext, "okeeh 1", Toast.LENGTH_SHORT).show() }
-                                        .addOnFailureListener {
-                                            Toast.makeText(applicationContext, "gagal ini 1", Toast.LENGTH_SHORT).show()
-                                        }
-                            }
-                        } else {
-                            db.collection("Laporin").document(date)
-                                    .set(doc)
-                                    .addOnCompleteListener { Toast.makeText(applicationContext, "okeeh 2", Toast.LENGTH_SHORT).show() }
-                                    .addOnFailureListener {
-                                        Toast.makeText(applicationContext, "gagal ini 2", Toast.LENGTH_SHORT).show()
-                                    }
-                        }*/
                     }
-            /* if (checkduplicat(listArraynya)) {
-                 db!!.collection("Laporin").document(date)
-                         .update(listArraynya, FieldValue.arrayUnion(u, i, p, q, beban, `in`))
-             } else {
-                 db!!.collection("Laporin").document(date)
-                         .set(doc)
-             }*/
-            /*if (checkduplicat(listArraynya)) {
-                db!!.collection("Laporin").document("doc $listArraynya")
-                        .update(listArraynya, FieldValue.arrayUnion(u, i, p, q, beban, `in`))
-                        .addOnCompleteListener { Toast.makeText(applicationContext, "okeeh", Toast.LENGTH_SHORT).show() }
-                        .addOnFailureListener { Toast.makeText(applicationContext, "gagal", Toast.LENGTH_SHORT).show() }
-            } else {
 
-                db!!.collection("Laporin").document("doc $listArraynya")
-                        .set(doc)
-                        .addOnCompleteListener { Toast.makeText(applicationContext, "okeeh", Toast.LENGTH_SHORT).show() }
-                        .addOnFailureListener {
-                            Toast.makeText(applicationContext, "gagal ini", Toast.LENGTH_SHORT).show()
-                        }
-            }*/
         }
     }
 
@@ -252,7 +201,7 @@ class LaporanBebanActivity2 : AppCompatActivity(), View.OnClickListener {
     fun cekduplikat2(document: DocumentSnapshot): Boolean {
         var hasil = false
         val count = rvBebanTransmisi.adapter?.itemCount
-        count?.minus(1)
+//        count?.minus(1)
 
 //        var string = ""
         for (i in 0..count!!) {

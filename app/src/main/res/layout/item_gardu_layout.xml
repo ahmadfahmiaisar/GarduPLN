@@ -16,7 +16,7 @@
         android:textSize="@dimen/_20sdp" />
 
     <!--<ImageView
-        android:id="@+id/iv_update_gardu"
+        android:tanggal="@+tanggal/iv_update_gardu"
         android:layout_width="@dimen/_30sdp"
         android:layout_height="@dimen/_30sdp"
         android:layout_marginRight="@dimen/_5sdp"

@@ -68,13 +68,13 @@
             android:orientation="vertical">
 
             <!--<androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_beban_transmisi"
+                android:tanggal="@+tanggal/rv_beban_transmisi"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/_5sdp" />
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_beban_trafo"
+                android:tanggal="@+tanggal/rv_beban_trafo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/_5sdp" />-->

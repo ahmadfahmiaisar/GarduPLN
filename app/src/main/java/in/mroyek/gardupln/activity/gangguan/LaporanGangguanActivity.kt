@@ -56,7 +56,7 @@ class LaporanGangguanActivity : AppCompatActivity(), View.OnClickListener {
                 db!!.collection("Sinyal").document("alarm_$alarm").update("sinyal", FieldValue.arrayUnion(sinyal))
             } else {
                 val doc = hashMapOf(
-                        "id" to "alarm_$alarm",
+                        "tanggal" to "alarm_$alarm",
                         "alarm" to alarm.trim(),
                         "sinyal" to arrayListOf(sinyal.trim()))
                 db!!.collection("Sinyal").document("alarm_$alarm").set(doc)

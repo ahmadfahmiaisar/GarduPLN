@@ -8,7 +8,7 @@
     tools:context=".activity.beban.LaporanBebanActivity">
 
     <!--<TextView
-        android:id="@+id/tv_title_bay_beban"
+        android:tanggal="@+tanggal/tv_title_bay_beban"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Bay BBBBB"

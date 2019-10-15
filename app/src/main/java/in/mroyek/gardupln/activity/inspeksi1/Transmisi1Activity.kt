@@ -1,8 +1,6 @@
 package `in`.mroyek.gardupln.activity.inspeksi1
 
 import `in`.mroyek.gardupln.R
-import `in`.mroyek.gardupln.activity.GarduActivity
-import `in`.mroyek.gardupln.activity.history.HistoryTransmisi1Activity
 import `in`.mroyek.gardupln.key
 import android.content.Intent
 import android.graphics.Color
@@ -42,7 +40,7 @@ class Transmisi1Activity : AppCompatActivity(), OnClickListener {
     @Suppress("UNREACHABLE_CODE")
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when(item.itemId){
-            R.id.ab_history -> startActivity(Intent(applicationContext, HistoryTransmisi1Activity::class.java))
+//            R.tanggal.ab_history -> startActivity(Intent(applicationContext, HistoryTransmisi1Activity::class.java))
         }
         return super.onOptionsItemSelected(item)
     }

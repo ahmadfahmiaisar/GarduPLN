@@ -26,10 +26,10 @@ class CrudGarduActivity : AppCompatActivity() {
         setContentView(R.layout.activity_crud_gardu)
 
         btn_tambahGardu.setOnClickListener {
-            val id: String = UUID.randomUUID().toString()
+            val tanggal: String = UUID.randomUUID().toString()
             val etGardu = et_tambah_gardu.text.toString().trim()
             val doc = hashMapOf(
-                    "idgardu" to id,
+                    "idgardu" to tanggal,
                     "gardu" to etGardu
             )
             db!!.collection("Gardu").document().set(doc)

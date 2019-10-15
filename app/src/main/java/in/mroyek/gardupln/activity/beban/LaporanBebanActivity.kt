@@ -1,7 +1,7 @@
 package `in`.mroyek.gardupln.activity.beban
 
 import `in`.mroyek.gardupln.R
-import `in`.mroyek.gardupln.activity.history.HistoryTransmisi1Activity
+import `in`.mroyek.gardupln.activity.history.HistoryBebanActivity
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
@@ -118,9 +118,9 @@ class LaporanBebanActivity : AppCompatActivity() {
                         .addOnCompleteListener { Toast.makeText(applicationContext, "okeeh", Toast.LENGTH_SHORT).show() }
                         .addOnFailureListener { Toast.makeText(applicationContext, "gagal", Toast.LENGTH_SHORT).show() }
             }
-//            val id: String = db!!.collection("Laporan Beban").document().id
+//            val tanggal: String = db!!.collection("Laporan Beban").document().tanggal
             /*   val batch: WriteBatch = db.batch()
-               val transmisi = db.collection("Laporan Beban").document(id)
+               val transmisi = db.collection("Laporan Beban").document(tanggal)
                batch.set(transmisi, doc)
                batch.commit()*/
         }
@@ -187,10 +187,10 @@ class LaporanBebanActivity : AppCompatActivity() {
     }*/
 
     /*class TransmisiHolder(viewTransmisi: View) : RecyclerView.ViewHolder(viewTransmisi) {
-        var tvTransmisi: TextView = viewTransmisi.findViewById(R.id.tv_beban_transmisi)
-        val id: String = UUID.randomUUID().toString()
-        var ettransmisi_i: EditText = viewTransmisi.findViewById(R.id.et_transmisi_I)
-        var ettransmisi_u: EditText = viewTransmisi.findViewById(R.id.et_transmisi_U)
+        var tvTransmisi: TextView = viewTransmisi.findViewById(R.tanggal.tv_beban_transmisi)
+        val tanggal: String = UUID.randomUUID().toString()
+        var ettransmisi_i: EditText = viewTransmisi.findViewById(R.tanggal.et_transmisi_I)
+        var ettransmisi_u: EditText = viewTransmisi.findViewById(R.tanggal.et_transmisi_U)
         @SuppressLint("ResourceType")
         fun bindData(response: LaporanBebanResponses) {
             tvTransmisi.text = response.namabay
@@ -198,7 +198,7 @@ class LaporanBebanActivity : AppCompatActivity() {
     }*/
 
     /*class TrafoHolder(viewTrafo: View) : RecyclerView.ViewHolder(viewTrafo) {
-        var tvTrafo: TextView = viewTrafo.findViewById(R.id.tv_beban_trafo)
+        var tvTrafo: TextView = viewTrafo.findViewById(R.tanggal.tv_beban_trafo)
         fun bindData(response: BayResponse) {
             tvTrafo.text = response.namabay
         }

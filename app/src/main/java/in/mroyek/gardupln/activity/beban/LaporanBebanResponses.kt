@@ -25,6 +25,4 @@ class LaporanBebanResponses {
         this.`in` = `in`
         this.beban = beban
     }
-
-
 }

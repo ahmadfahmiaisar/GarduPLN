@@ -34,27 +34,27 @@
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
     <!--
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_gardu"
+            android:tanggal="@+tanggal/rv_gardu"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView2"
+            app:layout_constraintTop_toBottomOf="@+tanggal/textView2"
             tools:listitem="@layout/item_gardu_layout" />
 
         <Button
-            android:id="@+id/btn_crudGardu"
+            android:tanggal="@+tanggal/btn_crudGardu"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
             android:text="tambah gardu"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/rv_gardu" />
+            app:layout_constraintTop_toBottomOf="@+tanggal/rv_gardu" />
 
         <TextView
-            android:id="@+id/tvTambahBay"
+            android:tanggal="@+tanggal/tvTambahBay"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"

@@ -74,16 +74,16 @@ adapter = object : FirestoreRecyclerAdapter<GarduResponse, GarduHolder>(garduRes
     override fun onBindViewHolder(holder: GarduHolder, position: Int, response: GarduResponse) {
         holder.bindData(response)
         holder.btnDelete.setOnClickListener {
-            val id = garduResponse.snapshots.getSnapshot(position).id
-            db.collection("Gardu").document(id)
+            val tanggal = garduResponse.snapshots.getSnapshot(position).tanggal
+            db.collection("Gardu").document(tanggal)
                     .delete()
                     .addOnFailureListener { Toast.makeText(applicationContext, "gagal", Toast.LENGTH_SHORT).show() }
                     .addOnCompleteListener { Toast.makeText(applicationContext, "okeh", Toast.LENGTH_SHORT).show() }
         }
         holder.tvGardu.setOnClickListener {
-            val id = garduResponse.snapshots.getSnapshot(position).id
+            val tanggal = garduResponse.snapshots.getSnapshot(position).tanggal
             val bundle = Bundle()
-            bundle.putString(key.ID_GARDU, id)
+            bundle.putString(key.ID_GARDU, tanggal)
             bundle.putString("gardu", response.gardu)
             val intent = Intent(this@GarduActivity, BayActivity::class.java)
             intent.putExtras(bundle)
@@ -107,8 +107,8 @@ adapter!!.stopListening()
 }
 
 class GarduHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-var tvGardu = itemView.findViewById<TextView>(R.id.tv_gardu)
-var btnDelete = itemView.findViewById<ImageView>(R.id.iv_delete_gardu)
+var tvGardu = itemView.findViewById<TextView>(R.tanggal.tv_gardu)
+var btnDelete = itemView.findViewById<ImageView>(R.tanggal.iv_delete_gardu)
 //        var btn
 fun bindData(response: GarduResponse) {
     tvGardu.text = response.gardu
