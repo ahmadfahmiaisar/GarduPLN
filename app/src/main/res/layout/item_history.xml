@@ -1,30 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal">
+    android:layout_height="wrap_content">
 
-    <TableRow
+    <TextView
+        android:id="@+id/item_history_tanggal"
         android:layout_width="wrap_content"
-        android:layout_margin="@dimen/_5sdp"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/_5sdp"
+        android:textColor="@color/colorBlack"
+        android:textSize="@dimen/_14sdp"
+        app:layout_constraintBottom_toBottomOf="@id/btnHapus"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="tanggal" />
 
-        <TextView
-            android:id="@+id/item_history_tanggal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="tanggal"
-            android:layout_marginRight="@dimen/_5sdp"
-            android:textColor="@color/colorAccent"
-            android:textSize="@dimen/_14sdp" />
+    <View
+        android:id="@+id/separator"
+        android:layout_width="6dp"
+        android:layout_height="30dp"
+        android:layout_marginLeft="@dimen/_8sdp"
+        android:background="@color/colorAccent"
+        app:layout_constraintBottom_toBottomOf="@id/btnHapus"
+        app:layout_constraintLeft_toRightOf="@id/item_history_tanggal"
+        app:layout_constraintTop_toTopOf="@id/btnHapus" />
 
-        <TextView
-            android:id="@+id/item_history_jam"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/_5sdp"
-            android:text="jam"
-            android:textColor="@color/colorAccent"
-            android:textSize="@dimen/_14sdp" />
-    </TableRow>
-</TableLayout>
+    <TextView
+        android:id="@+id/item_history_jam"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/_8sdp"
+        android:layout_marginRight="@dimen/_8sdp"
+        android:textColor="@color/colorBlack"
+        android:textSize="@dimen/_14sdp"
+        app:layout_constraintBottom_toBottomOf="@id/btnHapus"
+        app:layout_constraintLeft_toRightOf="@id/separator"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="jam" />
+
+    <ImageButton
+        android:id="@+id/btnEdit"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="@dimen/_4sdp"
+        android:src="@drawable/ic_edit_black_24dp"
+        android:tint="@color/colorWhite"
+        android:text="Hapus"
+        app:layout_constraintRight_toLeftOf="@id/btnHapus"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/btnHapus"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_delete_black_24dp"
+        android:tint="@color/colorWhite"
+        android:text="Hapus"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
