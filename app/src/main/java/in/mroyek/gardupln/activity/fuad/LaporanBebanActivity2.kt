@@ -27,10 +27,12 @@ import kotlinx.android.synthetic.main.activity_laporan_beban2.*
 import kotlinx.android.synthetic.main.item_transmisi.view.*
 import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.collections.HashMap
 
 
 class LaporanBebanActivity2 : AppCompatActivity(), View.OnClickListener {
-    lateinit var adapterTransmisi: FirestoreRecyclerAdapter<LaporanBebanResponses, TransmisiHolder>
+//    lateinit var adapterTransmisi: FirestoreRecyclerAdapter<LaporanBebanResponses, TransmisiHolder>
+    lateinit var adapterTransmisi: LaporanBebanAdapter
     //    val modelist: MutableList<LaporanBebanResponses>? = mutableListOf()
     private val db: FirebaseFirestore? = FirebaseFirestore.getInstance()
     //    lateinit var tanggal: String
@@ -81,7 +83,9 @@ class LaporanBebanActivity2 : AppCompatActivity(), View.OnClickListener {
         val queryResponse = FirestoreRecyclerOptions.Builder<LaporanBebanResponses>()
                 .setQuery(query, LaporanBebanResponses::class.java)
                 .build()
-        adapterTransmisi = object : FirestoreRecyclerAdapter<LaporanBebanResponses, TransmisiHolder>(queryResponse) {
+        adapterTransmisi = LaporanBebanAdapter(queryResponse)
+
+        /*adapterTransmisi = object : FirestoreRecyclerAdapter<LaporanBebanResponses, TransmisiHolder>(queryResponse) {
             override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TransmisiHolder {
                 val viewTransmisi = LayoutInflater.from(parent.context).inflate(R.layout.item_transmisi, parent, false)
                 return TransmisiHolder(viewTransmisi)
@@ -90,19 +94,67 @@ class LaporanBebanActivity2 : AppCompatActivity(), View.OnClickListener {
             override fun onBindViewHolder(transmisiHolder: TransmisiHolder, position: Int, response: LaporanBebanResponses) {
                 transmisiHolder.bindData(response)
             }
-        }
+
+            var holderHashMap: HashMap<Int, RecyclerView.ViewHolder> = HashMap()
+
+            fun getHolder():HashMap<Int, RecyclerView.ViewHolder>{
+                return holderHashMap
+            }
+
+            override fun onViewDetachedFromWindow(holder: TransmisiHolder) {
+                holderHashMap.put(holder.adapterPosition, holder)
+                super.onViewDetachedFromWindow(holder)
+            }
+
+            override fun onViewAttachedToWindow(holder: TransmisiHolder) {
+                holderHashMap.remove(holder.adapterPosition)
+                super.onViewAttachedToWindow(holder)
+            }
+        }*/
+
         adapterTransmisi.notifyDataSetChanged()
         rvBebanTransmisi.adapter = adapterTransmisi
     }
 
     private fun upload() {
-        val itemCount = rvBebanTransmisi.adapter!!.itemCount - 1
-        val childCountsRV = 0..itemCount
-        childCountsRV.forEach { it ->
-            val childHolder = rvBebanTransmisi.findViewHolderForAdapterPosition(it)
-            val cheid = rg_time_beban.checkedRadioButtonId
-            val valueRg = findViewById<RadioButton>(cheid)
-            val namabay = childHolder?.itemView?.tv_beban_transmisi?.text.toString()
+        val itemCount = rvBebanTransmisi.adapter?.itemCount
+        val childCountsRV = 0.rangeTo(itemCount!!)
+        childCountsRV.forEach {
+
+            //COBA
+/*
+            var namabay = ""
+            var u = ""
+            var i = ""
+            var p = ""
+            var q = ""
+            var `in` = ""
+            var beban = ""
+
+            rvBebanTransmisi.post(Runnable {
+                val childHolder = rvBebanTransmisi.layoutManager?.findViewByPosition(it)
+                namabay = childHolder?.tv_beban_transmisi?.text.toString().trim()
+                u = childHolder?.et_transmisi_U?.text.toString().trim()
+                i = childHolder?.et_transmisi_I?.text.toString().trim()
+                p = childHolder?.et_transmisi_P?.text.toString().trim()
+                q = childHolder?.et_transmisi_Q?.text.toString().trim()
+                `in` = childHolder?.et_transmisi_In?.text.toString().trim()
+                beban = childHolder?.et_transmisi_beban?.text.toString().trim()
+            })
+*/
+
+            //END COBA
+
+//            val childHolder = rvBebanTransmisi.findViewHolderForLayoutPosition(it)
+//            val childHolder = rvBebanTransmisi.findViewHolderForAdapterPosition(it)
+//            val childHolder = rvBebanTransmisi.layoutManager?.findViewByPosition(it)
+            var childHolder = rvBebanTransmisi.findViewHolderForAdapterPosition(it)
+            if(childHolder==null){
+                childHolder = adapterTransmisi.holderHashMap[it]
+            }
+
+//            val namabay = childHolder?.itemView?.tv_beban_transmisi?.text.toString().trim()
+            val namabay = childHolder?.itemView?.tv_beban_transmisi?.text.toString().trim()
             val u = childHolder?.itemView?.et_transmisi_U?.text.toString().trim()
             val i = childHolder?.itemView?.et_transmisi_I?.text.toString().trim()
             val p = childHolder?.itemView?.et_transmisi_P?.text.toString().trim()
@@ -110,17 +162,52 @@ class LaporanBebanActivity2 : AppCompatActivity(), View.OnClickListener {
             val `in` = childHolder?.itemView?.et_transmisi_In?.text.toString().trim()
             val beban = childHolder?.itemView?.et_transmisi_beban?.text.toString().trim()
 
-//            if (cekEmptyEditext(u, i, p, q, `in`, beban, childHolder)) return
-
+            val cheid = rg_time_beban.checkedRadioButtonId
+            val valueRg = findViewById<RadioButton>(cheid)
             val date = tv_date.text.toString().trim()
             val listArraynya = "laporan $namabay"
-            val doc = hashMapOf(
+            /*val doc = hashMapOf(
                     "namabay" to namabay,
                     "tanggal" to tv_date.text.toString().trim(),
                     "waktu" to valueRg.text.toString().trim(),
                     listArraynya to arrayListOf(u, i, p, q, beban, `in`)
+            )*/
+            val doc = hashMapOf(
+                    "namabay" to namabay,
+                    "tanggal" to tv_date.text.toString().trim(),
+                    "waktu" to valueRg.text.toString().trim(),
+                    "u" to u,
+                    "i" to i,
+                    "p" to p,
+                    "q" to q,
+                    "in" to `in`,
+                    "beban" to beban
             )
-            val documentReference = db!!.collection("Laporin").document(date)
+            val docpor = hashMapOf(
+                    "tanggal" to tv_date.text.toString().trim(),
+                    "waktu" to valueRg.text.toString().trim()
+            )
+            var row = it
+            db!!.collection("Laporin").document(date).set(docpor)
+            Log.d("CUK Namabay", "Nama = $namabay , Index ke $it")
+            if (namabay != "null") {
+                db.collection("Laporin").document(date).collection("Laporr").document(namabay.trim()).set(doc, SetOptions.merge())
+                        .addOnCompleteListener {
+                            Toast.makeText(applicationContext, "hm oke", Toast.LENGTH_SHORT).show()
+//                            Log.d("CUK", "Row ke $row")
+                        }.addOnFailureListener {
+                            Log.d("CUK ERROR", "ERROR ke $row dan $it")
+//                            db.collection("Laporin").document(date).collection("Laporr").document(namabay.trim()).set(doc, SetOptions.merge())
+                        }
+            } else {
+
+//                    db.collection("Laporin").document(date).collection("Laporr").document(namabay.trim()).set(doc, SetOptions.merge())
+
+                Log.d("CUK dikiro Null", "ERROR ke $row")
+            }
+//            return@forEach
+
+            /*val documentReference = db!!.collection("Laporin").document(date)
             documentReference.get()
                     .addOnSuccessListener { document ->
                         if (document.exists()) {
@@ -167,22 +254,8 @@ class LaporanBebanActivity2 : AppCompatActivity(), View.OnClickListener {
                             Toast.makeText(applicationContext, "Document = NULL $it", Toast.LENGTH_SHORT).show()
                         }
 
-                    }
-
+                    }*/
         }
-    }
-
-    private fun cekEmptyEditext(u: String, i: String, p: String, q: String, `in`: String, beban: String, childHolder: RecyclerView.ViewHolder?): Boolean {
-        if (TextUtils.isEmpty("$u, $i, $p, $q, $`in`, $beban")) {
-            childHolder?.itemView?.et_transmisi_U?.setError("isi dulu")
-            childHolder?.itemView?.et_transmisi_I?.setError("isi dulu")
-            childHolder?.itemView?.et_transmisi_P?.setError("isi dulu")
-            childHolder?.itemView?.et_transmisi_Q?.setError("isi dulu")
-            childHolder?.itemView?.et_transmisi_In?.setError("isi dulu")
-            childHolder?.itemView?.et_transmisi_beban?.setError("isi dulu")
-            return true
-        }
-        return false
     }
 
     private fun checkduplicat(listarraynya: String): Boolean {
@@ -191,8 +264,8 @@ class LaporanBebanActivity2 : AppCompatActivity(), View.OnClickListener {
 
         for (posisine in 0..count!!) {
             val namalist = rvBebanTransmisi.findViewHolderForAdapterPosition(posisine)?.itemView?.findViewById<TextView>(R.id.tv_beban_transmisi)?.text.toString()
-            if (listarraynya.contains("laporan $namalist", true)) {
-                return true
+            if (listarraynya.contains(namalist)) {
+                hasil = true
             }
         }
         return hasil

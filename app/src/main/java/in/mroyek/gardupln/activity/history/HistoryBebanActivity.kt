@@ -29,7 +29,10 @@ class HistoryBebanActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_history_beban)
         init()
+       /* val intent = intent.extras
+        val date = intent?.getString("tanggal")*/
 
+//        val query: Query = db.collection("Laporin").document(date.toString()).collection("Laporr")
         val query: Query = db.collection("Laporin")
         val bebanresponse = FirestoreRecyclerOptions.Builder<LaporanBebanResponses>()
                 .setQuery(query, LaporanBebanResponses::class.java).build()
@@ -44,7 +47,8 @@ class HistoryBebanActivity : AppCompatActivity() {
                 p0.itemView.setOnClickListener {
                     //                    val tanggal = bebanresponse.snapshots.getSnapshot(p1).tanggal
                     val tanggal = item_history_tanggal.text.toString()
-                    startActivity(Intent(applicationContext, DetailHistoryBebanActivity::class.java).putExtra("tanggal", tanggal))
+                    val waktu = item_history_jam.text.toString()
+                    startActivity(Intent(applicationContext, DetailHistoryBebanActivity::class.java).putExtra("tanggal", tanggal).putExtra("waktu", waktu))
                 }
                 /*p0.itemView.findViewById<Button>(R.id.btnHapus).setOnClickListener {
                     val tanggal = item_history_tanggal.text.toString()
