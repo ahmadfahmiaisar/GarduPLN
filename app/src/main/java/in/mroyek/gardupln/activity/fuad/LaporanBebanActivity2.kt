@@ -96,13 +96,13 @@ class LaporanBebanActivity2 : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun upload() {
-        val itemCount = rvBebanTransmisi.adapter!!.itemCount - 1
-        val childCountsRV = 0..itemCount
-        childCountsRV.forEach { it ->
-            val childHolder = rvBebanTransmisi.findViewHolderForAdapterPosition(it)
+        val itemCount = rvBebanTransmisi.adapter?.itemCount
+        val childCountsRV = 0.rangeTo(itemCount!!)
+        childCountsRV.forEach {
+            val childHolder = rvBebanTransmisi.findViewHolderForLayoutPosition(it)
             val cheid = rg_time_beban.checkedRadioButtonId
             val valueRg = findViewById<RadioButton>(cheid)
-            val namabay = childHolder?.itemView?.tv_beban_transmisi?.text.toString()
+            val namabay = childHolder?.itemView?.tv_beban_transmisi?.text.toString().trim()
             val u = childHolder?.itemView?.et_transmisi_U?.text.toString().trim()
             val i = childHolder?.itemView?.et_transmisi_I?.text.toString().trim()
             val p = childHolder?.itemView?.et_transmisi_P?.text.toString().trim()
@@ -110,17 +110,49 @@ class LaporanBebanActivity2 : AppCompatActivity(), View.OnClickListener {
             val `in` = childHolder?.itemView?.et_transmisi_In?.text.toString().trim()
             val beban = childHolder?.itemView?.et_transmisi_beban?.text.toString().trim()
 
-//            if (cekEmptyEditext(u, i, p, q, `in`, beban, childHolder)) return
-
             val date = tv_date.text.toString().trim()
             val listArraynya = "laporan $namabay"
-            val doc = hashMapOf(
+            /*val doc = hashMapOf(
                     "namabay" to namabay,
                     "tanggal" to tv_date.text.toString().trim(),
                     "waktu" to valueRg.text.toString().trim(),
                     listArraynya to arrayListOf(u, i, p, q, beban, `in`)
+            )*/
+            val doc = hashMapOf(
+                    "namabay" to namabay,
+                    "tanggal" to tv_date.text.toString().trim(),
+                    "waktu" to valueRg.text.toString().trim(),
+                    "u" to u,
+                    "i" to i,
+                    "p" to p,
+                    "q" to q,
+                    "in" to `in`,
+                    "beban" to beban
             )
-            val documentReference = db!!.collection("Laporin").document(date)
+            val docpor = hashMapOf(
+                    "tanggal" to tv_date.text.toString().trim(),
+                    "waktu" to valueRg.text.toString().trim()
+            )
+            var row = it
+            db!!.collection("Laporin").document(date).set(docpor)
+            if (namabay != "null") {
+                db.collection("Laporin").document(date).collection("Laporr").document(namabay.trim()).set(doc, SetOptions.merge())
+                        .addOnCompleteListener {
+//                            Toast.makeText(applicationContext, "hm oke", Toast.LENGTH_SHORT).show()
+//                            Log.d("CUK", "Row ke $row")
+                        }.addOnFailureListener {
+                            Log.d("CUK ERROR", "ERROR ke $row dan $it")
+                            db.collection("Laporin").document(date).collection("Laporr").document(namabay.trim()).set(doc, SetOptions.merge())
+                        }
+            }else {
+                if(it==3){
+                    db.collection("Laporin").document(date).collection("Laporr").document(namabay.trim()).set(doc, SetOptions.merge())
+                }
+                Log.d("CUK dikiro Null", "ERROR ke $row")
+            }
+//            return@forEach
+
+            /*val documentReference = db!!.collection("Laporin").document(date)
             documentReference.get()
                     .addOnSuccessListener { document ->
                         if (document.exists()) {
@@ -167,22 +199,8 @@ class LaporanBebanActivity2 : AppCompatActivity(), View.OnClickListener {
                             Toast.makeText(applicationContext, "Document = NULL $it", Toast.LENGTH_SHORT).show()
                         }
 
-                    }
-
+                    }*/
         }
-    }
-
-    private fun cekEmptyEditext(u: String, i: String, p: String, q: String, `in`: String, beban: String, childHolder: RecyclerView.ViewHolder?): Boolean {
-        if (TextUtils.isEmpty("$u, $i, $p, $q, $`in`, $beban")) {
-            childHolder?.itemView?.et_transmisi_U?.setError("isi dulu")
-            childHolder?.itemView?.et_transmisi_I?.setError("isi dulu")
-            childHolder?.itemView?.et_transmisi_P?.setError("isi dulu")
-            childHolder?.itemView?.et_transmisi_Q?.setError("isi dulu")
-            childHolder?.itemView?.et_transmisi_In?.setError("isi dulu")
-            childHolder?.itemView?.et_transmisi_beban?.setError("isi dulu")
-            return true
-        }
-        return false
     }
 
     private fun checkduplicat(listarraynya: String): Boolean {
@@ -191,8 +209,8 @@ class LaporanBebanActivity2 : AppCompatActivity(), View.OnClickListener {
 
         for (posisine in 0..count!!) {
             val namalist = rvBebanTransmisi.findViewHolderForAdapterPosition(posisine)?.itemView?.findViewById<TextView>(R.id.tv_beban_transmisi)?.text.toString()
-            if (listarraynya.contains("laporan $namalist", true)) {
-                return true
+            if (listarraynya.contains(namalist)) {
+                hasil = true
             }
         }
         return hasil

@@ -29,7 +29,7 @@ class LaporanBebanActivity : AppCompatActivity() {
         setContentView(R.layout.activity_laporan_beban)
         et_transmisi_beban1.setOnClickListener {
             val beban1 = (et_transmisi_I1.text.toString().toDouble() / et_transmisi_In1.text.toString().toDouble())* 100/100
-            et_transmisi_beban1.text = "$beban1 %"
+            et_transmisi_beban1.text = beban1.toString()
         }
         et_transmisi_beban2.setOnClickListener {
             val beban2 = (et_transmisi_I2.text.toString().toDouble() / et_transmisi_In2.text.toString().toDouble())* 100/100
