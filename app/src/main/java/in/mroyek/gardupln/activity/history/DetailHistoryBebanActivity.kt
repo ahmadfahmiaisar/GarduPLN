@@ -16,13 +16,13 @@ import com.firebase.ui.firestore.FirestoreRecyclerOptions
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_detail_history_beban.*
 
-
 class DetailHistoryBebanActivity : AppCompatActivity() {
 
     private var db: FirebaseFirestore = FirebaseFirestore.getInstance()
     lateinit var adapter: FirestoreRecyclerAdapter<HistoryBebanResponse, BebanHistoryHolder>
     lateinit var context: Context
     lateinit var tanggal: String
+    lateinit var waktu: String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail_history_beban)
@@ -77,7 +77,7 @@ class DetailHistoryBebanActivity : AppCompatActivity() {
             }
 
             override fun onBindViewHolder(p0: BebanHistoryHolder, p1: Int, p2: HistoryBebanResponse) {
-                if(!p2.namabay.equals("null")){
+                if (!p2.namabay.equals("null")) {
                     p0.bindData(p2, context)
                 }
             }
@@ -89,24 +89,36 @@ class DetailHistoryBebanActivity : AppCompatActivity() {
     private fun init() {
         val intent = intent.extras
         tanggal = intent?.get("tanggal").toString()
+        waktu = intent?.get("waktu").toString()
         val linearLayoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         rv_historyDetailBeban.layoutManager = linearLayoutManager
+        item_detail_history_tanggal.text = tanggal
+        item_detail_history_jam.text = waktu
     }
 
     var bulkText: String = ""
 
     inner class BebanHistoryHolder(view: View) : RecyclerView.ViewHolder(view) {
-       /* val tanggal: TextView = view.findViewById(R.id.item_detail_history_tanggal)
+        /*val tanggal: TextView = view.findViewById(R.id.item_detail_history_tanggal)
         val waktu: TextView = view.findViewById(R.id.item_detail_history_jam)*/
+        val namabay: TextView = view.findViewById(R.id.tv_item_title_laporan)
         val u: TextView = view.findViewById(R.id.tv_item_U)
         val i: TextView = view.findViewById(R.id.tv_item_I)
+        val p: TextView = view.findViewById(R.id.tv_item_P)
+        val q: TextView = view.findViewById(R.id.tv_item_Q)
+        val `in`: TextView = view.findViewById(R.id.tv_item_In)
+        val beban: TextView = view.findViewById(R.id.tv_item_beban)
         //        var rvItemLaporanHistory: RecyclerView = view.findViewById(R.id.rv_item_laporanbeban_history)
         fun bindData(response: HistoryBebanResponse, context: Context) {
-
             copyText(response)
-
+            namabay.text = response.namabay
             u.text = response.u
             i.text = response.i
+            p.text = response.p
+            q.text = response.q
+            `in`.text = response.`in`
+            beban.text = response.beban
+
             /*tanggal.text = response.tanggal
             waktu.text = response.waktu*/
 
@@ -133,8 +145,12 @@ class DetailHistoryBebanActivity : AppCompatActivity() {
     }
 
     private fun copyText(response: HistoryBebanResponse) {
+        bulkText += "namabay = ${response.namabay},\n"
         bulkText += "U = ${response.u},\n"
-        bulkText += "U = ${response.u},"
+        bulkText += "P = ${response.p},\n"
+        bulkText += "Q = ${response.q},\n"
+        bulkText += "In = ${response.`in`},\n"
+        bulkText += "Beban = ${response.beban}\n"
     }
 
     override fun onStart() {

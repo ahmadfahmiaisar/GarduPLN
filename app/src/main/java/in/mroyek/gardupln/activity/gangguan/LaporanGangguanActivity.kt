@@ -18,6 +18,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
 import kotlinx.android.synthetic.main.activity_laporan_gangguan.*
 
+
 class LaporanGangguanActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var adapter: LaporanGangguanAdapter
     private val db: FirebaseFirestore? = FirebaseFirestore.getInstance()
@@ -29,6 +30,7 @@ class LaporanGangguanActivity : AppCompatActivity(), View.OnClickListener {
         initList()
         loadDatabase()
     }
+
 
     override fun onClick(p0: View?) {
         when (p0?.id) {

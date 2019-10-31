@@ -27,10 +27,12 @@ import kotlinx.android.synthetic.main.activity_laporan_beban2.*
 import kotlinx.android.synthetic.main.item_transmisi.view.*
 import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.collections.HashMap
 
 
 class LaporanBebanActivity2 : AppCompatActivity(), View.OnClickListener {
-    lateinit var adapterTransmisi: FirestoreRecyclerAdapter<LaporanBebanResponses, TransmisiHolder>
+//    lateinit var adapterTransmisi: FirestoreRecyclerAdapter<LaporanBebanResponses, TransmisiHolder>
+    lateinit var adapterTransmisi: LaporanBebanAdapter
     //    val modelist: MutableList<LaporanBebanResponses>? = mutableListOf()
     private val db: FirebaseFirestore? = FirebaseFirestore.getInstance()
     //    lateinit var tanggal: String
@@ -81,7 +83,9 @@ class LaporanBebanActivity2 : AppCompatActivity(), View.OnClickListener {
         val queryResponse = FirestoreRecyclerOptions.Builder<LaporanBebanResponses>()
                 .setQuery(query, LaporanBebanResponses::class.java)
                 .build()
-        adapterTransmisi = object : FirestoreRecyclerAdapter<LaporanBebanResponses, TransmisiHolder>(queryResponse) {
+        adapterTransmisi = LaporanBebanAdapter(queryResponse)
+
+        /*adapterTransmisi = object : FirestoreRecyclerAdapter<LaporanBebanResponses, TransmisiHolder>(queryResponse) {
             override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TransmisiHolder {
                 val viewTransmisi = LayoutInflater.from(parent.context).inflate(R.layout.item_transmisi, parent, false)
                 return TransmisiHolder(viewTransmisi)
@@ -90,7 +94,24 @@ class LaporanBebanActivity2 : AppCompatActivity(), View.OnClickListener {
             override fun onBindViewHolder(transmisiHolder: TransmisiHolder, position: Int, response: LaporanBebanResponses) {
                 transmisiHolder.bindData(response)
             }
-        }
+
+            var holderHashMap: HashMap<Int, RecyclerView.ViewHolder> = HashMap()
+
+            fun getHolder():HashMap<Int, RecyclerView.ViewHolder>{
+                return holderHashMap
+            }
+
+            override fun onViewDetachedFromWindow(holder: TransmisiHolder) {
+                holderHashMap.put(holder.adapterPosition, holder)
+                super.onViewDetachedFromWindow(holder)
+            }
+
+            override fun onViewAttachedToWindow(holder: TransmisiHolder) {
+                holderHashMap.remove(holder.adapterPosition)
+                super.onViewAttachedToWindow(holder)
+            }
+        }*/
+
         adapterTransmisi.notifyDataSetChanged()
         rvBebanTransmisi.adapter = adapterTransmisi
     }
@@ -99,9 +120,40 @@ class LaporanBebanActivity2 : AppCompatActivity(), View.OnClickListener {
         val itemCount = rvBebanTransmisi.adapter?.itemCount
         val childCountsRV = 0.rangeTo(itemCount!!)
         childCountsRV.forEach {
-            val childHolder = rvBebanTransmisi.findViewHolderForLayoutPosition(it)
-            val cheid = rg_time_beban.checkedRadioButtonId
-            val valueRg = findViewById<RadioButton>(cheid)
+
+            //COBA
+/*
+            var namabay = ""
+            var u = ""
+            var i = ""
+            var p = ""
+            var q = ""
+            var `in` = ""
+            var beban = ""
+
+            rvBebanTransmisi.post(Runnable {
+                val childHolder = rvBebanTransmisi.layoutManager?.findViewByPosition(it)
+                namabay = childHolder?.tv_beban_transmisi?.text.toString().trim()
+                u = childHolder?.et_transmisi_U?.text.toString().trim()
+                i = childHolder?.et_transmisi_I?.text.toString().trim()
+                p = childHolder?.et_transmisi_P?.text.toString().trim()
+                q = childHolder?.et_transmisi_Q?.text.toString().trim()
+                `in` = childHolder?.et_transmisi_In?.text.toString().trim()
+                beban = childHolder?.et_transmisi_beban?.text.toString().trim()
+            })
+*/
+
+            //END COBA
+
+//            val childHolder = rvBebanTransmisi.findViewHolderForLayoutPosition(it)
+//            val childHolder = rvBebanTransmisi.findViewHolderForAdapterPosition(it)
+//            val childHolder = rvBebanTransmisi.layoutManager?.findViewByPosition(it)
+            var childHolder = rvBebanTransmisi.findViewHolderForAdapterPosition(it)
+            if(childHolder==null){
+                childHolder = adapterTransmisi.holderHashMap[it]
+            }
+
+//            val namabay = childHolder?.itemView?.tv_beban_transmisi?.text.toString().trim()
             val namabay = childHolder?.itemView?.tv_beban_transmisi?.text.toString().trim()
             val u = childHolder?.itemView?.et_transmisi_U?.text.toString().trim()
             val i = childHolder?.itemView?.et_transmisi_I?.text.toString().trim()
@@ -110,6 +162,8 @@ class LaporanBebanActivity2 : AppCompatActivity(), View.OnClickListener {
             val `in` = childHolder?.itemView?.et_transmisi_In?.text.toString().trim()
             val beban = childHolder?.itemView?.et_transmisi_beban?.text.toString().trim()
 
+            val cheid = rg_time_beban.checkedRadioButtonId
+            val valueRg = findViewById<RadioButton>(cheid)
             val date = tv_date.text.toString().trim()
             val listArraynya = "laporan $namabay"
             /*val doc = hashMapOf(
@@ -135,19 +189,20 @@ class LaporanBebanActivity2 : AppCompatActivity(), View.OnClickListener {
             )
             var row = it
             db!!.collection("Laporin").document(date).set(docpor)
+            Log.d("CUK Namabay", "Nama = $namabay , Index ke $it")
             if (namabay != "null") {
                 db.collection("Laporin").document(date).collection("Laporr").document(namabay.trim()).set(doc, SetOptions.merge())
                         .addOnCompleteListener {
-//                            Toast.makeText(applicationContext, "hm oke", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(applicationContext, "hm oke", Toast.LENGTH_SHORT).show()
 //                            Log.d("CUK", "Row ke $row")
                         }.addOnFailureListener {
                             Log.d("CUK ERROR", "ERROR ke $row dan $it")
-                            db.collection("Laporin").document(date).collection("Laporr").document(namabay.trim()).set(doc, SetOptions.merge())
+//                            db.collection("Laporin").document(date).collection("Laporr").document(namabay.trim()).set(doc, SetOptions.merge())
                         }
-            }else {
-                if(it==3){
-                    db.collection("Laporin").document(date).collection("Laporr").document(namabay.trim()).set(doc, SetOptions.merge())
-                }
+            } else {
+
+//                    db.collection("Laporin").document(date).collection("Laporr").document(namabay.trim()).set(doc, SetOptions.merge())
+
                 Log.d("CUK dikiro Null", "ERROR ke $row")
             }
 //            return@forEach

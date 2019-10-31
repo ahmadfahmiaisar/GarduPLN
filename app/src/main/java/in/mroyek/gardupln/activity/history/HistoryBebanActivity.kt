@@ -43,7 +43,8 @@ class HistoryBebanActivity : AppCompatActivity() {
                 p0.itemView.setOnClickListener {
 //                    val tanggal = bebanresponse.snapshots.getSnapshot(p1).tanggal
                     val tanggal = item_history_tanggal.text.toString()
-                    startActivity(Intent(applicationContext, DetailHistoryBebanActivity::class.java).putExtra("tanggal", tanggal))
+                    val waktu = item_history_jam.text.toString()
+                    startActivity(Intent(applicationContext, DetailHistoryBebanActivity::class.java).putExtra("tanggal", tanggal).putExtra("waktu", waktu))
                 }
             }
         }
