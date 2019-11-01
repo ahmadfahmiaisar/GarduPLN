@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -31,23 +31,31 @@
     </TableRow>
 
     <ScrollView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_historyDetailBeban"
+        <LinearLayout
+            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            tools:listitem="@layout/item_laporan_value" />
-    </ScrollView>
+            android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/tv_lapor_cuaca"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/_5sdp"
-        android:text="cuacanya yah ini"
-        android:textSize="@dimen/_14ssp"
-        android:textColor="@color/colorPrimaryDark"
-        android:textIsSelectable="true" />
-</TableLayout>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_historyDetailBeban"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/_5sdp"
+                tools:listitem="@layout/item_laporan_value" />
+
+            <TextView
+                android:id="@+id/tv_lapor_cuaca"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_5sdp"
+                android:layout_marginBottom="@dimen/_20sdp"
+                android:text="cuacanya yah ini"
+                android:textColor="@color/colorPrimaryDark"
+                android:textIsSelectable="true"
+                android:textSize="@dimen/_14ssp" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

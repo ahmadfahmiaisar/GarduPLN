@@ -9,6 +9,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.*
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -30,6 +31,8 @@ class DetailHistoryBebanActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail_history_beban)
         init()
+        bulkText += "Tanggal = $tanggal \n"
+        bulkText += "Waktu = $waktu \n \n"
 //        loadData()
         getDataHistory()
         getCuaca()
@@ -43,14 +46,18 @@ class DetailHistoryBebanActivity : AppCompatActivity() {
     @Suppress("UNREACHABLE_CODE")
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.copy -> copyTextToClipboard()
+            R.id.copy -> {
+                copyTextToClipboard()
+                Toast.makeText(applicationContext, "sudah dicopy", Toast.LENGTH_LONG).show()
+            }
         }
         return super.onOptionsItemSelected(item)
     }
 
     private fun copyTextToClipboard() {
-        var clipboardManager: ClipboardManager = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
-        var clipData: ClipData = ClipData.newPlainText("Laporan", bulkText)
+        bulkText += "\n Cuaca = $getCuaca \n"
+        val clipboardManager: ClipboardManager = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+        val clipData: ClipData = ClipData.newPlainText("Laporan", bulkText)
         clipboardManager.setPrimaryClip(clipData)
     }
 
@@ -162,7 +169,7 @@ class DetailHistoryBebanActivity : AppCompatActivity() {
         bulkText += "Q = ${response.q} MW,\n"
         bulkText += "In = ${response.`in`} MVar,\n"
         bulkText += "Beban = ${response.beban} A \n"
-        bulkText += "$getCuaca \n"
+//        bulkText += "$getCuaca \n"
     }
 
     override fun onStart() {
