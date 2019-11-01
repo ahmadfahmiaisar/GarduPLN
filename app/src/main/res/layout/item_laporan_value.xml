@@ -8,8 +8,10 @@
         android:id="@+id/tv_item_title_laporan"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textIsSelectable="true"
-        android:text="transmisi" />
+        android:textSize="@dimen/_14ssp"
+        android:textColor="@color/colorPrimary"
+        android:text="transmisi"
+        android:textIsSelectable="true" />
 
     <TableRow
         android:layout_width="match_parent"
@@ -19,9 +21,9 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
-            android:textIsSelectable="true"
             android:text="U"
             android:textColor="@color/colorPrimaryDark"
+            android:textIsSelectable="true"
             android:textSize="@dimen/_14ssp" />
 
         <TextView
@@ -29,8 +31,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:textIsSelectable="true"
             android:textColor="@color/colorPrimaryDark"
+            android:textIsSelectable="true"
             android:textSize="@dimen/_14ssp" />
 
         <TextView
@@ -38,8 +40,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
             android:text="KV"
-            android:textIsSelectable="true"
             android:textColor="@color/colorPrimaryDark"
+            android:textIsSelectable="true"
             android:textSize="@dimen/_14ssp" />
     </TableRow>
 
@@ -50,28 +52,28 @@
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:textIsSelectable="true"
             android:layout_weight="0.5"
             android:text="I"
             android:textColor="@color/colorPrimaryDark"
+            android:textIsSelectable="true"
             android:textSize="@dimen/_14ssp" />
 
         <TextView
             android:id="@+id/tv_item_I"
             android:layout_width="wrap_content"
-            android:textIsSelectable="true"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:textColor="@color/colorPrimaryDark"
+            android:textIsSelectable="true"
             android:textSize="@dimen/_14ssp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textIsSelectable="true"
             android:layout_weight="0.5"
             android:text="A"
             android:textColor="@color/colorPrimaryDark"
+            android:textIsSelectable="true"
             android:textSize="@dimen/_14ssp" />
     </TableRow>
 
@@ -83,27 +85,27 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
-            android:textIsSelectable="true"
             android:text="P"
             android:textColor="@color/colorPrimaryDark"
+            android:textIsSelectable="true"
             android:textSize="@dimen/_14ssp" />
 
         <TextView
             android:id="@+id/tv_item_P"
             android:layout_width="wrap_content"
-            android:textIsSelectable="true"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:textColor="@color/colorPrimaryDark"
+            android:textIsSelectable="true"
             android:textSize="@dimen/_14ssp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
-            android:textIsSelectable="true"
             android:text="MW"
             android:textColor="@color/colorPrimaryDark"
+            android:textIsSelectable="true"
             android:textSize="@dimen/_14ssp" />
     </TableRow>
 
@@ -115,9 +117,9 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
-            android:textIsSelectable="true"
             android:text="Q"
             android:textColor="@color/colorPrimaryDark"
+            android:textIsSelectable="true"
             android:textSize="@dimen/_14ssp" />
 
         <TextView
@@ -125,8 +127,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:textIsSelectable="true"
             android:textColor="@color/colorPrimaryDark"
+            android:textIsSelectable="true"
             android:textSize="@dimen/_14ssp" />
 
         <TextView
@@ -134,8 +136,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
             android:text="MVar"
-            android:textIsSelectable="true"
             android:textColor="@color/colorPrimaryDark"
+            android:textIsSelectable="true"
             android:textSize="@dimen/_14ssp" />
     </TableRow>
 
@@ -148,9 +150,9 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
-            android:textIsSelectable="true"
             android:text="Beban"
             android:textColor="@color/colorPrimaryDark"
+            android:textIsSelectable="true"
             android:textSize="@dimen/_14ssp" />
 
 
@@ -158,9 +160,9 @@
             android:id="@+id/tv_item_beban"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textIsSelectable="true"
             android:layout_weight="1"
             android:textColor="@color/colorPrimaryDark"
+            android:textIsSelectable="true"
             android:textSize="@dimen/_14ssp" />
 
         <TextView
@@ -168,8 +170,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
             android:text="%"
-            android:textIsSelectable="true"
             android:textColor="@color/colorPrimaryDark"
+            android:textIsSelectable="true"
             android:textSize="@dimen/_14ssp" />
     </TableRow>
 
@@ -180,28 +182,51 @@
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:textIsSelectable="true"
             android:layout_weight="0.5"
             android:text="In"
             android:textColor="@color/colorPrimaryDark"
+            android:textIsSelectable="true"
             android:textSize="@dimen/_14ssp" />
 
         <TextView
             android:id="@+id/tv_item_In"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textIsSelectable="true"
             android:layout_weight="1"
             android:textColor="@color/colorPrimaryDark"
+            android:textIsSelectable="true"
             android:textSize="@dimen/_14ssp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textIsSelectable="true"
             android:layout_weight="0.5"
             android:text="A"
             android:textColor="@color/colorPrimaryDark"
+            android:textIsSelectable="true"
             android:textSize="@dimen/_14ssp" />
     </TableRow>
+
+    <!--<TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:text="Cuaca"
+            android:textColor="@color/colorPrimaryDark"
+            android:textIsSelectable="true"
+            android:textSize="@dimen/_14ssp" />
+
+        <TextView
+            android:id="@+id/tv_lapor_cuaca"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="@color/colorPrimaryDark"
+            android:textIsSelectable="true"
+            android:layout_margin="@dimen/_5sdp" />
+    </TableRow>-->
 </TableLayout>

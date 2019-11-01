@@ -1,6 +1,7 @@
 package `in`.mroyek.gardupln.activity.history
 
 import `in`.mroyek.gardupln.R
+import android.annotation.SuppressLint
 import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context
@@ -13,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter
 import com.firebase.ui.firestore.FirestoreRecyclerOptions
+import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_detail_history_beban.*
 
@@ -23,13 +25,14 @@ class DetailHistoryBebanActivity : AppCompatActivity() {
     lateinit var context: Context
     lateinit var tanggal: String
     lateinit var waktu: String
+    private var getCuaca: String? = ""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail_history_beban)
         init()
 //        loadData()
         getDataHistory()
-        getLaporanCOunt()
+        getCuaca()
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -51,10 +54,14 @@ class DetailHistoryBebanActivity : AppCompatActivity() {
         clipboardManager.setPrimaryClip(clipData)
     }
 
-    private fun getLaporanCOunt() {
-        val query = db.collection("Laporin").document().get().addOnCompleteListener {
+    @SuppressLint("SetTextI18n")
+    private fun getCuaca() {
+        val docRef = db.collection("Laporin").document("$tanggal $waktu")
+        docRef.get().addOnCompleteListener {
             if (it.isSuccessful) {
-                Log.d("TESS", "HASIL ${it.result!!}")
+                val doc: DocumentSnapshot? = it.result
+                getCuaca = doc?.get("cuaca").toString()
+                tv_lapor_cuaca.text = "Cuaca: $getCuaca"
             }
         }
 
@@ -64,7 +71,7 @@ class DetailHistoryBebanActivity : AppCompatActivity() {
     }
 
     private fun getDataHistory() {
-        val query = db.collection("Laporin").document(tanggal).collection("Laporr")
+        val query = db.collection("Laporin").document("$tanggal $waktu").collection("Laporr")
         val resposeQuery = FirestoreRecyclerOptions.Builder<HistoryBebanResponse>()
                 .setQuery(query, HistoryBebanResponse::class.java)
                 .build()
@@ -80,6 +87,7 @@ class DetailHistoryBebanActivity : AppCompatActivity() {
                 if (!p2.namabay.equals("null")) {
                     p0.bindData(p2, context)
                 }
+//                tv_lapor_cuaca.text = p2.cuaca
             }
         }
         adapter.notifyDataSetChanged()
@@ -96,8 +104,6 @@ class DetailHistoryBebanActivity : AppCompatActivity() {
         item_detail_history_jam.text = waktu
     }
 
-    var bulkText: String = ""
-
     inner class BebanHistoryHolder(view: View) : RecyclerView.ViewHolder(view) {
         /*val tanggal: TextView = view.findViewById(R.id.item_detail_history_tanggal)
         val waktu: TextView = view.findViewById(R.id.item_detail_history_jam)*/
@@ -108,9 +114,10 @@ class DetailHistoryBebanActivity : AppCompatActivity() {
         val q: TextView = view.findViewById(R.id.tv_item_Q)
         val `in`: TextView = view.findViewById(R.id.tv_item_In)
         val beban: TextView = view.findViewById(R.id.tv_item_beban)
+        val cuaca = tv_lapor_cuaca.text.toString()
         //        var rvItemLaporanHistory: RecyclerView = view.findViewById(R.id.rv_item_laporanbeban_history)
         fun bindData(response: HistoryBebanResponse, context: Context) {
-            copyText(response)
+            copyText(response, cuaca)
             namabay.text = response.namabay
             u.text = response.u
             i.text = response.i
@@ -118,7 +125,9 @@ class DetailHistoryBebanActivity : AppCompatActivity() {
             q.text = response.q
             `in`.text = response.`in`
             beban.text = response.beban
-
+//            cuaca.text = tv_lapor_cuaca.text
+            Log.d("CUACA", "mbuh ki ${response.cuaca}")
+            Log.d("CUACA", "${response.namabay}")
             /*tanggal.text = response.tanggal
             waktu.text = response.waktu*/
 
@@ -144,13 +153,16 @@ class DetailHistoryBebanActivity : AppCompatActivity() {
          }*/
     }
 
-    private fun copyText(response: HistoryBebanResponse) {
-        bulkText += "namabay = ${response.namabay},\n"
-        bulkText += "U = ${response.u},\n"
-        bulkText += "P = ${response.p},\n"
-        bulkText += "Q = ${response.q},\n"
-        bulkText += "In = ${response.`in`},\n"
-        bulkText += "Beban = ${response.beban}\n"
+    var bulkText: String = ""
+
+    private fun copyText(response: HistoryBebanResponse, cuaca: String) {
+        bulkText += "${response.namabay},\n"
+        bulkText += "U = ${response.u} KV,\n"
+        bulkText += "P = ${response.p} A,\n"
+        bulkText += "Q = ${response.q} MW,\n"
+        bulkText += "In = ${response.`in`} MVar,\n"
+        bulkText += "Beban = ${response.beban} A \n"
+        bulkText += "$getCuaca \n"
     }
 
     override fun onStart() {

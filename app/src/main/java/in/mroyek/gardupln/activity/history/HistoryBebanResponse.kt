@@ -11,11 +11,12 @@ class HistoryBebanResponse {
     var q: String? = null
     var `in`: String? = null
     var beban: String? = null
+    var cuaca: String? = null
 //    var laporan: List<String>? = null\
 //    var laporan: List<Lapor>? = null
 
     constructor() {}
-    constructor(id: String?, namabay: String?, tanggal: String?, waktu: String?, u: String?, i: String?, p: String?, q: String?, `in`: String?, beban: String?) {
+    constructor(id: String?, namabay: String?, tanggal: String?, waktu: String?, u: String?, i: String?, p: String?, q: String?, `in`: String?, beban: String?, cuaca: String?) {
         this.id = id
         this.namabay = namabay
         this.tanggal = tanggal
@@ -26,6 +27,7 @@ class HistoryBebanResponse {
         this.q = q
         this.`in` = `in`
         this.beban = beban
+        this.cuaca = cuaca
     }
 
 }/*

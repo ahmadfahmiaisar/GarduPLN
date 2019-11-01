@@ -7,19 +7,18 @@ import android.annotation.SuppressLint
 import android.app.DatePickerDialog
 import android.content.Intent
 import android.os.Bundle
-import android.text.TextUtils
 import android.util.Log
-import android.view.*
+import android.view.Menu
+import android.view.MenuItem
+import android.view.View
 import android.widget.RadioButton
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.firebase.ui.firestore.FirestoreRecyclerAdapter
 import com.firebase.ui.firestore.FirestoreRecyclerOptions
 import com.google.firebase.firestore.DocumentSnapshot
-import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.SetOptions
 import kotlinx.android.synthetic.main.activity_laporan_beban.tv_date
@@ -27,11 +26,10 @@ import kotlinx.android.synthetic.main.activity_laporan_beban2.*
 import kotlinx.android.synthetic.main.item_transmisi.view.*
 import java.text.SimpleDateFormat
 import java.util.*
-import kotlin.collections.HashMap
 
 
 class LaporanBebanActivity2 : AppCompatActivity(), View.OnClickListener {
-//    lateinit var adapterTransmisi: FirestoreRecyclerAdapter<LaporanBebanResponses, TransmisiHolder>
+    //    lateinit var adapterTransmisi: FirestoreRecyclerAdapter<LaporanBebanResponses, TransmisiHolder>
     lateinit var adapterTransmisi: LaporanBebanAdapter
     //    val modelist: MutableList<LaporanBebanResponses>? = mutableListOf()
     private val db: FirebaseFirestore? = FirebaseFirestore.getInstance()
@@ -149,7 +147,7 @@ class LaporanBebanActivity2 : AppCompatActivity(), View.OnClickListener {
 //            val childHolder = rvBebanTransmisi.findViewHolderForAdapterPosition(it)
 //            val childHolder = rvBebanTransmisi.layoutManager?.findViewByPosition(it)
             var childHolder = rvBebanTransmisi.findViewHolderForAdapterPosition(it)
-            if(childHolder==null){
+            if (childHolder == null) {
                 childHolder = adapterTransmisi.holderHashMap[it]
             }
 
@@ -165,7 +163,7 @@ class LaporanBebanActivity2 : AppCompatActivity(), View.OnClickListener {
             val cheid = rg_time_beban.checkedRadioButtonId
             val valueRg = findViewById<RadioButton>(cheid)
             val date = tv_date.text.toString().trim()
-            val listArraynya = "laporan $namabay"
+            val cuaca = et_lapor_cuaca.text.toString().trim()
             /*val doc = hashMapOf(
                     "namabay" to namabay,
                     "tanggal" to tv_date.text.toString().trim(),
@@ -185,13 +183,17 @@ class LaporanBebanActivity2 : AppCompatActivity(), View.OnClickListener {
             )
             val docpor = hashMapOf(
                     "tanggal" to tv_date.text.toString().trim(),
-                    "waktu" to valueRg.text.toString().trim()
+                    "waktu" to valueRg.text.toString().trim(),
+                    "cuaca" to cuaca
             )
+            /*val docCuaca = hashMapOf(
+                    "cuaca" to cuaca
+            )*/
             var row = it
-            db!!.collection("Laporin").document(date).set(docpor)
+            db!!.collection("Laporin").document("$date ${valueRg.text}").set(docpor)
             Log.d("CUK Namabay", "Nama = $namabay , Index ke $it")
             if (namabay != "null") {
-                db.collection("Laporin").document(date).collection("Laporr").document(namabay.trim()).set(doc, SetOptions.merge())
+                db.collection("Laporin").document("$date ${valueRg.text}").collection("Laporr").document(namabay.trim()).set(doc, SetOptions.merge())
                         .addOnCompleteListener {
                             Toast.makeText(applicationContext, "hm oke", Toast.LENGTH_SHORT).show()
 //                            Log.d("CUK", "Row ke $row")
@@ -200,11 +202,10 @@ class LaporanBebanActivity2 : AppCompatActivity(), View.OnClickListener {
 //                            db.collection("Laporin").document(date).collection("Laporr").document(namabay.trim()).set(doc, SetOptions.merge())
                         }
             } else {
-
 //                    db.collection("Laporin").document(date).collection("Laporr").document(namabay.trim()).set(doc, SetOptions.merge())
-
                 Log.d("CUK dikiro Null", "ERROR ke $row")
             }
+//            db.collection("Laporin").document("$date ${valueRg.text}").collection("Laporr").document("cuaca").set(docCuaca, SetOptions.merge())
 //            return@forEach
 
             /*val documentReference = db!!.collection("Laporin").document(date)

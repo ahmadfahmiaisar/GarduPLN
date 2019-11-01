@@ -40,4 +40,14 @@
             android:layout_height="wrap_content"
             tools:listitem="@layout/item_laporan_value" />
     </ScrollView>
+
+    <TextView
+        android:id="@+id/tv_lapor_cuaca"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_5sdp"
+        android:text="cuacanya yah ini"
+        android:textSize="@dimen/_14ssp"
+        android:textColor="@color/colorPrimaryDark"
+        android:textIsSelectable="true" />
 </TableLayout>
