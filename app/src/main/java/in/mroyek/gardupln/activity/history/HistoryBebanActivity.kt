@@ -26,8 +26,8 @@ class HistoryBebanActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_history_beban)
         init()
-       /* val intent = intent.extras
-        val date = intent?.getString("tanggal")*/
+        /* val intent = intent.extras
+         val date = intent?.getString("tanggal")*/
 
 //        val query: Query = db.collection("Laporin").document(date.toString()).collection("Laporr")
         val query: Query = db.collection("Laporin")
@@ -41,12 +41,14 @@ class HistoryBebanActivity : AppCompatActivity() {
 
             override fun onBindViewHolder(p0: BebanHolder, p1: Int, p2: LaporanBebanResponses) {
                 p0.bindData(p0.itemView.context, p2)
+                val tgl = p2.tanggal.toString()
+                val waktu = p2.waktu.toString()
                 p0.itemView.setOnClickListener {
-//                    val tanggal = bebanresponse.snapshots.getSnapshot(p1).tanggal
-                    val tgl = p2.tanggal.toString()
-                    val waktu = p2.waktu.toString()
+                    //                    val tanggal = bebanresponse.snapshots.getSnapshot(p1).tanggal
                     startActivity(Intent(applicationContext, DetailHistoryBebanActivity::class.java).putExtra("tanggal", tgl).putExtra("waktu", waktu))
                 }
+                /*p0.btnHapus.setOnClickListener {
+                }*/
             }
         }
         adapter.notifyDataSetChanged()
@@ -61,19 +63,28 @@ class HistoryBebanActivity : AppCompatActivity() {
     inner class BebanHolder(view: View) : RecyclerView.ViewHolder(view) {
         private val tvTanggal: TextView = view.findViewById(R.id.item_history_tanggal)
         private val tvJam: TextView = view.findViewById(R.id.item_history_jam)
-        private val btnHapus: ImageButton = view.findViewById(R.id.btnHapus)
+        val btnHapus: ImageButton = view.findViewById(R.id.btnHapus)
         fun bindData(context: Context, response: LaporanBebanResponses) {
             if (response.tanggal == response.tanggal) {
                 tvTanggal.text = response.tanggal
                 tvJam.text = response.waktu
             }
             btnHapus.setOnClickListener {
-//                val iddel = bayResponse.snapshots.getSnapshot(position).id
                 hapusDokumen(response.tanggal, response.waktu)
             }
         }
+
         private fun hapusDokumen(tanggal: String?, waktu: String?) {
             db.collection("Laporin").document("$tanggal $waktu").delete()
+            var deleted = 0
+            val koleksi: Query = db.collection("Laporin").document("$tanggal $waktu").collection("Laporr")
+            koleksi.get()
+                    .addOnCompleteListener {
+                        for (doc in it.result?.documents!!) {
+                            doc.reference.delete()
+                            ++deleted
+                        }
+                    }
         }
     }
 
