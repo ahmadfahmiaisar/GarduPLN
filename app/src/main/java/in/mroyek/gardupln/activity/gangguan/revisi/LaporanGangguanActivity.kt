@@ -1,4 +1,4 @@
-package `in`.mroyek.gardupln.activity.gangguan
+package `in`.mroyek.gardupln.activity.gangguan.revisi
 
 import `in`.mroyek.gardupln.R
 import `in`.mroyek.gardupln.model.Sinyal

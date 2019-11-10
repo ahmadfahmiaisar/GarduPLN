@@ -6,13 +6,13 @@
     android:layout_height="wrap_content">
 
     <TextView
-        android:id="@+id/item_history_tanggal"
+        android:id="@+id/tv_gangguan_item_history_tanggal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/_5sdp"
         android:textColor="@color/colorBlack"
         android:textSize="@dimen/_14sdp"
-        app:layout_constraintBottom_toBottomOf="@id/btnHapus"
+        app:layout_constraintBottom_toBottomOf="@id/btnHapus_historyGangguan"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="tanggal" />
@@ -23,43 +23,31 @@
         android:layout_height="30dp"
         android:layout_marginLeft="@dimen/_8sdp"
         android:background="@color/colorAccent"
-        app:layout_constraintBottom_toBottomOf="@id/btnHapus"
-        app:layout_constraintLeft_toRightOf="@id/item_history_tanggal"
-        app:layout_constraintTop_toTopOf="@id/btnHapus" />
+        app:layout_constraintBottom_toBottomOf="@id/btnHapus_historyGangguan"
+        app:layout_constraintLeft_toRightOf="@id/tv_gangguan_item_history_tanggal"
+        app:layout_constraintTop_toTopOf="@id/btnHapus_historyGangguan" />
 
     <TextView
-        android:id="@+id/item_history_jam"
+        android:id="@+id/tv_gangguan_item_history_jam"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/_8sdp"
         android:layout_marginRight="@dimen/_8sdp"
         android:textColor="@color/colorBlack"
         android:textSize="@dimen/_14sdp"
-        app:layout_constraintBottom_toBottomOf="@id/btnHapus"
+        app:layout_constraintBottom_toBottomOf="@id/btnHapus_historyGangguan"
         app:layout_constraintLeft_toRightOf="@id/separator"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="jam" />
 
-    <!--<ImageButton
-        android:id="@+id/btnEdit"
-        style="@style/Widget.AppCompat.Button.Colored"
-        android:layout_width="50dp"
-        android:layout_height="wrap_content"
-        android:layout_marginRight="@dimen/_4sdp"
-        android:src="@drawable/ic_edit_black_24dp"
-        android:tint="@color/colorWhite"
-        android:text="Hapus"
-        app:layout_constraintRight_toLeftOf="@id/btnHapus"
-        app:layout_constraintTop_toTopOf="parent" />-->
-
     <ImageButton
-        android:id="@+id/btnHapus"
+        android:id="@+id/btnHapus_historyGangguan"
         style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="50dp"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_delete_black_24dp"
-        android:tint="@color/colorWhite"
         android:text="Hapus"
+        android:tint="@color/colorWhite"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

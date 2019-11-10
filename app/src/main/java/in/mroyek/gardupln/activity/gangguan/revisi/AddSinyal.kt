@@ -1,4 +1,4 @@
-package `in`.mroyek.gardupln.activity.gangguan
+package `in`.mroyek.gardupln.activity.gangguan.revisi
 
 import `in`.mroyek.gardupln.R
 import androidx.appcompat.app.AppCompatActivity

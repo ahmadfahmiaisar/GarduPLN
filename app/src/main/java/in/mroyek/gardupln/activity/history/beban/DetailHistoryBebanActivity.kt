@@ -1,4 +1,4 @@
-package `in`.mroyek.gardupln.activity.history
+package `in`.mroyek.gardupln.activity.history.beban
 
 import `in`.mroyek.gardupln.R
 import android.annotation.SuppressLint
@@ -48,7 +48,7 @@ class DetailHistoryBebanActivity : AppCompatActivity() {
         when (item.itemId) {
             R.id.copy -> {
                 copyTextToClipboard()
-                Toast.makeText(applicationContext, "sudah dicopy", Toast.LENGTH_LONG).show()
+                Toast.makeText(applicationContext, "sudah tersalin", Toast.LENGTH_LONG).show()
             }
         }
         return super.onOptionsItemSelected(item)

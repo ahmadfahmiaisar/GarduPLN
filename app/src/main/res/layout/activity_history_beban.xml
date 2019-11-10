@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:context=".activity.history.HistoryBebanActivity">
+    tools:context=".activity.history.beban.HistoryBebanActivity">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_history_laporan_beban"

@@ -2,7 +2,7 @@ package `in`.mroyek.gardupln.activity.fuad
 
 import `in`.mroyek.gardupln.R
 import `in`.mroyek.gardupln.activity.beban.LaporanBebanResponses
-import `in`.mroyek.gardupln.activity.history.HistoryBebanActivity
+import `in`.mroyek.gardupln.activity.history.beban.HistoryBebanActivity
 import android.annotation.SuppressLint
 import android.app.DatePickerDialog
 import android.content.Intent

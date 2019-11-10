@@ -3,6 +3,7 @@
     package="in.mroyek.gardupln">
 
     <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -10,18 +11,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.history.DetailHistoryBebanActivity">
+        <activity android:name=".activity.history.gangguan.DetailGangguanHistory">
         </activity>
-        <activity android:name=".activity.history.HistoryBebanActivity">
-        </activity>
-        <activity android:name=".activity.gangguan.AddSinyal" />
-        <activity android:name=".activity.inspeksi2.Inspeksi2Activity" />
-        <activity android:name=".activity.inspeksi1.Inspeksi1Activity" />
-        <activity android:name=".activity.MainMenuActivity">
-        </activity>
-        <activity android:name=".activity.gangguan.LaporanGangguanActivity">
-        </activity>
-        <activity android:name=".activity.fuad.LaporanBebanActivity2">
+        <activity android:name=".activity.history.gangguan.HistoryGangguanActivity" />
+        <activity android:name=".activity.gangguan.LaporinGangguanActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.intent.action.VIEW" />
@@ -29,6 +22,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".activity.gangguan.ChoiceGangguanActivity" />
+        <activity android:name=".activity.history.beban.DetailHistoryBebanActivity" />
+        <activity android:name=".activity.history.beban.HistoryBebanActivity" />
+        <activity android:name=".activity.gangguan.revisi.AddSinyal" />
+        <activity android:name=".activity.inspeksi2.Inspeksi2Activity" />
+        <activity android:name=".activity.inspeksi1.Inspeksi1Activity" />
+        <activity android:name=".activity.MainMenuActivity" />
+        <activity android:name=".activity.gangguan.revisi.LaporanGangguanActivity" />
+        <activity android:name=".activity.fuad.LaporanBebanActivity2" />
         <activity android:name=".activity.inspeksi2.Trafo2Activity" />
         <activity android:name=".activity.inspeksi2.Diameter2Activity" />
         <activity android:name=".activity.inspeksi2.Transmisi2Activity" />

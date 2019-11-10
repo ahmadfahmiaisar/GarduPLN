@@ -1,4 +1,4 @@
-package `in`.mroyek.gardupln.activity.history
+package `in`.mroyek.gardupln.activity.history.beban
 
 class HistoryBebanResponse {
     var id: String? = null

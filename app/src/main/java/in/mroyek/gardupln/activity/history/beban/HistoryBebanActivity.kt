@@ -1,4 +1,4 @@
-package `in`.mroyek.gardupln.activity.history
+package `in`.mroyek.gardupln.activity.history.beban
 
 import `in`.mroyek.gardupln.R
 import `in`.mroyek.gardupln.activity.beban.LaporanBebanResponses
@@ -35,7 +35,7 @@ class HistoryBebanActivity : AppCompatActivity() {
                 .setQuery(query, LaporanBebanResponses::class.java).build()
         adapter = object : FirestoreRecyclerAdapter<LaporanBebanResponses, BebanHolder>(bebanresponse) {
             override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BebanHolder {
-                val view = LayoutInflater.from(parent.context).inflate(R.layout.item_history, parent, false)
+                val view = LayoutInflater.from(parent.context).inflate(R.layout.item_date_gangguan, parent, false)
                 return BebanHolder(view)
             }
 
@@ -61,9 +61,9 @@ class HistoryBebanActivity : AppCompatActivity() {
     }
 
     inner class BebanHolder(view: View) : RecyclerView.ViewHolder(view) {
-        private val tvTanggal: TextView = view.findViewById(R.id.item_history_tanggal)
-        private val tvJam: TextView = view.findViewById(R.id.item_history_jam)
-        val btnHapus: ImageButton = view.findViewById(R.id.btnHapus)
+        private val tvTanggal: TextView = view.findViewById(R.id.tv_gangguan_item_history_tanggal)
+        private val tvJam: TextView = view.findViewById(R.id.tv_gangguan_item_history_jam)
+        val btnHapus: ImageButton = view.findViewById(R.id.btnHapus_historyGangguan)
         fun bindData(context: Context, response: LaporanBebanResponses) {
             if (response.tanggal == response.tanggal) {
                 tvTanggal.text = response.tanggal

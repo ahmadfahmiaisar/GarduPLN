@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<HorizontalScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TableLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_2sdp"
+            android:orientation="horizontal">
+
+            <CheckBox
+                android:id="@+id/cek_r_phase_trip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=' \"R\" PHASE TRIP (21Z)' />
+
+            <CheckBox
+                android:id="@+id/cek_s_phase_trip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=' \"S\" PHASE TRIP (21Z)' />
+
+            <CheckBox
+                android:id="@+id/cek_t_phase_trip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=' \"T\" PHASE TRIP (21Z)' />
+
+            <CheckBox
+                android:id="@+id/cek_vt_alarm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="VT ALARM (21Z)" />
+
+            <CheckBox
+                android:id="@+id/cek_relay_inoperative"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="RELAY INOPERATIVE (21Z)" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_2sdp"
+            android:orientation="horizontal">
+
+            <CheckBox
+                android:id="@+id/cek_aided_trip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="AIDED TRIP (21Z)" />
+
+            <CheckBox
+                android:id="@+id/cek_zone2_tmdelay_trip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ZONE 2 TM DELAY TRIP (21Z)" />
+
+            <CheckBox
+                android:id="@+id/cek_zone3_tm_delaytrip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ZONE 3 TM DELAY TRIP (21Z)" />
+
+            <CheckBox
+                android:id="@+id/cek_trip_on_close"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TRIP ON CLOSE (21Z)" />
+
+            <CheckBox
+                android:id="@+id/cek_psb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="PSB (21Z)" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_2sdp"
+            android:orientation="horizontal">
+
+            <CheckBox
+                android:id="@+id/cek_mcb_trip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="MCB TRIP (DC)" />
+
+            <CheckBox
+                android:id="@+id/cek_backup_protect_trip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="BACKUP PROTECT TRIP" />
+
+            <CheckBox
+                android:id="@+id/cek_trip_coil_sup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TRIP 1.2 COIL SUP" />
+
+            <CheckBox
+                android:id="@+id/cek_mk_acdc_mcb_trip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="MK AC/DC MCB TRIP" />
+
+            <CheckBox
+                android:id="@+id/cek_cb_low_pressure_alarm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="CB LOW PRESSURE ALARM" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_2sdp"
+            android:orientation="horizontal">
+
+            <CheckBox
+                android:id="@+id/cek_general_lockout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="CB GENERAL LOCK-OUT" />
+
+            <CheckBox
+                android:id="@+id/cek_dc_fail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="DC FAIL (GENERAL)" />
+
+            <CheckBox
+                android:id="@+id/cek_cb_pole_discrepancy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="CB POLE DISCREPANCY" />
+
+            <CheckBox
+                android:id="@+id/cek_ac_fail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="AC FAIL (GENERAL)" />
+
+            <CheckBox
+                android:id="@+id/cek_vt_source_failure"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="VT SOURCE FAILURE" />
+        </TableRow>
+    </TableLayout>
+</HorizontalScrollView>

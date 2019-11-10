@@ -1,7 +1,7 @@
 package `in`.mroyek.gardupln.activity.beban
 
 import `in`.mroyek.gardupln.R
-import `in`.mroyek.gardupln.activity.history.HistoryBebanActivity
+import `in`.mroyek.gardupln.activity.history.beban.HistoryBebanActivity
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
