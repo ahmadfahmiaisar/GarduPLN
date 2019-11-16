@@ -1,11 +1,12 @@
 package `in`.mroyek.gardupln.activity.gangguan
 
 import `in`.mroyek.gardupln.R
-import `in`.mroyek.gardupln.activity.history.beban.HistoryBebanActivity
+import `in`.mroyek.gardupln.activity.GarduActivity
 import `in`.mroyek.gardupln.activity.history.gangguan.HistoryGangguanActivity
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import android.view.Gravity
@@ -14,26 +15,27 @@ import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.firestore.FirebaseFirestore
-import kotlinx.android.synthetic.main.activity_laporin_gangguan.*
+import kotlinx.android.synthetic.main.activity_laporin_gombong.*
 import kotlinx.android.synthetic.main.layout_cekbok.*
 import kotlinx.android.synthetic.main.layout_counter.*
 import java.text.SimpleDateFormat
 import java.util.*
-import kotlin.math.log
 
-class LaporinGangguanActivity : AppCompatActivity() {
-
+class LaporinGangguanGombong : AppCompatActivity() {
 
     lateinit var date: DatePickerDialog.OnDateSetListener
     lateinit var time: TimePickerDialog.OnTimeSetListener
     private val db: FirebaseFirestore? = FirebaseFirestore.getInstance()
     //    lateinit var adapterGangguan = FirestoreRecyclerAdapter<>
+    lateinit var idgardu: String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_laporin_gangguan)
+        setContentView(R.layout.activity_laporin_gombong)
         Log.d("HINT", "text ${tvDate_gangguan.text.isNullOrEmpty()}")
+        val sharePref: SharedPreferences = getSharedPreferences("idgardunya", 0)
+        idgardu = sharePref.getString(GarduActivity.IDGARDU, "").toString()
         setDateTime()
-        upload()
+        upload(idgardu)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -71,7 +73,7 @@ class LaporinGangguanActivity : AppCompatActivity() {
         tvTime_gangguan.setOnClickListener { TimePickerDialog(this, time, calendar.get(Calendar.HOUR), calendar.get(Calendar.MINUTE), true).show() }
     }
 
-    private fun upload() {
+    private fun upload(idgardu: String) {
         var msg = ""
         btn_lapor_gangguan.setOnClickListener {
             msg = getCekBox(msg)
@@ -84,7 +86,7 @@ class LaporinGangguanActivity : AppCompatActivity() {
             val countGangguan = "R: ${et_counterGangguan_R.text} _n S: ${et_counterGangguan_S.text} _n T: ${et_counterGangguan_T.text} _n "
             val countLa = "R: ${et_counterLA_R.text} _n S: ${et_counterLA_S.text} _n T: ${et_counterLA_T.text} _n "
             val docLapor = hashMapOf(
-                    "bay" to "bay",
+                    "bay" to "Gombong",
                     "tanggal" to tvDate_gangguan.text.toString(),
                     "waktu" to tvTime_gangguan.text.toString(),
                     "signal" to msg,
@@ -105,7 +107,7 @@ class LaporinGangguanActivity : AppCompatActivity() {
             if (documentPath.isEmpty()) {
                 Toast.makeText(applicationContext, "isi dulu tanggalnya", Toast.LENGTH_SHORT).show()
             } else {
-                db!!.collection("Gangguan").document(documentPath).set(docLapor)
+                db!!.collection("Gardu").document(idgardu).collection("Gangguan").document(documentPath).set(docLapor)
                 Toast.makeText(applicationContext, msg, Toast.LENGTH_SHORT).show()
                 btn_lapor_gangguan.isEnabled = false
                 btn_lapor_gangguan.setText("sudah ke upload")
@@ -118,25 +120,26 @@ class LaporinGangguanActivity : AppCompatActivity() {
 
     private fun getCekBox(msg: String): String {
         var msg1 = msg
-        if (cek_r_phase_trip.isChecked) msg1 += "${cek_r_phase_trip.text} \n"
-        if (cek_s_phase_trip.isChecked) msg1 += "${cek_s_phase_trip.text} \n"
-        if (cek_t_phase_trip.isChecked) msg1 += "${cek_t_phase_trip.text} \n"
-        if (cek_vt_alarm.isChecked) msg1 += "${cek_vt_alarm.text} \n"
-        if (cek_relay_inoperative.isChecked) msg1 += "${cek_relay_inoperative.text} \n"
-        if (cek_aided_trip.isChecked) msg1 += "${cek_aided_trip.text} \n"
-        if (cek_zone2_tmdelay_trip.isChecked) msg1 += "${cek_zone3_tm_delaytrip.text} \n"
-        if (cek_trip_on_close.isChecked) msg1 += "${cek_trip_on_close.text} \n"
-        if (cek_psb.isChecked) msg1 += "${cek_psb.text} \n"
-        if (cek_mcb_trip.isChecked) msg1 += "${cek_mcb_trip.text} \n"
-        if (cek_backup_protect_trip.isChecked) msg1 += "${cek_backup_protect_trip.text} \n"
-        if (cek_trip_coil_sup.isChecked) msg1 += "${cek_trip_coil_sup.text} \n"
-        if (cek_mk_acdc_mcb_trip.isChecked) msg1 += "${cek_mk_acdc_mcb_trip.text} \n"
-        if (cek_cb_low_pressure_alarm.isChecked) msg1 += "${cek_cb_low_pressure_alarm.text} \n"
-        if (cek_general_lockout.isChecked) msg1 += "${cek_general_lockout.text} \n"
-        if (cek_dc_fail.isChecked) msg1 += "${cek_dc_fail.text} \n"
-        if (cek_cb_pole_discrepancy.isChecked) msg1 += "${cek_cb_pole_discrepancy.text} \n"
-        if (cek_ac_fail.isChecked) msg1 += "${cek_ac_fail.text} \n"
-        if (cek_vt_source_failure.isChecked) msg1 += "${cek_vt_source_failure.text} \n"
+        if (cek_r_phase_trip.isChecked) msg1 += "-${cek_r_phase_trip.text} \n"
+        if (cek_s_phase_trip.isChecked) msg1 += "-${cek_s_phase_trip.text} \n"
+        if (cek_t_phase_trip.isChecked) msg1 += "-${cek_t_phase_trip.text} \n"
+        if (cek_vt_alarm.isChecked) msg1 += "-${cek_vt_alarm.text} \n"
+        if (cek_relay_inoperative.isChecked) msg1 += "-${cek_relay_inoperative.text} \n"
+        if (cek_aided_trip.isChecked) msg1 += "-${cek_aided_trip.text} \n"
+        if (cek_zone2_tmdelay_trip.isChecked) msg1 += "-${cek_zone2_tmdelay_trip.text} \n"
+        if (cek_zone3_tm_delaytrip.isChecked) msg1 += "-${cek_zone3_tm_delaytrip.text}"
+        if (cek_trip_on_close.isChecked) msg1 += "-${cek_trip_on_close.text} \n"
+        if (cek_psb.isChecked) msg1 += "-${cek_psb.text} \n"
+        if (cek_mcb_trip.isChecked) msg1 += "-${cek_mcb_trip.text} \n"
+        if (cek_backup_protect_trip.isChecked) msg1 += "-${cek_backup_protect_trip.text} \n"
+        if (cek_trip_coil_sup.isChecked) msg1 += "-${cek_trip_coil_sup.text} \n"
+        if (cek_mk_acdc_mcb_trip.isChecked) msg1 += "-${cek_mk_acdc_mcb_trip.text} \n"
+        if (cek_cb_low_pressure_alarm.isChecked) msg1 += "-${cek_cb_low_pressure_alarm.text} \n"
+        if (cek_general_lockout.isChecked) msg1 += "-${cek_general_lockout.text} \n"
+        if (cek_dc_fail.isChecked) msg1 += "-${cek_dc_fail.text} \n"
+        if (cek_cb_pole_discrepancy.isChecked) msg1 += "-${cek_cb_pole_discrepancy.text} \n"
+        if (cek_ac_fail.isChecked) msg1 += "-${cek_ac_fail.text} \n"
+        if (cek_vt_source_failure.isChecked) msg1 += "-${cek_vt_source_failure.text} \n"
         return msg1
     }
 }

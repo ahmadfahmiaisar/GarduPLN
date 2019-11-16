@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <TableRow
         android:layout_width="match_parent"
@@ -15,14 +16,14 @@
             android:textSize="@dimen/_14ssp" />
 
         <EditText
-            android:id="@+id/et_gangguan_FL"
+            android:id="@+id/et_gangguan_FL_purworejo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/colorPrimary" />
     </TableRow>
 
     <EditText
-        android:id="@+id/et_gangguan_Catatan"
+        android:id="@+id/et_gangguan_Catatan_purworejo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Catatan"
@@ -49,7 +50,7 @@
             android:textSize="@dimen/_14ssp" />
 
         <EditText
-            android:id="@+id/et_counterPMT_R"
+            android:id="@+id/et_counterPMT_R_purworejo"
             android:layout_width="@dimen/_100sdp"
             android:layout_height="wrap_content"
             android:textColor="@color/colorPrimary" />
@@ -67,7 +68,7 @@
             android:textSize="@dimen/_14ssp" />
 
         <EditText
-            android:id="@+id/et_counterPMT_S"
+            android:id="@+id/et_counterPMT_S_purworejo"
             android:layout_width="@dimen/_100sdp"
             android:layout_height="wrap_content"
             android:textColor="@color/colorPrimary" />
@@ -85,7 +86,7 @@
             android:textSize="@dimen/_14ssp" />
 
         <EditText
-            android:id="@+id/et_counterPMT_T"
+            android:id="@+id/et_counterPMT_T_purworejo"
             android:layout_width="@dimen/_100sdp"
             android:layout_height="wrap_content"
             android:textColor="@color/colorPrimary" />
@@ -110,7 +111,7 @@
             android:textSize="@dimen/_14ssp" />
 
         <EditText
-            android:id="@+id/et_counterGangguan_R"
+            android:id="@+id/et_counterGangguan_R_purworejo"
             android:layout_width="@dimen/_100sdp"
             android:layout_height="wrap_content"
             android:textColor="@color/colorPrimary" />
@@ -128,7 +129,7 @@
             android:textSize="@dimen/_14ssp" />
 
         <EditText
-            android:id="@+id/et_counterGangguan_S"
+            android:id="@+id/et_counterGangguan_S_purworejo"
             android:layout_width="@dimen/_100sdp"
             android:layout_height="wrap_content"
             android:textColor="@color/colorPrimary" />
@@ -146,7 +147,7 @@
             android:textSize="@dimen/_14ssp" />
 
         <EditText
-            android:id="@+id/et_counterGangguan_T"
+            android:id="@+id/et_counterGangguan_T_purworejo"
             android:layout_width="@dimen/_100sdp"
             android:layout_height="wrap_content"
             android:textColor="@color/colorPrimary" />
@@ -171,7 +172,7 @@
             android:textSize="@dimen/_14ssp" />
 
         <EditText
-            android:id="@+id/et_counterLA_R"
+            android:id="@+id/et_counterLA_R_purworejo"
             android:layout_width="@dimen/_100sdp"
             android:layout_height="wrap_content"
             android:textColor="@color/colorPrimary" />
@@ -189,7 +190,7 @@
             android:textSize="@dimen/_14ssp" />
 
         <EditText
-            android:id="@+id/et_counterLA_S"
+            android:id="@+id/et_counterLA_S_purworejo"
             android:layout_width="@dimen/_100sdp"
             android:layout_height="wrap_content"
             android:textColor="@color/colorPrimary" />
@@ -207,7 +208,7 @@
             android:textSize="@dimen/_14ssp" />
 
         <EditText
-            android:id="@+id/et_counterLA_T"
+            android:id="@+id/et_counterLA_T_purworejo"
             android:layout_width="@dimen/_100sdp"
             android:layout_height="wrap_content"
             android:textColor="@color/colorPrimary" />
@@ -232,7 +233,7 @@
             android:textSize="@dimen/_14ssp" />
 
         <EditText
-            android:id="@+id/et_gangguan_bebanPadam"
+            android:id="@+id/et_gangguan_bebanPadam_purworejo"
             android:layout_width="@dimen/_100sdp"
             android:layout_height="wrap_content"
             android:textColor="@color/colorPrimary" />
@@ -257,7 +258,7 @@
             android:textSize="@dimen/_14ssp" />
 
         <EditText
-            android:id="@+id/et_gangguan_bebanNormal"
+            android:id="@+id/et_gangguan_bebanNormal_purworejo"
             android:layout_width="@dimen/_100sdp"
             android:layout_height="wrap_content"
             android:textColor="@color/colorPrimary" />
@@ -282,9 +283,10 @@
             android:textSize="@dimen/_14ssp" />
 
         <EditText
-            android:id="@+id/et_gangguan_analisa"
+            android:id="@+id/et_gangguan_analisa_purworejo"
             android:layout_width="@dimen/_100sdp"
             android:layout_height="wrap_content"
             android:textColor="@color/colorPrimary" />
+
     </TableRow>
 </TableLayout>

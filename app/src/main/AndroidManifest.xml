@@ -11,17 +11,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.history.gangguan.DetailGangguanHistory">
-        </activity>
+        <activity android:name=".activity.gangguan.LaporinGangguanTrafo2"></activity>
+        <activity android:name=".activity.gangguan.LaporinGangguanTrafo1" />
+        <activity android:name=".activity.gangguan.LaporinGangguanPurworejo" />
+        <activity android:name=".activity.history.gangguan.DetailGangguanHistory" />
         <activity android:name=".activity.history.gangguan.HistoryGangguanActivity" />
-        <activity android:name=".activity.gangguan.LaporinGangguanActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <action android:name="android.intent.action.VIEW" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".activity.gangguan.LaporinGangguanGombong" />
         <activity android:name=".activity.gangguan.ChoiceGangguanActivity" />
         <activity android:name=".activity.history.beban.DetailHistoryBebanActivity" />
         <activity android:name=".activity.history.beban.HistoryBebanActivity" />
@@ -41,7 +36,14 @@
         <activity android:name=".activity.crud.CrudGarduActivity" />
         <activity android:name=".activity.crud.CrudBayActivity" />
         <activity android:name=".activity.BayActivity" />
-        <activity android:name=".activity.GarduActivity" />
+        <activity android:name=".activity.GarduActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

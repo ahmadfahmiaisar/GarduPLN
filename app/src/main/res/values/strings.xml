@@ -22,4 +22,5 @@
     <string name="berkurang">Berkurang</string>
     <string name="name">Name</string>
     <string name="add_sinyal">add sinyal</string>
+    <string name="cek2_trafo1"><![CDATA[150KV O/C & E/F (50/51/51N)]]></string>
 </resources>

@@ -1,10 +1,12 @@
 package `in`.mroyek.gardupln.activity.history.beban
 
 import `in`.mroyek.gardupln.R
+import `in`.mroyek.gardupln.activity.GarduActivity
 import android.annotation.SuppressLint
 import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import android.view.*
@@ -27,15 +29,18 @@ class DetailHistoryBebanActivity : AppCompatActivity() {
     lateinit var tanggal: String
     lateinit var waktu: String
     private var getCuaca: String? = ""
+    lateinit var idgardu: String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail_history_beban)
+        val sharePref: SharedPreferences = getSharedPreferences("idgardunya", 0)
+        idgardu = sharePref.getString(GarduActivity.IDGARDU, "").toString()
         init()
         bulkText += "Tanggal = $tanggal \n"
         bulkText += "Waktu = $waktu \n \n"
 //        loadData()
-        getDataHistory()
-        getCuaca()
+        getDataHistory(idgardu)
+        getCuaca(idgardu)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -62,8 +67,8 @@ class DetailHistoryBebanActivity : AppCompatActivity() {
     }
 
     @SuppressLint("SetTextI18n")
-    private fun getCuaca() {
-        val docRef = db.collection("Laporin").document("$tanggal $waktu")
+    private fun getCuaca(idgardu: String) {
+        val docRef = db.collection("Gardu").document(idgardu).collection("Laporin").document("$tanggal $waktu")
         docRef.get().addOnCompleteListener {
             if (it.isSuccessful) {
                 val doc: DocumentSnapshot? = it.result
@@ -77,8 +82,8 @@ class DetailHistoryBebanActivity : AppCompatActivity() {
                 .build()*/
     }
 
-    private fun getDataHistory() {
-        val query = db.collection("Laporin").document("$tanggal $waktu").collection("Laporr")
+    private fun getDataHistory(idgardu: String) {
+        val query = db.collection("Gardu").document(idgardu).collection("Laporin").document("$tanggal $waktu").collection("Laporr")
         val resposeQuery = FirestoreRecyclerOptions.Builder<HistoryBebanResponse>()
                 .setQuery(query, HistoryBebanResponse::class.java)
                 .build()

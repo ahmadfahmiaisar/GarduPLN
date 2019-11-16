@@ -2,10 +2,12 @@ package `in`.mroyek.gardupln.activity
 
 import `in`.mroyek.gardupln.R
 import `in`.mroyek.gardupln.activity.crud.CrudBayActivity
+import `in`.mroyek.gardupln.key
 import `in`.mroyek.gardupln.model.BayResponse
 import android.annotation.SuppressLint
 import android.app.ProgressDialog
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -27,15 +29,15 @@ class BayActivity : AppCompatActivity() {
     private var adapter: FirestoreRecyclerAdapter<BayResponse, BayHolder>? = null
     lateinit var db: FirebaseFirestore
     private lateinit var progressDialog: ProgressDialog
-    /*    lateinit var idgardu: String
+        lateinit var idgardu: String
         lateinit var gardu: String
-        lateinit var idbay: String*/
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_bay)
-
+        val sharePref: SharedPreferences = getSharedPreferences("idgardunya", 0)
+        idgardu = sharePref.getString(GarduActivity.IDGARDU, "").toString()
         init()
-        showBay()
+        showBay(idgardu)
         /*showBay(idgardu)*/
         btn_ke_main.setOnClickListener { startActivity(Intent(applicationContext, MainMenuActivity::class.java)) }
         btn_tambahBay.setOnClickListener { startActivity(Intent(applicationContext, CrudBayActivity::class.java)) }
@@ -50,14 +52,17 @@ class BayActivity : AppCompatActivity() {
 
     @SuppressLint("WrongConstant")
     private fun init() {
+        /*val intent = intent.extras
+        idgardu = intent?.get(GarduActivity.IDGARDU).toString()*/
+
         val linearLayoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         rv_bay.layoutManager = linearLayoutManager
         db = FirebaseFirestore.getInstance()
         progressDialog = ProgressDialog(this)
     }
 
-    private fun showBay() {
-        val query: Query = db.collection("Bay")
+    private fun showBay(idgardu: String) {
+        val query: Query = db.collection("Gardu").document(idgardu).collection("Bay")
         val bayResponse = FirestoreRecyclerOptions.Builder<BayResponse>()
                 .setQuery(query, BayResponse::class.java)
                 .build()

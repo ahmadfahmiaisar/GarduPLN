@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<HorizontalScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TableLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_2sdp"
+            android:orientation="horizontal">
+
+            <CheckBox
+                android:id="@+id/cek1_trafo1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="DIFF PROT. (87T)" />
+
+            <CheckBox
+                android:id="@+id/cek2_trafo1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/cek2_trafo1" />
+
+            <CheckBox
+                android:id="@+id/cek3_trafo1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="150KV REF PROT. (64REF1)" />
+
+            <CheckBox
+                android:id="@+id/cek4_trafo1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="20KV REF PROT. (64REF2)" />
+
+            <CheckBox
+                android:id="@+id/cek5_trafo1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="MCB(DC)" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_2sdp"
+            android:orientation="horizontal">
+
+            <CheckBox
+                android:id="@+id/cek6_trafo1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TRIP 1 COIL SUP." />
+
+            <CheckBox
+                android:id="@+id/cek7_trafo1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TRIP 2 COIL SUP." />
+
+            <CheckBox
+                android:id="@+id/cek8_trafo1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="20KV FAULT + UFR" />
+
+            <CheckBox
+                android:id="@+id/cek9_trafo1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="MK AC/DC MCB TRIP" />
+
+            <CheckBox
+                android:id="@+id/cek10_trafo1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="MCB TRIP (AC)" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_2sdp"
+            android:orientation="horizontal">
+
+            <CheckBox
+                android:id="@+id/cek11_trafo1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="CB LOW PRESSURE ALARM" />
+
+            <CheckBox
+                android:id="@+id/cek12_trafo1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="CB GENERAL LOCK-OUT" />
+
+            <CheckBox
+                android:id="@+id/cek13_trafo1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="FUNCTIONAL ALARM" />
+
+            <CheckBox
+                android:id="@+id/cek14_trafo1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="BUCHOLZ ALARM" />
+
+            <CheckBox
+                android:id="@+id/cek15_trafo1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="OIL LEVEL ALARM" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_2sdp"
+            android:orientation="horizontal">
+
+            <CheckBox
+                android:id="@+id/cek16_trafo1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TEMP ALARM" />
+
+            <CheckBox
+                android:id="@+id/cek17_trafo1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="MAIN BUCHOLZ TRIP" />
+
+            <CheckBox
+                android:id="@+id/cek18_trafo1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="OLTC BUCHOLZ TRIP" />
+
+            <CheckBox
+                android:id="@+id/cek19_trafo1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TEMP TRIP" />
+
+            <CheckBox
+                android:id="@+id/cek20_trafo1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="PRESS RELAY TRIP" />
+        </TableRow>
+    </TableLayout>
+</HorizontalScrollView>

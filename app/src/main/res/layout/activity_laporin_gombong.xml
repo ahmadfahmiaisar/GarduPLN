@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="@dimen/_5sdp"
+    android:orientation="vertical"
+    tools:context=".activity.gangguan.LaporinGangguanGombong">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_5sdp">
+
+        <TextView
+            android:id="@+id/tgl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_5sdp"
+            android:text="Tanggal"
+            android:textColor="@color/colorBlack"
+            android:textSize="@dimen/_12ssp" />
+
+        <TextView
+            android:id="@+id/jam"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tgl"
+            android:text="Jam"
+            android:textColor="@color/colorBlack"
+            android:textSize="@dimen/_12ssp" />
+
+        <TextView
+            android:id="@+id/tvDate_gangguan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/tgl"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="@dimen/_20sdp"
+            android:textSize="@dimen/_14ssp"
+            android:layout_marginTop="0dp"
+            android:layout_marginBottom="0dp"
+            android:layout_toEndOf="@+id/tgl"
+            android:hint="click me"
+            android:textColor="@color/colorPrimary" />
+
+        <TextView
+            android:id="@+id/tvTime_gangguan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvDate_gangguan"
+            android:layout_alignStart="@+id/tvDate_gangguan"
+            android:layout_alignEnd="@+id/tvDate_gangguan"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:hint="click me"
+            android:textSize="@dimen/_14ssp"
+            android:textColor="@color/colorPrimary" />
+
+        <TextView
+            android:id="@+id/nyal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvTime_gangguan"
+            android:text="Sinyal"
+            android:textColor="@color/colorAccent"
+            android:textSize="@dimen/_14ssp" />
+
+        <include
+            android:id="@+id/lcekbok"
+            layout="@layout/layout_cekbok"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/nyal" />
+
+        <include
+            android:id="@+id/lcon"
+            layout="@layout/layout_counter"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/lcekbok" />
+
+        <Button
+            android:id="@+id/btn_lapor_gangguan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/lcon"
+            android:text="upload laporan"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/_14ssp" />
+    </RelativeLayout>
+</ScrollView>

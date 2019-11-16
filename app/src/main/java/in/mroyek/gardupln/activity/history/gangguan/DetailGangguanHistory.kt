@@ -1,10 +1,12 @@
 package `in`.mroyek.gardupln.activity.history.gangguan
 
 import `in`.mroyek.gardupln.R
+import `in`.mroyek.gardupln.activity.GarduActivity
 import android.annotation.SuppressLint
 import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
@@ -17,12 +19,15 @@ import kotlinx.android.synthetic.main.activity_detail_gangguan_history.*
 class DetailGangguanHistory : AppCompatActivity() {
     private var db: FirebaseFirestore = FirebaseFirestore.getInstance()
     lateinit var tanggal: String
+    lateinit var idgardu: String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail_gangguan_history)
         val intent = intent.extras
         tanggal = intent?.get("tanggal").toString()
-        getData()
+        val sharePref: SharedPreferences = getSharedPreferences("idgardunya", 0)
+        idgardu = sharePref.getString(GarduActivity.IDGARDU, "").toString()
+        getData(idgardu)
     }
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.copy, menu)
@@ -57,8 +62,8 @@ class DetailGangguanHistory : AppCompatActivity() {
     }
 
     @SuppressLint("SetTextI18n")
-    private fun getData() {
-        val docref = db.collection("Gangguan").document(tanggal)
+    private fun getData(idgardu: String) {
+        val docref = db.collection("Gardu").document(idgardu).collection("Gangguan").document(tanggal)
         docref.get().addOnCompleteListener {
             if (it.isSuccessful){
                 val doc: DocumentSnapshot? = it.result

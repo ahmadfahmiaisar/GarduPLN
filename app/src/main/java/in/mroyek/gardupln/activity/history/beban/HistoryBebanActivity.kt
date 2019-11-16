@@ -1,9 +1,11 @@
 package `in`.mroyek.gardupln.activity.history.beban
 
 import `in`.mroyek.gardupln.R
+import `in`.mroyek.gardupln.activity.GarduActivity
 import `in`.mroyek.gardupln.activity.beban.LaporanBebanResponses
 import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -22,15 +24,18 @@ import kotlinx.android.synthetic.main.activity_history_beban.*
 class HistoryBebanActivity : AppCompatActivity() {
     lateinit var adapter: FirestoreRecyclerAdapter<LaporanBebanResponses, BebanHolder>
     private var db: FirebaseFirestore = FirebaseFirestore.getInstance()
+    lateinit var idgardu: String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_history_beban)
+        val sharePref: SharedPreferences = getSharedPreferences("idgardunya", 0)
+        idgardu = sharePref.getString(GarduActivity.IDGARDU, "").toString()
         init()
         /* val intent = intent.extras
          val date = intent?.getString("tanggal")*/
 
 //        val query: Query = db.collection("Laporin").document(date.toString()).collection("Laporr")
-        val query: Query = db.collection("Laporin")
+        val query: Query = db.collection("Gardu").document(idgardu).collection("Laporin")
         val bebanresponse = FirestoreRecyclerOptions.Builder<LaporanBebanResponses>()
                 .setQuery(query, LaporanBebanResponses::class.java).build()
         adapter = object : FirestoreRecyclerAdapter<LaporanBebanResponses, BebanHolder>(bebanresponse) {
@@ -75,9 +80,8 @@ class HistoryBebanActivity : AppCompatActivity() {
         }
 
         private fun hapusDokumen(tanggal: String?, waktu: String?) {
-            db.collection("Laporin").document("$tanggal $waktu").delete()
             var deleted = 0
-            val koleksi: Query = db.collection("Laporin").document("$tanggal $waktu").collection("Laporr")
+            val koleksi: Query = db.collection("Gardu").document(idgardu).collection("Laporin").document("$tanggal $waktu").collection("Laporr")
             koleksi.get()
                     .addOnCompleteListener {
                         for (doc in it.result?.documents!!) {
@@ -85,6 +89,7 @@ class HistoryBebanActivity : AppCompatActivity() {
                             ++deleted
                         }
                     }
+            db.collection("Gardu").document(idgardu).collection("Laporin").document("$tanggal $waktu").delete()
         }
     }
 

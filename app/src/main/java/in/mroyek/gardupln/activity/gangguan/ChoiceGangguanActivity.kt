@@ -1,20 +1,10 @@
 package `in`.mroyek.gardupln.activity.gangguan
 
 import `in`.mroyek.gardupln.R
-import `in`.mroyek.gardupln.model.BayResponse
 import android.content.Intent
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.firebase.ui.firestore.FirestoreRecyclerAdapter
-import com.firebase.ui.firestore.FirestoreRecyclerOptions
-import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.Query
 import kotlinx.android.synthetic.main.activity_choice_gangguan.*
 
 class ChoiceGangguanActivity : AppCompatActivity(), View.OnClickListener {
@@ -29,7 +19,10 @@ class ChoiceGangguanActivity : AppCompatActivity(), View.OnClickListener {
 
     override fun onClick(view: View?) {
         when(view!!.id) {
-            R.id.choice_Gombong -> startActivity(Intent(applicationContext, LaporinGangguanActivity::class.java))
+            R.id.choice_Gombong -> startActivity(Intent(applicationContext, LaporinGangguanGombong::class.java))
+            R.id.choice_purworejo -> startActivity(Intent(applicationContext, LaporinGangguanPurworejo::class.java))
+            R.id.choice_trafo1 -> startActivity(Intent(applicationContext, LaporinGangguanTrafo1::class.java))
+            R.id.choice_trafo2 -> startActivity(Intent(applicationContext, LaporinGangguanTrafo2::class.java))
         }
     }
 }

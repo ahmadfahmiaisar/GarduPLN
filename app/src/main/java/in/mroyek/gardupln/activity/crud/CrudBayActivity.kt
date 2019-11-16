@@ -2,7 +2,9 @@ package `in`.mroyek.gardupln.activity.crud
 
 import `in`.mroyek.gardupln.R
 import `in`.mroyek.gardupln.activity.BayActivity
+import `in`.mroyek.gardupln.activity.GarduActivity
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -17,13 +19,14 @@ import kotlin.collections.HashMap
 class CrudBayActivity : AppCompatActivity() {
 
     lateinit var etbay: String
-    /*lateinit var idgardu: String
-    lateinit var gardu: String*/
+    lateinit var idgardu: String
     private val db: FirebaseFirestore? = FirebaseFirestore.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_crud_bay)
+        val sharePref: SharedPreferences = getSharedPreferences("idgardunya", 0)
+        idgardu = sharePref.getString(GarduActivity.IDGARDU, "").toString()
         /* val nangkep = intent.extras
          idgardu = nangkep!!.get(key.ID_GARDU).toString()
          gardu = nangkep.get("gardu").toString()
@@ -82,7 +85,7 @@ class CrudBayActivity : AppCompatActivity() {
 
     private fun upload(doc: HashMap<String, String>, etbay: String) {
 
-        db!!.collection("Bay").document(etbay).set(doc)
+        db!!.collection("Gardu").document(idgardu).collection("Bay").document(etbay).set(doc)
                 .addOnSuccessListener {
                     Toast.makeText(applicationContext, "okeeh", Toast.LENGTH_SHORT).show()
                     backtoBay()

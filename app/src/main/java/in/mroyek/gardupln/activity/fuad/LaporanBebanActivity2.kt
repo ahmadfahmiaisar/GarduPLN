@@ -1,11 +1,13 @@
 package `in`.mroyek.gardupln.activity.fuad
 
 import `in`.mroyek.gardupln.R
+import `in`.mroyek.gardupln.activity.GarduActivity
 import `in`.mroyek.gardupln.activity.beban.LaporanBebanResponses
 import `in`.mroyek.gardupln.activity.history.beban.HistoryBebanActivity
 import android.annotation.SuppressLint
 import android.app.DatePickerDialog
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
@@ -33,16 +35,18 @@ class LaporanBebanActivity2 : AppCompatActivity(), View.OnClickListener {
     lateinit var adapterTransmisi: LaporanBebanAdapter
     //    val modelist: MutableList<LaporanBebanResponses>? = mutableListOf()
     private val db: FirebaseFirestore? = FirebaseFirestore.getInstance()
-    //    lateinit var tanggal: String
     lateinit var date: DatePickerDialog.OnDateSetListener
+    lateinit var idgardu: String
 
     @SuppressLint("SimpleDateFormat")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_laporan_beban2)
+        val sharePref: SharedPreferences = getSharedPreferences("idgardunya", 0)
+        idgardu = sharePref.getString(GarduActivity.IDGARDU, "").toString()
         init()
         setTanggal()
-        getdata()
+        getdata(idgardu)
         btnUpload.setOnClickListener(this)
     }
 
@@ -74,8 +78,8 @@ class LaporanBebanActivity2 : AppCompatActivity(), View.OnClickListener {
         return super.onOptionsItemSelected(item)
     }
 
-    private fun getdata() {
-        val query = db!!.collection("Bay")
+    private fun getdata(idgardu: String) {
+        val query = db!!.collection("Gardu").document(idgardu).collection("Bay")
                 .whereGreaterThanOrEqualTo("namabay", "trafo")
         query.whereGreaterThanOrEqualTo("namabay", "transmisi")
         val queryResponse = FirestoreRecyclerOptions.Builder<LaporanBebanResponses>()
@@ -190,10 +194,10 @@ class LaporanBebanActivity2 : AppCompatActivity(), View.OnClickListener {
                     "cuaca" to cuaca
             )*/
             var row = it
-            db!!.collection("Laporin").document("$date ${valueRg.text}").set(docpor)
+            db!!.collection("Gardu").document(idgardu).collection("Laporin").document("$date ${valueRg.text}").set(docpor)
             Log.d("CUK Namabay", "Nama = $namabay , Index ke $it")
             if (namabay != "null") {
-                db.collection("Laporin").document("$date ${valueRg.text}").collection("Laporr").document(namabay.trim()).set(doc, SetOptions.merge())
+                db.collection("Gardu").document(idgardu).collection("Laporin").document("$date ${valueRg.text}").collection("Laporr").document(namabay.trim()).set(doc, SetOptions.merge())
                         .addOnCompleteListener {
                             Toast.makeText(applicationContext, "hm oke", Toast.LENGTH_SHORT).show()
 //                            Log.d("CUK", "Row ke $row")
