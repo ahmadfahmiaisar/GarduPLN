@@ -23,6 +23,7 @@ class ChoiceGangguanActivity : AppCompatActivity(), View.OnClickListener {
             R.id.choice_purworejo -> startActivity(Intent(applicationContext, LaporinGangguanPurworejo::class.java))
             R.id.choice_trafo1 -> startActivity(Intent(applicationContext, LaporinGangguanTrafo1::class.java))
             R.id.choice_trafo2 -> startActivity(Intent(applicationContext, LaporinGangguanTrafo2::class.java))
+            R.id.choice_trafo3 -> startActivity(Intent(applicationContext, LaporinGangguanTrafo3::class.java))
         }
     }
 }

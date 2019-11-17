@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <EditText
+        android:id="@+id/et_gangguan_Catatan_trafo3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Catatan"
+        android:lines="3"
+        android:textColorHint="@color/colorPrimary"
+        android:textSize="@dimen/_14ssp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Counter PMT"
+        android:textColor="@color/colorAccent"
+        android:textSize="@dimen/_14ssp" />
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="R : "
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/_14ssp" />
+
+        <EditText
+            android:id="@+id/et_counterPMT_R_trafo3"
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorPrimary" />
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="S : "
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/_14ssp" />
+
+        <EditText
+            android:id="@+id/et_counterPMT_S_trafo3"
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorPrimary" />
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="T : "
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/_14ssp" />
+
+        <EditText
+            android:id="@+id/et_counterPMT_T_trafo3"
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorPrimary" />
+    </TableRow>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Counter Gangguan"
+        android:textColor="@color/colorAccent"
+        android:textSize="@dimen/_14ssp" />
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="R : "
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/_14ssp" />
+
+        <EditText
+            android:id="@+id/et_counterGangguan_R_trafo3"
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorPrimary" />
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="S : "
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/_14ssp" />
+
+        <EditText
+            android:id="@+id/et_counterGangguan_S_trafo3"
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorPrimary" />
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="T : "
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/_14ssp" />
+
+        <EditText
+            android:id="@+id/et_counterGangguan_T_trafo3"
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorPrimary" />
+    </TableRow>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Counter LA"
+        android:textColor="@color/colorAccent"
+        android:textSize="@dimen/_14ssp" />
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="R : "
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/_14ssp" />
+
+        <EditText
+            android:id="@+id/et_counterLA_R_trafo3"
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorPrimary" />
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="S : "
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/_14ssp" />
+
+        <EditText
+            android:id="@+id/et_counterLA_S_trafo3"
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorPrimary" />
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="T : "
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/_14ssp" />
+
+        <EditText
+            android:id="@+id/et_counterLA_T_trafo3"
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorPrimary" />
+    </TableRow>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Cuaca"
+        android:textColor="@color/colorAccent"
+        android:textSize="@dimen/_14ssp" />
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Beban Sebelum Padam"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/_14ssp" />
+
+        <EditText
+            android:id="@+id/et_gangguan_bebanPadam_trafo3"
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorPrimary" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="A"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/_14ssp" />
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Beban Setelah Normal"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/_14ssp" />
+
+        <EditText
+            android:id="@+id/et_gangguan_bebanNormal_trafo3"
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorPrimary" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="A"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/_14ssp" />
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Analisa Penyebab"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/_14ssp" />
+
+        <EditText
+            android:id="@+id/et_gangguan_analisa_trafo3"
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorPrimary" />
+
+    </TableRow>
+</TableLayout>
